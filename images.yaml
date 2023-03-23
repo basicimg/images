@@ -2,6 +2,7 @@ include:
 - alpine/images.yaml
 - debian/images.yaml
 - jdk/images.yaml
+- nginx/images.yaml
 - nodejs/images.yaml
 - python3/images.yaml
 - redis/images.yaml
