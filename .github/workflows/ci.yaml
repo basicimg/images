@@ -38,7 +38,7 @@ jobs:
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/alpine:3-17 basicimg-hello
     - name: Run test
-      run: docker run --rm ghcr.io/basicimg/alpine:3-17 /bin/sh -c 'apk add rust'
+      run: docker run --rm ghcr.io/basicimg/alpine:3-17 /bin/sh -c 'apk add rust@community'
   alpine_edge:
     name: alpine/edge
     needs:
@@ -76,7 +76,7 @@ jobs:
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/alpine:edge basicimg-hello
     - name: Run test
-      run: docker run --rm ghcr.io/basicimg/alpine:edge /bin/sh -c 'apk add rust'
+      run: docker run --rm ghcr.io/basicimg/alpine:edge /bin/sh -c 'apk add rust@community'
   arch:
     name: arch
     needs:

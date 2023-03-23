@@ -7,10 +7,10 @@ images:
   - ghcr.io/basicimg/alpine:3
   - ghcr.io/basicimg/alpine:stable
   - ghcr.io/basicimg/alpine:latest
-  test: apk add rust
+  test: apk add rust@community
 - path: alpine/edge
   dependencies:
   - ghcr.io/basicimg/bootstrap:latest
   tags:
   - ghcr.io/basicimg/alpine:edge
-  test: apk add rust
+  test: apk add rust@community
