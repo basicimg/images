@@ -27,6 +27,56 @@ def image_to_job(image):
     if "description" in image:
         description = image["description"]
         labels.append(f"org.opencontainers.image.description={description}")
+    steps = [
+        {
+            "name": "Checkout repository",
+            "uses": "actions/checkout@v3"
+        },
+        {
+            "name": "Setup Docker Buildx",
+            "uses": "docker/setup-buildx-action@v2"
+        },
+        {
+            "name": "Login to container registry",
+            "uses": "docker/login-action@v2",
+            "with": {
+                "registry": "ghcr.io",
+                "username": "${{ github.actor }}",
+                "password": "${{ secrets.GITHUB_TOKEN }}"
+            }
+        },
+        {
+            "name": "Generate metadata",
+            "id": "meta",
+            "uses": "docker/metadata-action@v4",
+            "with": {
+                "images": "dummy",
+                "labels": "\n".join(labels)
+            }
+        },
+        {
+            "name": "Build and push image",
+            "uses": "docker/build-push-action@v4",
+            "with": {
+                "push": True,
+                "cache-from": "type=gha",
+                "cache-to": "type=gha,mode=max",
+                "tags": ",".join(tags),
+                "labels": "${{ steps.meta.outputs.labels }}",
+                "file": f"./{path}/Dockerfile"
+            }
+        },
+        {
+            "name": "Run `basicimg-hello`",
+            "run": f"docker run --rm {tags[0]} basicimg-hello"
+        }
+    ]
+    if "test" in image:
+        test = image["test"]
+        steps.append({
+            "name": "Run test",
+            "run": f"docker run --rm {tags[0]} /bin/sh -c '{test}'"
+        })
     job = {
         "name": path,
         "runs-on": "ubuntu-22.04",
@@ -34,46 +84,7 @@ def image_to_job(image):
             "contents": "read",
             "packages": "write"
         },
-        "steps": [
-            {
-                "name": "Checkout repository",
-                "uses": "actions/checkout@v3"
-            },
-            {
-                "name": "Setup Docker Buildx",
-                "uses": "docker/setup-buildx-action@v2"
-            },
-            {
-                "name": "Login to container registry",
-                "uses": "docker/login-action@v2",
-                "with": {
-                    "registry": "ghcr.io",
-                    "username": "${{ github.actor }}",
-                    "password": "${{ secrets.GITHUB_TOKEN }}"
-                }
-            },
-            {
-                "name": "Generate metadata",
-                "id": "meta",
-                "uses": "docker/metadata-action@v4",
-                "with": {
-                    "images": "dummy",
-                    "labels": "\n".join(labels)
-                }
-            },
-            {
-                "name": "Build and push image",
-                "uses": "docker/build-push-action@v4",
-                "with": {
-                    "push": True,
-                    "cache-from": "type=gha",
-                    "cache-to": "type=gha,mode=max",
-                    "tags": ",".join(tags),
-                    "labels": "${{ steps.meta.outputs.labels }}",
-                    "file": f"./{path}/Dockerfile"
-                }
-            }
-        ]
+        "steps": steps
     }
     if "dependencies" in image:
         job["needs"] = [image_slug(imagesByTag[dep]) for dep in image["dependencies"]]

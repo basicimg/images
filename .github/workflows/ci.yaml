@@ -35,6 +35,10 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/alpine:3-17,ghcr.io/basicimg/alpine:3,ghcr.io/basicimg/alpine:stable,ghcr.io/basicimg/alpine:latest
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/alpine:3-17 basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/alpine:3-17 /bin/sh -c 'apk add rust'
   alpine_edge:
     name: alpine/edge
     needs:
@@ -69,6 +73,10 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/alpine:edge
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/alpine:edge basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/alpine:edge /bin/sh -c 'apk add rust'
   arch:
     name: arch
     needs:
@@ -103,6 +111,11 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/arch:latest
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/arch:latest basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/arch:latest /bin/sh -c 'pacman -Sy --noconfirm
+        rust'
   basicimg-actions-generator:
     name: basicimg-actions-generator
     needs:
@@ -137,6 +150,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/basicimg-actions-generator:latest
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/basicimg-actions-generator:latest basicimg-hello
   bootstrap:
     name: bootstrap
     permissions:
@@ -169,6 +184,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/bootstrap:latest
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/bootstrap:latest basicimg-hello
   debian_bookworm:
     name: debian/bookworm
     needs:
@@ -203,6 +220,11 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/debian:bookworm,ghcr.io/basicimg/debian:12,ghcr.io/basicimg/debian:testing
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/debian:bookworm basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/debian:bookworm /bin/sh -c 'apt-get update
+        && apt-get install -y rustc'
   debian_bullseye:
     name: debian/bullseye
     needs:
@@ -237,6 +259,11 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/debian:bullseye,ghcr.io/basicimg/debian:11,ghcr.io/basicimg/debian:stable,ghcr.io/basicimg/debian:latest
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/debian:bullseye basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/debian:bullseye /bin/sh -c 'apt-get update
+        && apt-get install -y rustc'
   debian_buster:
     name: debian/buster
     needs:
@@ -271,6 +298,11 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/debian:buster,ghcr.io/basicimg/debian:10,ghcr.io/basicimg/debian:oldstable
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/debian:buster basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/debian:buster /bin/sh -c 'apt-get update
+        && apt-get install -y rustc'
   debian_sid:
     name: debian/sid
     needs:
@@ -305,6 +337,11 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/debian:sid,ghcr.io/basicimg/debian:unstable
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/debian:sid basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/debian:sid /bin/sh -c 'apt-get update
+        && apt-get install -y rustc'
   jdk_11_alpine-3_17:
     name: jdk/11/alpine-3.17
     needs:
@@ -339,6 +376,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:11-alpine-3-17,ghcr.io/basicimg/jdk:11-alpine
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:11-alpine-3-17 basicimg-hello
   jdk_11_alpine-edge:
     name: jdk/11/alpine-edge
     needs:
@@ -373,6 +412,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:11-alpine-edge
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:11-alpine-edge basicimg-hello
   jdk_11_arch:
     name: jdk/11/arch
     needs:
@@ -407,6 +448,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:11-arch
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:11-arch basicimg-hello
   jdk_11_bullseye:
     name: jdk/11/bullseye
     needs:
@@ -441,6 +484,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:11-bullseye,ghcr.io/basicimg/jdk:11-debian-stable,ghcr.io/basicimg/jdk:11-debian,ghcr.io/basicimg/jdk:11
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:11-bullseye basicimg-hello
   jdk_11_jammy:
     name: jdk/11/jammy
     needs:
@@ -475,6 +520,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:11-jammy,ghcr.io/basicimg/jdk:11-ubuntu-lts,ghcr.io/basicimg/jdk:11-ubuntu
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:11-jammy basicimg-hello
   jdk_11_kinetic:
     name: jdk/11/kinetic
     needs:
@@ -509,6 +556,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:11-kinetic,ghcr.io/basicimg/jdk:11-ubuntu-interim
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:11-kinetic basicimg-hello
   jdk_11_lunar:
     name: jdk/11/lunar
     needs:
@@ -543,6 +592,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:11-lunar
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:11-lunar basicimg-hello
   jdk_11_sid:
     name: jdk/11/sid
     needs:
@@ -577,6 +628,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:11-sid,ghcr.io/basicimg/jdk:11-debian-unstable
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:11-sid basicimg-hello
   jdk_11_void-glibc:
     name: jdk/11/void-glibc
     needs:
@@ -611,6 +664,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:11-void-glibc,ghcr.io/basicimg/jdk:11-void
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:11-void-glibc basicimg-hello
   jdk_11_void-musl:
     name: jdk/11/void-musl
     needs:
@@ -645,6 +700,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:11-void-musl
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:11-void-musl basicimg-hello
   jdk_17_arch:
     name: jdk/17/arch
     needs:
@@ -679,6 +736,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:17-arch
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:17-arch basicimg-hello
   jdk_17_sid:
     name: jdk/17/sid
     needs:
@@ -713,6 +772,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:17-sid,ghcr.io/basicimg/jdk:17-debian-unstable
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:17-sid basicimg-hello
   jdk_8_alpine-3_17:
     name: jdk/8/alpine-3.17
     needs:
@@ -747,6 +808,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:8-alpine-3-17,ghcr.io/basicimg/jdk:8-alpine
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:8-alpine-3-17 basicimg-hello
   jdk_8_alpine-edge:
     name: jdk/8/alpine-edge
     needs:
@@ -781,6 +844,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:8-alpine-edge
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:8-alpine-edge basicimg-hello
   jdk_8_arch:
     name: jdk/8/arch
     needs:
@@ -815,6 +880,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:8-arch
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:8-arch basicimg-hello
   jdk_8_jammy:
     name: jdk/8/jammy
     needs:
@@ -849,6 +916,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:8-jammy,ghcr.io/basicimg/jdk:8-ubuntu-lts,ghcr.io/basicimg/jdk:8-ubuntu,ghcr.io/basicimg/jdk:8
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:8-jammy basicimg-hello
   jdk_8_kinetic:
     name: jdk/8/kinetic
     needs:
@@ -883,6 +952,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:8-kinetic,ghcr.io/basicimg/jdk:8-ubuntu-interim
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:8-kinetic basicimg-hello
   jdk_8_lunar:
     name: jdk/8/lunar
     needs:
@@ -917,6 +988,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:8-lunar
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:8-lunar basicimg-hello
   jdk_8_sid:
     name: jdk/8/sid
     needs:
@@ -951,6 +1024,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:8-sid,ghcr.io/basicimg/jdk:8-debian-unstable
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:8-sid basicimg-hello
   jdk_8_void-glibc:
     name: jdk/8/void-glibc
     needs:
@@ -985,6 +1060,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:8-void-glibc,ghcr.io/basicimg/jdk:8-void
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:8-void-glibc basicimg-hello
   jdk_8_void-musl:
     name: jdk/8/void-musl
     needs:
@@ -1019,6 +1096,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:8-void-musl
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:8-void-musl basicimg-hello
   jdk_latest_alpine-3_17:
     name: jdk/latest/alpine-3.17
     needs:
@@ -1053,6 +1132,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:latest-alpine-3-17,ghcr.io/basicimg/jdk:latest-alpine,ghcr.io/basicimg/jdk:17-alpine-3-17,ghcr.io/basicimg/jdk:17-alpine
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:latest-alpine-3-17 basicimg-hello
   jdk_latest_alpine-edge:
     name: jdk/latest/alpine-edge
     needs:
@@ -1087,6 +1168,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:latest-alpine-edge,ghcr.io/basicimg/jdk:17-alpine-edge
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:latest-alpine-edge basicimg-hello
   jdk_latest_arch:
     name: jdk/latest/arch
     needs:
@@ -1121,6 +1204,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:latest-arch
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:latest-arch basicimg-hello
   jdk_latest_bookworm:
     name: jdk/latest/bookworm
     needs:
@@ -1155,6 +1240,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:latest-bookworm,ghcr.io/basicimg/jdk:latest-debian-testing,ghcr.io/basicimg/jdk:17-bookworm,ghcr.io/basicimg/jdk:17-debian-testing
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:latest-bookworm basicimg-hello
   jdk_latest_bullseye:
     name: jdk/latest/bullseye
     needs:
@@ -1189,6 +1276,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:latest-bullseye,ghcr.io/basicimg/jdk:latest-debian-stable,ghcr.io/basicimg/jdk:latest-debian,ghcr.io/basicimg/jdk:17-bullseye,ghcr.io/basicimg/jdk:17-debian-stable,ghcr.io/basicimg/jdk:17-debian,ghcr.io/basicimg/jdk:17
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:latest-bullseye basicimg-hello
   jdk_latest_buster:
     name: jdk/latest/buster
     needs:
@@ -1223,6 +1312,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:latest-buster,ghcr.io/basicimg/jdk:latest-debian-oldstable,ghcr.io/basicimg/jdk:11-buster,ghcr.io/basicimg/jdk:11-debian-oldstable
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:latest-buster basicimg-hello
   jdk_latest_jammy:
     name: jdk/latest/jammy
     needs:
@@ -1257,6 +1348,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:latest-jammy,ghcr.io/basicimg/jdk:latest-ubuntu-lts,ghcr.io/basicimg/jdk:latest-ubuntu,ghcr.io/basicimg/jdk:17-jammy,ghcr.io/basicimg/jdk:17-ubuntu-lts,ghcr.io/basicimg/jdk:17-ubuntu
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:latest-jammy basicimg-hello
   jdk_latest_kinetic:
     name: jdk/latest/kinetic
     needs:
@@ -1291,6 +1384,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:latest-kinetic,ghcr.io/basicimg/jdk:latest-ubuntu-interim,ghcr.io/basicimg/jdk:17-kinetic,ghcr.io/basicimg/jdk:17-ubuntu-interim
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:latest-kinetic basicimg-hello
   jdk_latest_lunar:
     name: jdk/latest/lunar
     needs:
@@ -1325,6 +1420,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:17-lunar
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:17-lunar basicimg-hello
   jdk_latest_sid:
     name: jdk/latest/sid
     needs:
@@ -1359,6 +1456,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:latest-sid,ghcr.io/basicimg/jdk:latest-debian-unstable,ghcr.io/basicimg/jdk:19-sid,ghcr.io/basicimg/jdk:19-debian-unstable,ghcr.io/basicimg/jdk:19
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:latest-sid basicimg-hello
   jdk_latest_void-glibc:
     name: jdk/latest/void-glibc
     needs:
@@ -1393,6 +1492,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:latest-void-glibc,ghcr.io/basicimg/jdk:latest-void,ghcr.io/basicimg/jdk:17-void-glibc,ghcr.io/basicimg/jdk:17-void
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:latest-void-glibc basicimg-hello
   jdk_latest_void-musl:
     name: jdk/latest/void-musl
     needs:
@@ -1427,6 +1528,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:latest-void-musl,ghcr.io/basicimg/jdk:17-void-musl
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:latest-void-musl basicimg-hello
   memcached_alpine-3_17:
     name: memcached/alpine-3.17
     needs:
@@ -1461,6 +1564,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/memcached:alpine-3-17,ghcr.io/basicimg/memcached:alpine
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/memcached:alpine-3-17 basicimg-hello
   memcached_alpine-edge:
     name: memcached/alpine-edge
     needs:
@@ -1495,6 +1600,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/memcached:alpine-edge
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/memcached:alpine-edge basicimg-hello
   memcached_arch:
     name: memcached/arch
     needs:
@@ -1529,6 +1636,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/memcached:arch
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/memcached:arch basicimg-hello
   memcached_bookworm:
     name: memcached/bookworm
     needs:
@@ -1563,6 +1672,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/memcached:bookworm,ghcr.io/basicimg/memcached:debian-testing
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/memcached:bookworm basicimg-hello
   memcached_bullseye:
     name: memcached/bullseye
     needs:
@@ -1597,6 +1708,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/memcached:bullseye,ghcr.io/basicimg/memcached:debian-stable,ghcr.io/basicimg/memcached:debian,ghcr.io/basicimg/memcached:latest
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/memcached:bullseye basicimg-hello
   memcached_buster:
     name: memcached/buster
     needs:
@@ -1631,6 +1744,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/memcached:buster,ghcr.io/basicimg/memcached:debian-oldstable
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/memcached:buster basicimg-hello
   memcached_jammy:
     name: memcached/jammy
     needs:
@@ -1665,6 +1780,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/memcached:jammy,ghcr.io/basicimg/memcached:ubuntu-lts,ghcr.io/basicimg/memcached:ubuntu
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/memcached:jammy basicimg-hello
   memcached_kinetic:
     name: memcached/kinetic
     needs:
@@ -1699,6 +1816,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/memcached:kinetic,ghcr.io/basicimg/memcached:ubuntu-interim
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/memcached:kinetic basicimg-hello
   memcached_lunar:
     name: memcached/lunar
     needs:
@@ -1733,6 +1852,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/memcached:lunar
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/memcached:lunar basicimg-hello
   memcached_sid:
     name: memcached/sid
     needs:
@@ -1767,6 +1888,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/memcached:sid,ghcr.io/basicimg/memcached:debian-unstable
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/memcached:sid basicimg-hello
   memcached_void-glibc:
     name: memcached/void-glibc
     needs:
@@ -1801,6 +1924,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/memcached:void-glibc,ghcr.io/basicimg/memcached:void
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/memcached:void-glibc basicimg-hello
   memcached_void-musl:
     name: memcached/void-musl
     needs:
@@ -1835,6 +1960,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/memcached:void-musl
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/memcached:void-musl basicimg-hello
   nginx_alpine-3_17:
     name: nginx/alpine-3.17
     needs:
@@ -1869,6 +1996,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nginx:alpine-3-17,ghcr.io/basicimg/nginx:alpine
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/nginx:alpine-3-17 basicimg-hello
   nginx_alpine-edge:
     name: nginx/alpine-edge
     needs:
@@ -1903,6 +2032,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nginx:alpine-edge
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/nginx:alpine-edge basicimg-hello
   nginx_arch:
     name: nginx/arch
     needs:
@@ -1937,6 +2068,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nginx:arch
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/nginx:arch basicimg-hello
   nginx_bookworm:
     name: nginx/bookworm
     needs:
@@ -1971,6 +2104,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nginx:bookworm,ghcr.io/basicimg/nginx:debian-testing
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/nginx:bookworm basicimg-hello
   nginx_bullseye:
     name: nginx/bullseye
     needs:
@@ -2005,6 +2140,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nginx:bullseye,ghcr.io/basicimg/nginx:debian-stable,ghcr.io/basicimg/nginx:debian,ghcr.io/basicimg/nginx:latest
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/nginx:bullseye basicimg-hello
   nginx_buster:
     name: nginx/buster
     needs:
@@ -2039,6 +2176,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nginx:buster,ghcr.io/basicimg/nginx:debian-oldstable
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/nginx:buster basicimg-hello
   nginx_jammy:
     name: nginx/jammy
     needs:
@@ -2073,6 +2212,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nginx:jammy,ghcr.io/basicimg/nginx:ubuntu-lts,ghcr.io/basicimg/nginx:ubuntu
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/nginx:jammy basicimg-hello
   nginx_kinetic:
     name: nginx/kinetic
     needs:
@@ -2107,6 +2248,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nginx:kinetic,ghcr.io/basicimg/nginx:ubuntu-interim
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/nginx:kinetic basicimg-hello
   nginx_lunar:
     name: nginx/lunar
     needs:
@@ -2141,6 +2284,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nginx:lunar
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/nginx:lunar basicimg-hello
   nginx_sid:
     name: nginx/sid
     needs:
@@ -2175,6 +2320,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nginx:sid,ghcr.io/basicimg/nginx:debian-unstable
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/nginx:sid basicimg-hello
   nginx_void-glibc:
     name: nginx/void-glibc
     needs:
@@ -2209,6 +2356,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nginx:void-glibc,ghcr.io/basicimg/nginx:void
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/nginx:void-glibc basicimg-hello
   nginx_void-musl:
     name: nginx/void-musl
     needs:
@@ -2243,6 +2392,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nginx:void-musl
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/nginx:void-musl basicimg-hello
   nix_alpine-edge:
     name: nix/alpine-edge
     needs:
@@ -2277,6 +2428,10 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nix:alpine-edge,ghcr.io/basicimg/nix:alpine
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/nix:alpine-edge basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/nix:alpine-edge /bin/sh -c 'nix run nixpkgs#hello'
   nix_arch:
     name: nix/arch
     needs:
@@ -2311,6 +2466,10 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nix:arch
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/nix:arch basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/nix:arch /bin/sh -c 'nix run nixpkgs#hello'
   nix_bookworm:
     name: nix/bookworm
     needs:
@@ -2345,6 +2504,10 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nix:bookworm,ghcr.io/basicimg/nix:debian-testing
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/nix:bookworm basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/nix:bookworm /bin/sh -c 'nix run nixpkgs#hello'
   nix_bullseye:
     name: nix/bullseye
     needs:
@@ -2379,6 +2542,10 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nix:bullseye,ghcr.io/basicimg/nix:debian-stable,ghcr.io/basicimg/nix:debian,ghcr.io/basicimg/nix:latest
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/nix:bullseye basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/nix:bullseye /bin/sh -c 'nix run nixpkgs#hello'
   nix_jammy:
     name: nix/jammy
     needs:
@@ -2413,6 +2580,10 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nix:jammy,ghcr.io/basicimg/nix:ubuntu-lts,ghcr.io/basicimg/nix:ubuntu
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/nix:jammy basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/nix:jammy /bin/sh -c 'nix run nixpkgs#hello'
   nix_kinetic:
     name: nix/kinetic
     needs:
@@ -2447,6 +2618,10 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nix:kinetic,ghcr.io/basicimg/nix:ubuntu-interim
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/nix:kinetic basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/nix:kinetic /bin/sh -c 'nix run nixpkgs#hello'
   nix_lunar:
     name: nix/lunar
     needs:
@@ -2481,6 +2656,10 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nix:lunar
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/nix:lunar basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/nix:lunar /bin/sh -c 'nix run nixpkgs#hello'
   nix_sid:
     name: nix/sid
     needs:
@@ -2515,6 +2694,10 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nix:sid,ghcr.io/basicimg/nix:debian-unstable
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/nix:sid basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/nix:sid /bin/sh -c 'nix run nixpkgs#hello'
   nix_void-glibc:
     name: nix/void-glibc
     needs:
@@ -2549,6 +2732,10 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nix:void-glibc,ghcr.io/basicimg/nix:void
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/nix:void-glibc basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/nix:void-glibc /bin/sh -c 'nix run nixpkgs#hello'
   nix_void-musl:
     name: nix/void-musl
     needs:
@@ -2583,6 +2770,10 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nix:void-musl
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/nix:void-musl basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/nix:void-musl /bin/sh -c 'nix run nixpkgs#hello'
   nodejs_alpine-3_17:
     name: nodejs/alpine-3.17
     needs:
@@ -2617,6 +2808,11 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nodejs:alpine-3-17,ghcr.io/basicimg/nodejs:alpine
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/nodejs:alpine-3-17 basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/nodejs:alpine-3-17 /bin/sh -c 'npm install
+        express'
   nodejs_alpine-edge:
     name: nodejs/alpine-edge
     needs:
@@ -2651,6 +2847,11 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nodejs:alpine-edge
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/nodejs:alpine-edge basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/nodejs:alpine-edge /bin/sh -c 'npm install
+        express'
   nodejs_arch:
     name: nodejs/arch
     needs:
@@ -2685,6 +2886,10 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nodejs:arch
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/nodejs:arch basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/nodejs:arch /bin/sh -c 'npm install express'
   nodejs_bookworm:
     name: nodejs/bookworm
     needs:
@@ -2719,6 +2924,11 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nodejs:bookworm,ghcr.io/basicimg/nodejs:debian-testing
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/nodejs:bookworm basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/nodejs:bookworm /bin/sh -c 'npm install
+        express'
   nodejs_bullseye:
     name: nodejs/bullseye
     needs:
@@ -2753,6 +2963,11 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nodejs:bullseye,ghcr.io/basicimg/nodejs:debian-stable,ghcr.io/basicimg/nodejs:debian,ghcr.io/basicimg/nodejs:latest
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/nodejs:bullseye basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/nodejs:bullseye /bin/sh -c 'npm install
+        express'
   nodejs_buster:
     name: nodejs/buster
     needs:
@@ -2787,6 +3002,11 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nodejs:buster,ghcr.io/basicimg/nodejs:debian-oldstable
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/nodejs:buster basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/nodejs:buster /bin/sh -c 'npm install
+        express'
   nodejs_jammy:
     name: nodejs/jammy
     needs:
@@ -2821,6 +3041,10 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nodejs:jammy,ghcr.io/basicimg/nodejs:ubuntu-lts,ghcr.io/basicimg/nodejs:ubuntu
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/nodejs:jammy basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/nodejs:jammy /bin/sh -c 'npm install express'
   nodejs_kinetic:
     name: nodejs/kinetic
     needs:
@@ -2855,6 +3079,11 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nodejs:kinetic,ghcr.io/basicimg/nodejs:ubuntu-interim
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/nodejs:kinetic basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/nodejs:kinetic /bin/sh -c 'npm install
+        express'
   nodejs_lunar:
     name: nodejs/lunar
     needs:
@@ -2889,6 +3118,10 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nodejs:lunar
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/nodejs:lunar basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/nodejs:lunar /bin/sh -c 'npm install express'
   nodejs_sid:
     name: nodejs/sid
     needs:
@@ -2923,6 +3156,10 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nodejs:sid,ghcr.io/basicimg/nodejs:debian-unstable
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/nodejs:sid basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/nodejs:sid /bin/sh -c 'npm install express'
   nodejs_void-glibc:
     name: nodejs/void-glibc
     needs:
@@ -2957,6 +3194,11 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nodejs:void-glibc,ghcr.io/basicimg/nodejs:void
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/nodejs:void-glibc basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/nodejs:void-glibc /bin/sh -c 'npm install
+        express'
   nodejs_void-musl:
     name: nodejs/void-musl
     needs:
@@ -2991,6 +3233,11 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nodejs:void-musl
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/nodejs:void-musl basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/nodejs:void-musl /bin/sh -c 'npm install
+        express'
   python3_alpine-3_17:
     name: python3/alpine-3.17
     needs:
@@ -3025,6 +3272,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/python3:alpine-3-17,ghcr.io/basicimg/python3:alpine
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/python3:alpine-3-17 basicimg-hello
   python3_alpine-edge:
     name: python3/alpine-edge
     needs:
@@ -3059,6 +3308,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/python3:alpine-edge
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/python3:alpine-edge basicimg-hello
   python3_arch:
     name: python3/arch
     needs:
@@ -3093,6 +3344,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/python3:arch
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/python3:arch basicimg-hello
   python3_bookworm:
     name: python3/bookworm
     needs:
@@ -3127,6 +3380,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/python3:bookworm,ghcr.io/basicimg/python3:debian-testing
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/python3:bookworm basicimg-hello
   python3_bullseye:
     name: python3/bullseye
     needs:
@@ -3161,6 +3416,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/python3:bullseye,ghcr.io/basicimg/python3:debian-stable,ghcr.io/basicimg/python3:debian,ghcr.io/basicimg/python3:latest
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/python3:bullseye basicimg-hello
   python3_buster:
     name: python3/buster
     needs:
@@ -3195,6 +3452,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/python3:buster,ghcr.io/basicimg/python3:debian-oldstable
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/python3:buster basicimg-hello
   python3_jammy:
     name: python3/jammy
     needs:
@@ -3229,6 +3488,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/python3:jammy,ghcr.io/basicimg/python3:ubuntu-lts,ghcr.io/basicimg/python3:ubuntu
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/python3:jammy basicimg-hello
   python3_kinetic:
     name: python3/kinetic
     needs:
@@ -3263,6 +3524,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/python3:kinetic,ghcr.io/basicimg/python3:ubuntu-interim
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/python3:kinetic basicimg-hello
   python3_lunar:
     name: python3/lunar
     needs:
@@ -3297,6 +3560,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/python3:lunar
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/python3:lunar basicimg-hello
   python3_sid:
     name: python3/sid
     needs:
@@ -3331,6 +3596,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/python3:sid,ghcr.io/basicimg/python3:debian-unstable
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/python3:sid basicimg-hello
   python3_void-glibc:
     name: python3/void-glibc
     needs:
@@ -3365,6 +3632,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/python3:void-glibc,ghcr.io/basicimg/python3:void
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/python3:void-glibc basicimg-hello
   python3_void-musl:
     name: python3/void-musl
     needs:
@@ -3399,6 +3668,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/python3:void-musl
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/python3:void-musl basicimg-hello
   redis_alpine-3_17:
     name: redis/alpine-3.17
     needs:
@@ -3433,6 +3704,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/redis:alpine-3-17,ghcr.io/basicimg/redis:alpine
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/redis:alpine-3-17 basicimg-hello
   redis_alpine-edge:
     name: redis/alpine-edge
     needs:
@@ -3467,6 +3740,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/redis:alpine-edge
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/redis:alpine-edge basicimg-hello
   redis_arch:
     name: redis/arch
     needs:
@@ -3501,6 +3776,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/redis:arch
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/redis:arch basicimg-hello
   redis_bookworm:
     name: redis/bookworm
     needs:
@@ -3535,6 +3812,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/redis:bookworm,ghcr.io/basicimg/redis:debian-testing
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/redis:bookworm basicimg-hello
   redis_bullseye:
     name: redis/bullseye
     needs:
@@ -3569,6 +3848,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/redis:bullseye,ghcr.io/basicimg/redis:debian-stable,ghcr.io/basicimg/redis:debian,ghcr.io/basicimg/redis:latest
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/redis:bullseye basicimg-hello
   redis_buster:
     name: redis/buster
     needs:
@@ -3603,6 +3884,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/redis:buster,ghcr.io/basicimg/redis:debian-oldstable
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/redis:buster basicimg-hello
   redis_jammy:
     name: redis/jammy
     needs:
@@ -3637,6 +3920,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/redis:jammy,ghcr.io/basicimg/redis:ubuntu-lts,ghcr.io/basicimg/redis:ubuntu
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/redis:jammy basicimg-hello
   redis_kinetic:
     name: redis/kinetic
     needs:
@@ -3671,6 +3956,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/redis:kinetic,ghcr.io/basicimg/redis:ubuntu-interim
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/redis:kinetic basicimg-hello
   redis_lunar:
     name: redis/lunar
     needs:
@@ -3705,6 +3992,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/redis:lunar
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/redis:lunar basicimg-hello
   redis_sid:
     name: redis/sid
     needs:
@@ -3739,6 +4028,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/redis:sid,ghcr.io/basicimg/redis:debian-unstable
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/redis:sid basicimg-hello
   redis_void-glibc:
     name: redis/void-glibc
     needs:
@@ -3773,6 +4064,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/redis:void-glibc,ghcr.io/basicimg/redis:void
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/redis:void-glibc basicimg-hello
   redis_void-musl:
     name: redis/void-musl
     needs:
@@ -3807,6 +4100,8 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/redis:void-musl
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/redis:void-musl basicimg-hello
   ruby_alpine-3_17:
     name: ruby/alpine-3.17
     needs:
@@ -3841,6 +4136,11 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/ruby:alpine-3-17,ghcr.io/basicimg/ruby:alpine
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/ruby:alpine-3-17 basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/ruby:alpine-3-17 /bin/sh -c 'gem install
+        bundler'
   ruby_alpine-edge:
     name: ruby/alpine-edge
     needs:
@@ -3875,6 +4175,11 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/ruby:alpine-edge
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/ruby:alpine-edge basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/ruby:alpine-edge /bin/sh -c 'gem install
+        bundler'
   ruby_arch:
     name: ruby/arch
     needs:
@@ -3909,6 +4214,10 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/ruby:arch
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/ruby:arch basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/ruby:arch /bin/sh -c 'gem install bundler'
   ruby_bookworm:
     name: ruby/bookworm
     needs:
@@ -3943,6 +4252,11 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/ruby:bookworm,ghcr.io/basicimg/ruby:debian-testing
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/ruby:bookworm basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/ruby:bookworm /bin/sh -c 'gem install
+        bundler'
   ruby_bullseye:
     name: ruby/bullseye
     needs:
@@ -3977,6 +4291,11 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/ruby:bullseye,ghcr.io/basicimg/ruby:debian-stable,ghcr.io/basicimg/ruby:debian,ghcr.io/basicimg/ruby:latest
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/ruby:bullseye basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/ruby:bullseye /bin/sh -c 'gem install
+        bundler'
   ruby_buster:
     name: ruby/buster
     needs:
@@ -4011,6 +4330,10 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/ruby:buster,ghcr.io/basicimg/ruby:debian-oldstable
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/ruby:buster basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/ruby:buster /bin/sh -c 'gem install bundler'
   ruby_jammy:
     name: ruby/jammy
     needs:
@@ -4045,6 +4368,10 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/ruby:jammy,ghcr.io/basicimg/ruby:ubuntu-lts,ghcr.io/basicimg/ruby:ubuntu
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/ruby:jammy basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/ruby:jammy /bin/sh -c 'gem install bundler'
   ruby_kinetic:
     name: ruby/kinetic
     needs:
@@ -4079,6 +4406,10 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/ruby:kinetic,ghcr.io/basicimg/ruby:ubuntu-interim
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/ruby:kinetic basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/ruby:kinetic /bin/sh -c 'gem install bundler'
   ruby_lunar:
     name: ruby/lunar
     needs:
@@ -4113,6 +4444,10 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/ruby:lunar
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/ruby:lunar basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/ruby:lunar /bin/sh -c 'gem install bundler'
   ruby_sid:
     name: ruby/sid
     needs:
@@ -4147,6 +4482,10 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/ruby:sid,ghcr.io/basicimg/ruby:debian-unstable
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/ruby:sid basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/ruby:sid /bin/sh -c 'gem install bundler'
   ruby_void-glibc:
     name: ruby/void-glibc
     needs:
@@ -4181,6 +4520,11 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/ruby:void-glibc,ghcr.io/basicimg/ruby:void
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/ruby:void-glibc basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/ruby:void-glibc /bin/sh -c 'gem install
+        bundler'
   ruby_void-musl:
     name: ruby/void-musl
     needs:
@@ -4215,6 +4559,11 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/ruby:void-musl
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/ruby:void-musl basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/ruby:void-musl /bin/sh -c 'gem install
+        bundler'
   ubuntu_jammy:
     name: ubuntu/jammy
     needs:
@@ -4249,6 +4598,11 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/ubuntu:jammy,ghcr.io/basicimg/ubuntu:22-04,ghcr.io/basicimg/ubuntu:lts,ghcr.io/basicimg/ubuntu:latest
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/ubuntu:jammy basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/ubuntu:jammy /bin/sh -c 'apt-get update
+        && apt-get install -y rustc'
   ubuntu_kinetic:
     name: ubuntu/kinetic
     needs:
@@ -4283,6 +4637,11 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/ubuntu:kinetic,ghcr.io/basicimg/ubuntu:22-10,ghcr.io/basicimg/ubuntu:interim
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/ubuntu:kinetic basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/ubuntu:kinetic /bin/sh -c 'apt-get update
+        && apt-get install -y rustc'
   ubuntu_lunar:
     name: ubuntu/lunar
     needs:
@@ -4317,6 +4676,11 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/ubuntu:lunar,ghcr.io/basicimg/ubuntu:23-04
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/ubuntu:lunar basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/ubuntu:lunar /bin/sh -c 'apt-get update
+        && apt-get install -y rustc'
   void_glibc:
     name: void/glibc
     needs:
@@ -4351,6 +4715,11 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/void:glibc,ghcr.io/basicimg/void:latest
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/void:glibc basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/void:glibc /bin/sh -c 'xbps-install --yes
+        -S ruby'
   void_musl:
     name: void/musl
     needs:
@@ -4385,6 +4754,11 @@ jobs:
         labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/void:musl
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/void:musl basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/void:musl /bin/sh -c 'xbps-install --yes
+        -S ruby'
 name: build
 'on':
   push:
