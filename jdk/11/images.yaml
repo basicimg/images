@@ -1,0 +1,54 @@
+images:
+- path: jdk/11/alpine-3.17
+  dependencies:
+  - ghcr.io/basicimg/alpine:3-17
+  tags:
+  - ghcr.io/basicimg/jdk:11-alpine-3-17
+  - ghcr.io/basicimg/jdk:11-alpine
+- path: jdk/11/alpine-edge
+  dependencies:
+  - ghcr.io/basicimg/alpine:edge
+  tags:
+  - ghcr.io/basicimg/jdk:11-alpine-edge
+- path: jdk/11/bullseye
+  dependencies:
+  - ghcr.io/basicimg/debian:bullseye
+  tags:
+  - ghcr.io/basicimg/jdk:11-bullseye
+  - ghcr.io/basicimg/jdk:11-debian-stable
+  - ghcr.io/basicimg/jdk:11-debian
+- path: jdk/11/sid
+  dependencies:
+  - ghcr.io/basicimg/debian:sid
+  tags:
+  - ghcr.io/basicimg/jdk:11-sid
+  - ghcr.io/basicimg/jdk:11-debian-unstable
+- path: jdk/11/jammy
+  dependencies:
+  - ghcr.io/basicimg/ubuntu:jammy
+  tags:
+  - ghcr.io/basicimg/jdk:11-jammy
+  - ghcr.io/basicimg/jdk:11-ubuntu-lts
+  - ghcr.io/basicimg/jdk:11-ubuntu
+- path: jdk/11/kinetic
+  dependencies:
+  - ghcr.io/basicimg/ubuntu:kinetic
+  tags:
+  - ghcr.io/basicimg/jdk:11-kinetic
+  - ghcr.io/basicimg/jdk:11-ubuntu-interim
+- path: jdk/11/void-glibc
+  dependencies:
+  - ghcr.io/basicimg/void:glibc
+  tags:
+  - ghcr.io/basicimg/jdk:11-void-glibc
+  - ghcr.io/basicimg/jdk:11-void
+- path: jdk/11/void-musl
+  dependencies:
+  - ghcr.io/basicimg/void:musl
+  tags:
+  - ghcr.io/basicimg/jdk:11-void-musl
+- path: jdk/11/arch
+  dependencies:
+  - ghcr.io/basicimg/arch:latest
+  tags:
+  - ghcr.io/basicimg/jdk:11-arch

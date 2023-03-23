@@ -1,0 +1,26 @@
+
+images:
+- path: jdk/17/sid
+  dependencies:
+  - ghcr.io/basicimg/debian:sid
+  tags:
+  - ghcr.io/basicimg/jdk:17-sid
+  - ghcr.io/basicimg/jdk:17-debian-unstable
+- path: jdk/17/jammy
+  dependencies:
+  - ghcr.io/basicimg/ubuntu:jammy
+  tags:
+  - ghcr.io/basicimg/jdk:17-jammy
+  - ghcr.io/basicimg/jdk:17-ubuntu-lts
+  - ghcr.io/basicimg/jdk:17-ubuntu
+- path: jdk/17/kinetic
+  dependencies:
+  - ghcr.io/basicimg/ubuntu:kinetic
+  tags:
+  - ghcr.io/basicimg/jdk:17-kinetic
+  - ghcr.io/basicimg/jdk:17-ubuntu-interim
+- path: jdk/17/arch
+  dependencies:
+  - ghcr.io/basicimg/arch:latest
+  tags:
+  - ghcr.io/basicimg/jdk:17-arch

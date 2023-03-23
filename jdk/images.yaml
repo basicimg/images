@@ -1,0 +1,5 @@
+include:
+- jdk/latest/images.yaml
+- jdk/17/images.yaml
+- jdk/11/images.yaml
+- jdk/8/images.yaml
