@@ -8,7 +8,9 @@ RUN --mount=type=cache,target=/system/var/cache,sharing=locked \
     --allow-untrusted --root /system --initdb \
     add alpine-base wget debootstrap binutils zstd xbps
 RUN mkdir -p /system/system /system/tmp
-RUN touch /system/basicimg
+COPY scripts/* /usr/local/bin/
+RUN chmod +x /usr/local/bin/basicimg-*
+RUN basicimg-init-system "bootstrap"
 
 FROM scratch
 COPY --from=bootstrap /system/ /
@@ -17,4 +19,3 @@ ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
 SHELL [ "/bin/sh", "-c" ]
 CMD [ "/bin/sh" ]
 WORKDIR /tmp
-RUN echo "Hello, bootstrap!"

@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -eux
+
+mkdir -p /basicimg
+echo "$1" > /basicimg/os
+if [ "$#" -eq 2 ]; then
+    echo "$2" > /basicimg/app
+fi
+basicimg-hello

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -eu
+
+if [ -f /basicimg/app ]; then
+    echo "Hello, $(cat /basicimg/app) on $(cat /basicimg/os)!"
+else
+    echo "Hello, $(cat /basicimg/os)!"
+fi

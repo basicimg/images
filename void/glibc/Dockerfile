@@ -10,11 +10,10 @@ RUN mkdir -p /system/var/db/xbps/keys
 RUN cp /var/db/xbps/keys/* /system/var/db/xbps/keys/
 RUN --mount=type=cache,target=/system/var/cache,sharing=locked \
     xbps-install --reproducible --yes -S -r /system -R "https://repo-default.voidlinux.org/current" base-minimal
-RUN touch /system/basicimg
+RUN basicimg-init-system "Void Linux (glibc)"
 
 FROM scratch
 COPY --from=rootfs /system/ /
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 SHELL [ "/bin/sh", "-c" ]
 CMD [ "/bin/sh" ]
-RUN echo "Hello, Void Linux (glibc)!"

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+set -eux
+
+echo "$1" > /basicimg/app
+basicimg-hello

@@ -1,2 +1,2 @@
-docker build -t ghcr.io/basicimg/basicimg-actions-generator:dev -f basicimg-actions-generator/Dockerfile .
+docker build -t ghcr.io/basicimg/basicimg-actions-generator:dev -f basicimg-actions-generator/Dockerfile --progress=plain .
 docker run --rm --volume "$(Get-Location):/repo" ghcr.io/basicimg/basicimg-actions-generator:dev
