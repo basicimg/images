@@ -25,7 +25,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=alpine/3.17
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -64,7 +64,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=alpine/edge
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -103,7 +103,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=arch
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -142,7 +142,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=basicimg-actions-generator
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -176,7 +176,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=bootstrap
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -212,7 +212,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=debian/bookworm
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -251,7 +251,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=debian/bullseye
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -290,7 +290,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=debian/buster
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -329,7 +329,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=debian/sid
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -368,7 +368,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=jdk/11/alpine-3.17
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -404,7 +404,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=jdk/11/alpine-edge
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -440,7 +440,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=jdk/11/arch
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -476,7 +476,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=jdk/11/bullseye
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -512,7 +512,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=jdk/11/jammy
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -548,7 +548,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=jdk/11/kinetic
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -584,7 +584,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=jdk/11/lunar
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -620,7 +620,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=jdk/11/sid
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -656,7 +656,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=jdk/11/void-glibc
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -692,7 +692,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=jdk/11/void-musl
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -728,7 +728,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=jdk/17/arch
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -764,7 +764,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=jdk/17/sid
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -800,7 +800,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=jdk/8/alpine-3.17
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -836,7 +836,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=jdk/8/alpine-edge
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -872,7 +872,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=jdk/8/arch
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -908,7 +908,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=jdk/8/jammy
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -944,7 +944,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=jdk/8/kinetic
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -980,7 +980,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=jdk/8/lunar
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1016,7 +1016,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=jdk/8/sid
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1052,7 +1052,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=jdk/8/void-glibc
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1088,7 +1088,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=jdk/8/void-musl
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1124,7 +1124,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=jdk/latest/alpine-3.17
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1160,7 +1160,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=jdk/latest/alpine-edge
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1196,7 +1196,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=jdk/latest/arch
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1232,7 +1232,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=jdk/latest/bookworm
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1268,7 +1268,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=jdk/latest/bullseye
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1304,7 +1304,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=jdk/latest/buster
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1340,7 +1340,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=jdk/latest/jammy
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1376,7 +1376,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=jdk/latest/kinetic
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1412,7 +1412,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=jdk/latest/lunar
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1448,7 +1448,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=jdk/latest/sid
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1484,7 +1484,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=jdk/latest/void-glibc
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1520,7 +1520,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=jdk/latest/void-musl
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1556,7 +1556,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=memcached/alpine-3.17
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1592,7 +1592,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=memcached/alpine-edge
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1628,7 +1628,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=memcached/arch
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1664,7 +1664,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=memcached/bookworm
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1700,7 +1700,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=memcached/bullseye
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1736,7 +1736,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=memcached/buster
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1772,7 +1772,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=memcached/jammy
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1808,7 +1808,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=memcached/kinetic
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1844,7 +1844,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=memcached/lunar
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1880,7 +1880,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=memcached/sid
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1916,7 +1916,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=memcached/void-glibc
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1952,7 +1952,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=memcached/void-musl
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1988,7 +1988,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=nginx/alpine-3.17
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -2024,7 +2024,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=nginx/alpine-edge
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -2060,7 +2060,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=nginx/arch
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -2096,7 +2096,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=nginx/bookworm
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -2132,7 +2132,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=nginx/bullseye
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -2168,7 +2168,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=nginx/buster
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -2204,7 +2204,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=nginx/jammy
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -2240,7 +2240,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=nginx/kinetic
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -2276,7 +2276,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=nginx/lunar
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -2312,7 +2312,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=nginx/sid
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -2348,7 +2348,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=nginx/void-glibc
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -2384,7 +2384,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=nginx/void-musl
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -2420,7 +2420,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=nix/alpine-edge
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -2459,7 +2459,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=nix/arch
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -2497,7 +2497,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=nix/bookworm
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -2535,7 +2535,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=nix/bullseye
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -2571,7 +2571,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=nix/jammy
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -2609,7 +2609,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=nix/kinetic
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -2647,7 +2647,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=nix/lunar
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -2685,7 +2685,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=nix/sid
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -2723,7 +2723,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=nix/void-glibc
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -2762,7 +2762,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=nix/void-musl
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -2800,7 +2800,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=nodejs/alpine-3.17
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -2839,7 +2839,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=nodejs/alpine-edge
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -2878,7 +2878,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=nodejs/arch
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -2917,7 +2917,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=nodejs/bookworm
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -2956,7 +2956,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=nodejs/bullseye
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -2995,7 +2995,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=nodejs/buster
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -3034,7 +3034,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=nodejs/jammy
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -3073,7 +3073,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=nodejs/kinetic
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -3112,7 +3112,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=nodejs/lunar
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -3151,7 +3151,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=nodejs/sid
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -3190,7 +3190,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=nodejs/void-glibc
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -3229,7 +3229,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=nodejs/void-musl
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -3268,7 +3268,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=python3/alpine-3.17
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -3307,7 +3307,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=python3/alpine-edge
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -3346,7 +3346,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=python3/arch
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -3385,7 +3385,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=python3/bookworm
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -3424,7 +3424,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=python3/bullseye
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -3463,7 +3463,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=python3/buster
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -3502,7 +3502,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=python3/jammy
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -3541,7 +3541,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=python3/kinetic
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -3580,7 +3580,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=python3/lunar
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -3619,7 +3619,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=python3/sid
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -3658,7 +3658,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=python3/void-glibc
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -3697,7 +3697,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=python3/void-musl
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -3736,7 +3736,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=redis/alpine-3.17
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -3776,7 +3776,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=redis/alpine-edge
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -3816,7 +3816,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=redis/arch
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -3856,7 +3856,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=redis/bookworm
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -3896,7 +3896,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=redis/bullseye
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -3936,7 +3936,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=redis/buster
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -3976,7 +3976,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=redis/jammy
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -4016,7 +4016,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=redis/kinetic
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -4056,7 +4056,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=redis/lunar
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -4096,7 +4096,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=redis/sid
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -4136,7 +4136,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=redis/void-glibc
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -4176,7 +4176,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=redis/void-musl
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -4216,7 +4216,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=ruby/alpine-3.17
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -4255,7 +4255,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=ruby/alpine-edge
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -4294,7 +4294,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=ruby/arch
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -4332,7 +4332,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=ruby/bookworm
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -4371,7 +4371,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=ruby/bullseye
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -4410,7 +4410,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=ruby/buster
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -4449,7 +4449,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=ruby/jammy
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -4488,7 +4488,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=ruby/kinetic
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -4527,7 +4527,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=ruby/lunar
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -4566,7 +4566,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=ruby/sid
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -4604,7 +4604,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=ruby/void-glibc
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -4643,7 +4643,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=ruby/void-musl
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -4682,7 +4682,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=ubuntu/jammy
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -4721,7 +4721,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=ubuntu/kinetic
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -4760,7 +4760,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=ubuntu/lunar
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -4799,7 +4799,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=void/glibc
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -4838,7 +4838,7 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: ''
+        labels: com.github.basicimg.path=void/musl
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
