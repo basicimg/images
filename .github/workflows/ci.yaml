@@ -4767,7 +4767,7 @@ jobs:
       run: docker run --rm ghcr.io/basicimg/void:glibc basicimg-hello
     - name: Run test
       run: docker run --rm ghcr.io/basicimg/void:glibc /bin/sh -c 'xbps-install --yes
-        -S ruby'
+        -S rust'
   void_musl:
     name: void/musl
     needs:
@@ -4806,7 +4806,7 @@ jobs:
       run: docker run --rm ghcr.io/basicimg/void:musl basicimg-hello
     - name: Run test
       run: docker run --rm ghcr.io/basicimg/void:musl /bin/sh -c 'xbps-install --yes
-        -S ruby'
+        -S rust'
 name: build
 'on':
   push:

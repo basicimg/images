@@ -7,7 +7,7 @@ images:
   - ghcr.io/basicimg/void:latest
   architectures:
   - amd64
-  test: xbps-install --yes -S ruby
+  test: xbps-install --yes -S rust
 - path: void/musl
   dependencies:
   - ghcr.io/basicimg/bootstrap:latest
@@ -15,4 +15,4 @@ images:
   - ghcr.io/basicimg/void:musl
   architectures:
   - amd64
-  test: xbps-install --yes -S ruby
+  test: xbps-install --yes -S rust
