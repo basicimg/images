@@ -75,7 +75,7 @@ def image_to_job(image):
         test = image["test"]
         steps.append({
             "name": "Run test",
-            "run": f"docker run --rm {tags[0]} /bin/sh -c '{test}'"
+            "run": f"docker run --rm {tags[0]} /bin/sh -euxc '{test}'"
         })
     integration = None
     if "integration" in image:
@@ -89,7 +89,7 @@ def image_to_job(image):
             dockerArgs = integration["dockerArgs"]
         steps.append({
             "name": "Run integration test",
-            "run": f"docker run -d {dockerArgs} --name main {tags[0]} && docker run --network host --rm {integrationImage} /bin/sh -c '{integrationTest}' && docker rm -f main"
+            "run": f"docker run -d {dockerArgs} --name main {tags[0]} && docker run --network host --rm {integrationImage} /bin/sh -euxc '{integrationTest}' && docker rm -f main"
         })
     job = {
         "name": path,
