@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
 FROM ghcr.io/basicimg/ubuntu:lunar
-RUN basicimg-install 
+RUN basicimg-install openjdk-19-jdk
 CMD [ "/usr/bin/java" ]
 RUN basicimg-setapp "$(java -version 2>&1 | head -n 1)"
