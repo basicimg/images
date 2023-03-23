@@ -20,13 +20,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./alpine/3.17/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/alpine:3-17,ghcr.io/basicimg/alpine:3,ghcr.io/basicimg/alpine:stable,ghcr.io/basicimg/alpine:latest
   alpine_edge:
@@ -48,13 +54,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./alpine/edge/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/alpine:edge
   arch:
@@ -76,13 +88,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./arch/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/arch:latest
   basicimg-actions-generator:
@@ -104,13 +122,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./basicimg-actions-generator/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/basicimg-actions-generator:latest
   bootstrap:
@@ -130,13 +154,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./bootstrap/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/bootstrap:latest
   debian_bookworm:
@@ -158,13 +188,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./debian/bookworm/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/debian:bookworm,ghcr.io/basicimg/debian:12,ghcr.io/basicimg/debian:testing
   debian_bullseye:
@@ -186,13 +222,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./debian/bullseye/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/debian:bullseye,ghcr.io/basicimg/debian:11,ghcr.io/basicimg/debian:stable,ghcr.io/basicimg/debian:latest
   debian_buster:
@@ -214,13 +256,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./debian/buster/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/debian:buster,ghcr.io/basicimg/debian:10,ghcr.io/basicimg/debian:oldstable
   debian_sid:
@@ -242,13 +290,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./debian/sid/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/debian:sid,ghcr.io/basicimg/debian:unstable
   jdk_11_alpine-3_17:
@@ -270,13 +324,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./jdk/11/alpine-3.17/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:11-alpine-3-17,ghcr.io/basicimg/jdk:11-alpine
   jdk_11_alpine-edge:
@@ -298,13 +358,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./jdk/11/alpine-edge/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:11-alpine-edge
   jdk_11_arch:
@@ -326,13 +392,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./jdk/11/arch/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:11-arch
   jdk_11_bullseye:
@@ -354,13 +426,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./jdk/11/bullseye/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:11-bullseye,ghcr.io/basicimg/jdk:11-debian-stable,ghcr.io/basicimg/jdk:11-debian,ghcr.io/basicimg/jdk:11
   jdk_11_jammy:
@@ -382,13 +460,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./jdk/11/jammy/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:11-jammy,ghcr.io/basicimg/jdk:11-ubuntu-lts,ghcr.io/basicimg/jdk:11-ubuntu
   jdk_11_kinetic:
@@ -410,13 +494,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./jdk/11/kinetic/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:11-kinetic,ghcr.io/basicimg/jdk:11-ubuntu-interim
   jdk_11_lunar:
@@ -438,13 +528,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./jdk/11/lunar/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:11-lunar
   jdk_11_sid:
@@ -466,13 +562,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./jdk/11/sid/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:11-sid,ghcr.io/basicimg/jdk:11-debian-unstable
   jdk_11_void-glibc:
@@ -494,13 +596,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./jdk/11/void-glibc/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:11-void-glibc,ghcr.io/basicimg/jdk:11-void
   jdk_11_void-musl:
@@ -522,13 +630,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./jdk/11/void-musl/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:11-void-musl
   jdk_17_arch:
@@ -550,13 +664,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./jdk/17/arch/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:17-arch
   jdk_17_sid:
@@ -578,13 +698,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./jdk/17/sid/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:17-sid,ghcr.io/basicimg/jdk:17-debian-unstable
   jdk_8_alpine-3_17:
@@ -606,13 +732,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./jdk/8/alpine-3.17/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:8-alpine-3-17,ghcr.io/basicimg/jdk:8-alpine
   jdk_8_alpine-edge:
@@ -634,13 +766,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./jdk/8/alpine-edge/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:8-alpine-edge
   jdk_8_arch:
@@ -662,13 +800,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./jdk/8/arch/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:8-arch
   jdk_8_jammy:
@@ -690,13 +834,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./jdk/8/jammy/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:8-jammy,ghcr.io/basicimg/jdk:8-ubuntu-lts,ghcr.io/basicimg/jdk:8-ubuntu,ghcr.io/basicimg/jdk:8
   jdk_8_kinetic:
@@ -718,13 +868,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./jdk/8/kinetic/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:8-kinetic,ghcr.io/basicimg/jdk:8-ubuntu-interim
   jdk_8_lunar:
@@ -746,13 +902,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./jdk/8/lunar/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:8-lunar
   jdk_8_sid:
@@ -774,13 +936,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./jdk/8/sid/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:8-sid,ghcr.io/basicimg/jdk:8-debian-unstable
   jdk_8_void-glibc:
@@ -802,13 +970,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./jdk/8/void-glibc/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:8-void-glibc,ghcr.io/basicimg/jdk:8-void
   jdk_8_void-musl:
@@ -830,13 +1004,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./jdk/8/void-musl/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:8-void-musl
   jdk_latest_alpine-3_17:
@@ -858,13 +1038,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./jdk/latest/alpine-3.17/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:latest-alpine-3-17,ghcr.io/basicimg/jdk:latest-alpine,ghcr.io/basicimg/jdk:17-alpine-3-17,ghcr.io/basicimg/jdk:17-alpine
   jdk_latest_alpine-edge:
@@ -886,13 +1072,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./jdk/latest/alpine-edge/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:latest-alpine-edge,ghcr.io/basicimg/jdk:17-alpine-edge
   jdk_latest_arch:
@@ -914,13 +1106,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./jdk/latest/arch/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:latest-arch
   jdk_latest_bookworm:
@@ -942,13 +1140,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./jdk/latest/bookworm/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:latest-bookworm,ghcr.io/basicimg/jdk:latest-debian-testing,ghcr.io/basicimg/jdk:17-bookworm,ghcr.io/basicimg/jdk:17-debian-testing
   jdk_latest_bullseye:
@@ -970,13 +1174,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./jdk/latest/bullseye/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:latest-bullseye,ghcr.io/basicimg/jdk:latest-debian-stable,ghcr.io/basicimg/jdk:latest-debian,ghcr.io/basicimg/jdk:17-bullseye,ghcr.io/basicimg/jdk:17-debian-stable,ghcr.io/basicimg/jdk:17-debian,ghcr.io/basicimg/jdk:17
   jdk_latest_buster:
@@ -998,13 +1208,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./jdk/latest/buster/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:latest-buster,ghcr.io/basicimg/jdk:latest-debian-oldstable,ghcr.io/basicimg/jdk:11-buster,ghcr.io/basicimg/jdk:11-debian-oldstable
   jdk_latest_jammy:
@@ -1026,13 +1242,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./jdk/latest/jammy/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:latest-jammy,ghcr.io/basicimg/jdk:latest-ubuntu-lts,ghcr.io/basicimg/jdk:latest-ubuntu,ghcr.io/basicimg/jdk:17-jammy,ghcr.io/basicimg/jdk:17-ubuntu-lts,ghcr.io/basicimg/jdk:17-ubuntu
   jdk_latest_kinetic:
@@ -1054,13 +1276,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./jdk/latest/kinetic/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:latest-kinetic,ghcr.io/basicimg/jdk:latest-ubuntu-interim,ghcr.io/basicimg/jdk:17-kinetic,ghcr.io/basicimg/jdk:17-ubuntu-interim
   jdk_latest_lunar:
@@ -1082,13 +1310,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./jdk/latest/lunar/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:17-lunar
   jdk_latest_sid:
@@ -1110,13 +1344,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./jdk/latest/sid/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:latest-sid,ghcr.io/basicimg/jdk:latest-debian-unstable,ghcr.io/basicimg/jdk:19-sid,ghcr.io/basicimg/jdk:19-debian-unstable,ghcr.io/basicimg/jdk:19
   jdk_latest_void-glibc:
@@ -1138,13 +1378,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./jdk/latest/void-glibc/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:latest-void-glibc,ghcr.io/basicimg/jdk:latest-void,ghcr.io/basicimg/jdk:17-void-glibc,ghcr.io/basicimg/jdk:17-void
   jdk_latest_void-musl:
@@ -1166,13 +1412,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./jdk/latest/void-musl/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/jdk:latest-void-musl,ghcr.io/basicimg/jdk:17-void-musl
   memcached_alpine-3_17:
@@ -1194,13 +1446,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./memcached/alpine-3.17/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/memcached:alpine-3-17,ghcr.io/basicimg/memcached:alpine
   memcached_alpine-edge:
@@ -1222,13 +1480,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./memcached/alpine-edge/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/memcached:alpine-edge
   memcached_arch:
@@ -1250,13 +1514,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./memcached/arch/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/memcached:arch
   memcached_bookworm:
@@ -1278,13 +1548,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./memcached/bookworm/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/memcached:bookworm,ghcr.io/basicimg/memcached:debian-testing
   memcached_bullseye:
@@ -1306,13 +1582,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./memcached/bullseye/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/memcached:bullseye,ghcr.io/basicimg/memcached:debian-stable,ghcr.io/basicimg/memcached:debian,ghcr.io/basicimg/memcached:latest
   memcached_buster:
@@ -1334,13 +1616,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./memcached/buster/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/memcached:buster,ghcr.io/basicimg/memcached:debian-oldstable
   memcached_jammy:
@@ -1362,13 +1650,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./memcached/jammy/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/memcached:jammy,ghcr.io/basicimg/memcached:ubuntu-lts,ghcr.io/basicimg/memcached:ubuntu
   memcached_kinetic:
@@ -1390,13 +1684,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./memcached/kinetic/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/memcached:kinetic,ghcr.io/basicimg/memcached:ubuntu-interim
   memcached_lunar:
@@ -1418,13 +1718,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./memcached/lunar/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/memcached:lunar
   memcached_sid:
@@ -1446,13 +1752,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./memcached/sid/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/memcached:sid,ghcr.io/basicimg/memcached:debian-unstable
   memcached_void-glibc:
@@ -1474,13 +1786,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./memcached/void-glibc/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/memcached:void-glibc,ghcr.io/basicimg/memcached:void
   memcached_void-musl:
@@ -1502,13 +1820,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./memcached/void-musl/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/memcached:void-musl
   nginx_alpine-3_17:
@@ -1530,13 +1854,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./nginx/alpine-3.17/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nginx:alpine-3-17,ghcr.io/basicimg/nginx:alpine
   nginx_alpine-edge:
@@ -1558,13 +1888,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./nginx/alpine-edge/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nginx:alpine-edge
   nginx_arch:
@@ -1586,13 +1922,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./nginx/arch/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nginx:arch
   nginx_bookworm:
@@ -1614,13 +1956,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./nginx/bookworm/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nginx:bookworm,ghcr.io/basicimg/nginx:debian-testing
   nginx_bullseye:
@@ -1642,13 +1990,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./nginx/bullseye/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nginx:bullseye,ghcr.io/basicimg/nginx:debian-stable,ghcr.io/basicimg/nginx:debian,ghcr.io/basicimg/nginx:latest
   nginx_buster:
@@ -1670,13 +2024,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./nginx/buster/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nginx:buster,ghcr.io/basicimg/nginx:debian-oldstable
   nginx_jammy:
@@ -1698,13 +2058,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./nginx/jammy/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nginx:jammy,ghcr.io/basicimg/nginx:ubuntu-lts,ghcr.io/basicimg/nginx:ubuntu
   nginx_kinetic:
@@ -1726,13 +2092,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./nginx/kinetic/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nginx:kinetic,ghcr.io/basicimg/nginx:ubuntu-interim
   nginx_lunar:
@@ -1754,13 +2126,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./nginx/lunar/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nginx:lunar
   nginx_sid:
@@ -1782,13 +2160,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./nginx/sid/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nginx:sid,ghcr.io/basicimg/nginx:debian-unstable
   nginx_void-glibc:
@@ -1810,13 +2194,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./nginx/void-glibc/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nginx:void-glibc,ghcr.io/basicimg/nginx:void
   nginx_void-musl:
@@ -1838,13 +2228,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./nginx/void-musl/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nginx:void-musl
   nix_alpine-edge:
@@ -1866,13 +2262,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./nix/alpine-edge/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nix:alpine-edge,ghcr.io/basicimg/nix:alpine
   nix_arch:
@@ -1894,13 +2296,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./nix/arch/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nix:arch
   nix_bookworm:
@@ -1922,13 +2330,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./nix/bookworm/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nix:bookworm,ghcr.io/basicimg/nix:debian-testing
   nix_bullseye:
@@ -1950,13 +2364,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./nix/bullseye/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nix:bullseye,ghcr.io/basicimg/nix:debian-stable,ghcr.io/basicimg/nix:debian,ghcr.io/basicimg/nix:latest
   nix_jammy:
@@ -1978,13 +2398,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./nix/jammy/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nix:jammy,ghcr.io/basicimg/nix:ubuntu-lts,ghcr.io/basicimg/nix:ubuntu
   nix_kinetic:
@@ -2006,13 +2432,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./nix/kinetic/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nix:kinetic,ghcr.io/basicimg/nix:ubuntu-interim
   nix_lunar:
@@ -2034,13 +2466,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./nix/lunar/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nix:lunar
   nix_sid:
@@ -2062,13 +2500,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./nix/sid/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nix:sid,ghcr.io/basicimg/nix:debian-unstable
   nix_void-glibc:
@@ -2090,13 +2534,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./nix/void-glibc/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nix:void-glibc,ghcr.io/basicimg/nix:void
   nix_void-musl:
@@ -2118,13 +2568,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./nix/void-musl/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nix:void-musl
   nodejs_alpine-3_17:
@@ -2146,13 +2602,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./nodejs/alpine-3.17/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nodejs:alpine-3-17,ghcr.io/basicimg/nodejs:alpine
   nodejs_alpine-edge:
@@ -2174,13 +2636,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./nodejs/alpine-edge/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nodejs:alpine-edge
   nodejs_arch:
@@ -2202,13 +2670,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./nodejs/arch/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nodejs:arch
   nodejs_bookworm:
@@ -2230,13 +2704,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./nodejs/bookworm/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nodejs:bookworm,ghcr.io/basicimg/nodejs:debian-testing
   nodejs_bullseye:
@@ -2258,13 +2738,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./nodejs/bullseye/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nodejs:bullseye,ghcr.io/basicimg/nodejs:debian-stable,ghcr.io/basicimg/nodejs:debian,ghcr.io/basicimg/nodejs:latest
   nodejs_buster:
@@ -2286,13 +2772,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./nodejs/buster/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nodejs:buster,ghcr.io/basicimg/nodejs:debian-oldstable
   nodejs_jammy:
@@ -2314,13 +2806,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./nodejs/jammy/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nodejs:jammy,ghcr.io/basicimg/nodejs:ubuntu-lts,ghcr.io/basicimg/nodejs:ubuntu
   nodejs_kinetic:
@@ -2342,13 +2840,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./nodejs/kinetic/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nodejs:kinetic,ghcr.io/basicimg/nodejs:ubuntu-interim
   nodejs_lunar:
@@ -2370,13 +2874,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./nodejs/lunar/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nodejs:lunar
   nodejs_sid:
@@ -2398,13 +2908,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./nodejs/sid/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nodejs:sid,ghcr.io/basicimg/nodejs:debian-unstable
   nodejs_void-glibc:
@@ -2426,13 +2942,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./nodejs/void-glibc/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nodejs:void-glibc,ghcr.io/basicimg/nodejs:void
   nodejs_void-musl:
@@ -2454,13 +2976,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./nodejs/void-musl/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/nodejs:void-musl
   python3_alpine-3_17:
@@ -2482,13 +3010,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./python3/alpine-3.17/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/python3:alpine-3-17,ghcr.io/basicimg/python3:alpine
   python3_alpine-edge:
@@ -2510,13 +3044,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./python3/alpine-edge/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/python3:alpine-edge
   python3_arch:
@@ -2538,13 +3078,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./python3/arch/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/python3:arch
   python3_bookworm:
@@ -2566,13 +3112,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./python3/bookworm/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/python3:bookworm,ghcr.io/basicimg/python3:debian-testing
   python3_bullseye:
@@ -2594,13 +3146,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./python3/bullseye/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/python3:bullseye,ghcr.io/basicimg/python3:debian-stable,ghcr.io/basicimg/python3:debian,ghcr.io/basicimg/python3:latest
   python3_buster:
@@ -2622,13 +3180,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./python3/buster/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/python3:buster,ghcr.io/basicimg/python3:debian-oldstable
   python3_jammy:
@@ -2650,13 +3214,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./python3/jammy/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/python3:jammy,ghcr.io/basicimg/python3:ubuntu-lts,ghcr.io/basicimg/python3:ubuntu
   python3_kinetic:
@@ -2678,13 +3248,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./python3/kinetic/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/python3:kinetic,ghcr.io/basicimg/python3:ubuntu-interim
   python3_lunar:
@@ -2706,13 +3282,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./python3/lunar/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/python3:lunar
   python3_sid:
@@ -2734,13 +3316,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./python3/sid/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/python3:sid,ghcr.io/basicimg/python3:debian-unstable
   python3_void-glibc:
@@ -2762,13 +3350,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./python3/void-glibc/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/python3:void-glibc,ghcr.io/basicimg/python3:void
   python3_void-musl:
@@ -2790,13 +3384,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./python3/void-musl/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/python3:void-musl
   redis_alpine-3_17:
@@ -2818,13 +3418,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./redis/alpine-3.17/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/redis:alpine-3-17,ghcr.io/basicimg/redis:alpine
   redis_alpine-edge:
@@ -2846,13 +3452,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./redis/alpine-edge/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/redis:alpine-edge
   redis_arch:
@@ -2874,13 +3486,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./redis/arch/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/redis:arch
   redis_bookworm:
@@ -2902,13 +3520,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./redis/bookworm/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/redis:bookworm,ghcr.io/basicimg/redis:debian-testing
   redis_bullseye:
@@ -2930,13 +3554,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./redis/bullseye/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/redis:bullseye,ghcr.io/basicimg/redis:debian-stable,ghcr.io/basicimg/redis:debian,ghcr.io/basicimg/redis:latest
   redis_buster:
@@ -2958,13 +3588,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./redis/buster/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/redis:buster,ghcr.io/basicimg/redis:debian-oldstable
   redis_jammy:
@@ -2986,13 +3622,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./redis/jammy/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/redis:jammy,ghcr.io/basicimg/redis:ubuntu-lts,ghcr.io/basicimg/redis:ubuntu
   redis_kinetic:
@@ -3014,13 +3656,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./redis/kinetic/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/redis:kinetic,ghcr.io/basicimg/redis:ubuntu-interim
   redis_lunar:
@@ -3042,13 +3690,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./redis/lunar/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/redis:lunar
   redis_sid:
@@ -3070,13 +3724,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./redis/sid/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/redis:sid,ghcr.io/basicimg/redis:debian-unstable
   redis_void-glibc:
@@ -3098,13 +3758,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./redis/void-glibc/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/redis:void-glibc,ghcr.io/basicimg/redis:void
   redis_void-musl:
@@ -3126,13 +3792,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./redis/void-musl/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/redis:void-musl
   ruby_alpine-3_17:
@@ -3154,13 +3826,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./ruby/alpine-3.17/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/ruby:alpine-3-17,ghcr.io/basicimg/ruby:alpine
   ruby_alpine-edge:
@@ -3182,13 +3860,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./ruby/alpine-edge/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/ruby:alpine-edge
   ruby_arch:
@@ -3210,13 +3894,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./ruby/arch/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/ruby:arch
   ruby_bookworm:
@@ -3238,13 +3928,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./ruby/bookworm/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/ruby:bookworm,ghcr.io/basicimg/ruby:debian-testing
   ruby_bullseye:
@@ -3266,13 +3962,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./ruby/bullseye/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/ruby:bullseye,ghcr.io/basicimg/ruby:debian-stable,ghcr.io/basicimg/ruby:debian,ghcr.io/basicimg/ruby:latest
   ruby_buster:
@@ -3294,13 +3996,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./ruby/buster/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/ruby:buster,ghcr.io/basicimg/ruby:debian-oldstable
   ruby_jammy:
@@ -3322,13 +4030,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./ruby/jammy/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/ruby:jammy,ghcr.io/basicimg/ruby:ubuntu-lts,ghcr.io/basicimg/ruby:ubuntu
   ruby_kinetic:
@@ -3350,13 +4064,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./ruby/kinetic/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/ruby:kinetic,ghcr.io/basicimg/ruby:ubuntu-interim
   ruby_lunar:
@@ -3378,13 +4098,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./ruby/lunar/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/ruby:lunar
   ruby_sid:
@@ -3406,13 +4132,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./ruby/sid/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/ruby:sid,ghcr.io/basicimg/ruby:debian-unstable
   ruby_void-glibc:
@@ -3434,13 +4166,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./ruby/void-glibc/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/ruby:void-glibc,ghcr.io/basicimg/ruby:void
   ruby_void-musl:
@@ -3462,13 +4200,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./ruby/void-musl/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/ruby:void-musl
   ubuntu_jammy:
@@ -3490,13 +4234,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./ubuntu/jammy/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/ubuntu:jammy,ghcr.io/basicimg/ubuntu:22-04,ghcr.io/basicimg/ubuntu:lts,ghcr.io/basicimg/ubuntu:latest
   ubuntu_kinetic:
@@ -3518,13 +4268,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./ubuntu/kinetic/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/ubuntu:kinetic,ghcr.io/basicimg/ubuntu:22-10,ghcr.io/basicimg/ubuntu:interim
   ubuntu_lunar:
@@ -3546,13 +4302,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./ubuntu/lunar/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/ubuntu:lunar,ghcr.io/basicimg/ubuntu:23-04
   void_glibc:
@@ -3574,13 +4336,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./void/glibc/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/void:glibc,ghcr.io/basicimg/void:latest
   void_musl:
@@ -3602,13 +4370,19 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: ''
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
         cache-from: type=gha
         cache-to: type=gha,mode=max
         file: ./void/musl/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        labels: ${{ steps.meta.outputs.labels }}
         push: true
         tags: ghcr.io/basicimg/void:musl
 name: build

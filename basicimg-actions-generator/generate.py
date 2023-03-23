@@ -23,9 +23,7 @@ def image_slug(image):
 def image_to_job(image):
     path = image["path"]
     tags = image["tags"]
-    labels = [
-        "org.opencontainers.image.source=https://github.com/basicimg/images"
-    ]
+    labels = []
     if "description" in image:
         description = image["description"]
         labels.append(f"org.opencontainers.image.description={description}")
@@ -55,6 +53,15 @@ def image_to_job(image):
                 }
             },
             {
+                "name": "Generate metadata",
+                "id": "meta",
+                "uses": "docker/metadata-action@v4",
+                "with": {
+                    "images": "dummy",
+                    "labels": "\n".join(labels)
+                }
+            },
+            {
                 "name": "Build and push image",
                 "uses": "docker/build-push-action@v4",
                 "with": {
@@ -62,7 +69,7 @@ def image_to_job(image):
                     "cache-from": "type=gha",
                     "cache-to": "type=gha,mode=max",
                     "tags": ",".join(tags),
-                    "labels": ",".join(labels),
+                    "labels": "${{ steps.meta.outputs.labels }}",
                     "file": f"./{path}/Dockerfile"
                 }
             }
