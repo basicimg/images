@@ -38,7 +38,8 @@ jobs:
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/alpine:3-17 basicimg-hello
     - name: Run test
-      run: docker run --rm ghcr.io/basicimg/alpine:3-17 /bin/sh -c 'apk add rust@community'
+      run: docker run --rm ghcr.io/basicimg/alpine:3-17 /bin/sh -c 'basicimg-install
+        rust@community'
   alpine_edge:
     name: alpine/edge
     needs:
@@ -76,7 +77,8 @@ jobs:
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/alpine:edge basicimg-hello
     - name: Run test
-      run: docker run --rm ghcr.io/basicimg/alpine:edge /bin/sh -c 'apk add rust@community'
+      run: docker run --rm ghcr.io/basicimg/alpine:edge /bin/sh -c 'basicimg-install
+        rust@community'
   arch:
     name: arch
     needs:
@@ -114,7 +116,7 @@ jobs:
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/arch:latest basicimg-hello
     - name: Run test
-      run: docker run --rm ghcr.io/basicimg/arch:latest /bin/sh -c 'pacman -Sy --noconfirm
+      run: docker run --rm ghcr.io/basicimg/arch:latest /bin/sh -c 'basicimg-install
         rust'
   basicimg-actions-generator:
     name: basicimg-actions-generator
@@ -223,8 +225,8 @@ jobs:
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/debian:bookworm basicimg-hello
     - name: Run test
-      run: docker run --rm ghcr.io/basicimg/debian:bookworm /bin/sh -c 'apt-get update
-        && apt-get install -y rustc'
+      run: docker run --rm ghcr.io/basicimg/debian:bookworm /bin/sh -c 'basicimg-install
+        rustc'
   debian_bullseye:
     name: debian/bullseye
     needs:
@@ -262,8 +264,8 @@ jobs:
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/debian:bullseye basicimg-hello
     - name: Run test
-      run: docker run --rm ghcr.io/basicimg/debian:bullseye /bin/sh -c 'apt-get update
-        && apt-get install -y rustc'
+      run: docker run --rm ghcr.io/basicimg/debian:bullseye /bin/sh -c 'basicimg-install
+        rustc'
   debian_buster:
     name: debian/buster
     needs:
@@ -301,8 +303,8 @@ jobs:
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/debian:buster basicimg-hello
     - name: Run test
-      run: docker run --rm ghcr.io/basicimg/debian:buster /bin/sh -c 'apt-get update
-        && apt-get install -y rustc'
+      run: docker run --rm ghcr.io/basicimg/debian:buster /bin/sh -c 'basicimg-install
+        rustc'
   debian_sid:
     name: debian/sid
     needs:
@@ -340,8 +342,8 @@ jobs:
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/debian:sid basicimg-hello
     - name: Run test
-      run: docker run --rm ghcr.io/basicimg/debian:sid /bin/sh -c 'apt-get update
-        && apt-get install -y rustc'
+      run: docker run --rm ghcr.io/basicimg/debian:sid /bin/sh -c 'basicimg-install
+        rustc'
   jdk_11_alpine-3_17:
     name: jdk/11/alpine-3.17
     needs:
@@ -4649,8 +4651,8 @@ jobs:
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/ubuntu:jammy basicimg-hello
     - name: Run test
-      run: docker run --rm ghcr.io/basicimg/ubuntu:jammy /bin/sh -c 'apt-get update
-        && apt-get install -y rustc'
+      run: docker run --rm ghcr.io/basicimg/ubuntu:jammy /bin/sh -c 'basicimg-install
+        rustc'
   ubuntu_kinetic:
     name: ubuntu/kinetic
     needs:
@@ -4688,8 +4690,8 @@ jobs:
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/ubuntu:kinetic basicimg-hello
     - name: Run test
-      run: docker run --rm ghcr.io/basicimg/ubuntu:kinetic /bin/sh -c 'apt-get update
-        && apt-get install -y rustc'
+      run: docker run --rm ghcr.io/basicimg/ubuntu:kinetic /bin/sh -c 'basicimg-install
+        rustc'
   ubuntu_lunar:
     name: ubuntu/lunar
     needs:
@@ -4727,8 +4729,8 @@ jobs:
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/ubuntu:lunar basicimg-hello
     - name: Run test
-      run: docker run --rm ghcr.io/basicimg/ubuntu:lunar /bin/sh -c 'apt-get update
-        && apt-get install -y rustc'
+      run: docker run --rm ghcr.io/basicimg/ubuntu:lunar /bin/sh -c 'basicimg-install
+        rustc'
   void_glibc:
     name: void/glibc
     needs:
@@ -4766,8 +4768,8 @@ jobs:
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/void:glibc basicimg-hello
     - name: Run test
-      run: docker run --rm ghcr.io/basicimg/void:glibc /bin/sh -c 'xbps-install --yes
-        -S rust'
+      run: docker run --rm ghcr.io/basicimg/void:glibc /bin/sh -c 'basicimg-install
+        rust'
   void_musl:
     name: void/musl
     needs:
@@ -4805,8 +4807,8 @@ jobs:
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/void:musl basicimg-hello
     - name: Run test
-      run: docker run --rm ghcr.io/basicimg/void:musl /bin/sh -c 'xbps-install --yes
-        -S rust'
+      run: docker run --rm ghcr.io/basicimg/void:musl /bin/sh -c 'basicimg-install
+        rust'
 name: build
 'on':
   push:

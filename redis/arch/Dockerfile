@@ -1,6 +1,5 @@
 FROM ghcr.io/basicimg/arch
-RUN --mount=type=cache,target=/system/var/cache,sharing=locked \
-    pacman -Sy --noconfirm redis
+RUN basicimg-install redis
 RUN mkdir -p /etc/redis
 COPY redis/redis.conf /etc/redis/redis.conf
 CMD [ "/usr/bin/redis-server", "/etc/redis/redis.conf" ]

@@ -1,10 +1,10 @@
 # syntax=docker/dockerfile:1
 FROM ghcr.io/basicimg/bootstrap:latest AS bootstrap
-RUN --mount=type=cache,target=/system/var/cache,sharing=locked \
-    apk \
+RUN apk \
     --repository https://mirror.fcix.net/alpine/edge/main/ \
     --allow-untrusted --root /system --initdb \
-    add alpine-base alpine-sdk
+    add --no-cache alpine-base alpine-sdk
+COPY arch/basicimg-install.sh /system/usr/local/bin/basicimg-install
 RUN basicimg-init-system "Alpine Edge"
 COPY alpine/repositories /system/etc/apk/repositories
 COPY alpine/edge/repositories .

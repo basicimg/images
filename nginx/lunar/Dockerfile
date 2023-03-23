@@ -1,8 +1,6 @@
 # syntax=docker/dockerfile:1
 FROM ghcr.io/basicimg/ubuntu:lunar
-RUN --mount=type=cache,target=/var/cache,sharing=locked \
-    --mount=type=cache,target=/var/lib/apt,sharing=locked \
-    apt-get update && apt-get --no-install-recommends install -y nginx
+RUN basicimg-install nginx
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
  && ln -sf /dev/stderr /var/log/nginx/error.log
 CMD [ "/usr/sbin/nginx", "-c", "/etc/nginx/nginx.conf", "-g", "daemon off;" ]

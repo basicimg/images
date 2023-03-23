@@ -22,7 +22,7 @@ images:
   - ghcr.io/basicimg/arch:latest
   architectures:
   - amd64
-  test: pacman -Sy --noconfirm rust
+  test: basicimg-install rust
 - path: basicimg-actions-generator
   dependencies:
   - ghcr.io/basicimg/python3:latest

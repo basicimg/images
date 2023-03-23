@@ -1,6 +1,5 @@
 # syntax=docker/dockerfile:1
 FROM ghcr.io/basicimg/alpine:3-17
-RUN --mount=type=cache,target=/var/cache,sharing=locked \
-    apk add ruby 
+RUN basicimg-install ruby 
 CMD [ "/usr/bin/ruby" ]
 RUN basicimg-setapp "$(ruby -v 2>&1 | cut -d' ' -f-2) and gem $(gem -v)"

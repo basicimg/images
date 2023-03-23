@@ -9,8 +9,9 @@ RUN wget https://mirror.fcix.net/archlinux/core/os/x86_64/archlinux-keyring-2023
 RUN pacman -U --noconfirm --assume-installed pacman archlinux-keyring-20230320-1-any.pkg.tar.zst
 RUN pacman-key --gpgdir /system/etc/pacman.d/gnupg --init
 RUN pacman-key --gpgdir /system/etc/pacman.d/gnupg --populate
-RUN --mount=type=cache,target=/system/var/cache,sharing=locked \
-    pacman --config=pacman.conf -r /system -Sy --noconfirm base base-devel
+RUN pacman --config=pacman.conf -r /system -Sy --noconfirm base base-devel
+RUN rm -rf /var/cache/pacman/*
+COPY arch/basicimg-install.sh /system/usr/local/bin/basicimg-install
 RUN basicimg-init-system "Arch Linux"
 
 FROM scratch

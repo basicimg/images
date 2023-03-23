@@ -1,7 +1,6 @@
 # syntax=docker/dockerfile:1
 FROM ghcr.io/basicimg/alpine:edge
-RUN --mount=type=cache,target=/var/cache,sharing=locked \
-    apk add nix@testing libcpuid@community
+RUN basicimg-install nix@testing libcpuid@community
 COPY nix/nix.conf /etc/nix/nix.conf
 RUN chown -R root:root /nix
 ENV PATH="${PATH}:/nix/var/nix/profiles/default/bin"

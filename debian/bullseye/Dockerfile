@@ -1,8 +1,9 @@
 # syntax=docker/dockerfile:1
 FROM ghcr.io/basicimg/bootstrap:latest AS bootstrap
-RUN --mount=type=cache,target=/system/var/cache,sharing=locked \
-    --mount=type=cache,target=/system/var/lib/apt,sharing=locked \
-    debootstrap --variant=minbase --components=main,contrib --include=build-essential bullseye /system https://deb.debian.org/debian/
+RUN debootstrap --variant=minbase --components=main,contrib --include=build-essential bullseye /system https://deb.debian.org/debian/
+RUN chroot /system apt-get clean
+RUN rm -rf /system/var/lib/apt/lists/*
+COPY debian/basicimg-install.sh /system/usr/local/bin/basicimg-install
 RUN basicimg-init-system "Debian Bullseye"
 
 FROM scratch

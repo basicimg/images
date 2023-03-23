@@ -1,7 +1,6 @@
 # syntax=docker/dockerfile:1
 FROM ghcr.io/basicimg/alpine:3-17
-RUN --mount=type=cache,target=/var/cache,sharing=locked \
-    apk add redis
+RUN basicimg-install redis
 RUN mkdir -p /etc/redis
 COPY redis/redis.conf /etc/redis/redis.conf
 CMD [ "/usr/bin/redis-server", "/etc/redis/redis.conf" ]

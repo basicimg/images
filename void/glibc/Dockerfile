@@ -9,8 +9,9 @@ FROM scratch AS rootfs
 COPY --from=bootstrap /system/ /
 RUN mkdir -p /system/var/db/xbps/keys
 RUN cp /var/db/xbps/keys/* /system/var/db/xbps/keys/
-RUN --mount=type=cache,target=/system/var/cache,sharing=locked \
-    xbps-install --reproducible --yes -S -r /system -R "https://repo-fastly.voidlinux.org/current" base-minimal base-devel
+RUN xbps-install --reproducible --yes -S -r /system -R "https://repo-fastly.voidlinux.org/current" base-minimal base-devel
+RUN rm -rf /system/var/cache/xbps/*
+COPY void/basicimg-install.sh /system/usr/local/bin/basicimg-install
 RUN basicimg-init-system "Void Linux (glibc)"
 
 FROM scratch

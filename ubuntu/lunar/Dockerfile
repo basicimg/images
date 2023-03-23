@@ -1,9 +1,10 @@
 # syntax=docker/dockerfile:1
 FROM ghcr.io/basicimg/bootstrap:latest AS bootstrap
 RUN ln -s /usr/share/debootstrap/scripts/gutsy /usr/share/debootstrap/scripts/lunar
-RUN --mount=type=cache,target=/system/var/cache,sharing=locked \
-    --mount=type=cache,target=/system/var/lib/apt,sharing=locked \
-    debootstrap --variant=minbase --components=main,universe --include=build-essential lunar /system https://mirror.fcix.net/ubuntu/
+RUN debootstrap --variant=minbase --components=main,universe --include=build-essential lunar /system https://mirror.fcix.net/ubuntu/
+RUN chroot /system apt-get clean
+RUN rm -rf /system/var/lib/apt/lists/*
+COPY debian/basicimg-install.sh /system/usr/local/bin/basicimg-install
 RUN basicimg-init-system "Ubuntu Lunar"
 
 FROM scratch

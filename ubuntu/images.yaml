@@ -7,7 +7,7 @@ images:
   - ghcr.io/basicimg/ubuntu:22-04
   - ghcr.io/basicimg/ubuntu:lts
   - ghcr.io/basicimg/ubuntu:latest
-  test: apt-get update && apt-get install -y rustc
+  test: basicimg-install rustc
 - path: ubuntu/kinetic
   dependencies:
   - ghcr.io/basicimg/bootstrap:latest
@@ -15,11 +15,11 @@ images:
   - ghcr.io/basicimg/ubuntu:kinetic
   - ghcr.io/basicimg/ubuntu:22-10
   - ghcr.io/basicimg/ubuntu:interim
-  test: apt-get update && apt-get install -y rustc
+  test: basicimg-install rustc
 - path: ubuntu/lunar
   dependencies:
   - ghcr.io/basicimg/bootstrap:latest
   tags:
   - ghcr.io/basicimg/ubuntu:lunar
   - ghcr.io/basicimg/ubuntu:23-04
-  test: apt-get update && apt-get install -y rustc
+  test: basicimg-install rustc
