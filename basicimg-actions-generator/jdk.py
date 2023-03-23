@@ -50,6 +50,7 @@ def generate_jdk_images():
                     tags.append(f"latest-{alias}")
                 if isLts:
                     tags.append(f"lts-{alias}")
+                    tags.append(alias)
             if default:
                 tags.append(jdk)
                 if isLatest:

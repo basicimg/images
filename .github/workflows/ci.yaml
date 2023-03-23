@@ -1215,7 +1215,7 @@ jobs:
         file: ./jdk/17/alpine-3-17/Dockerfile
         labels: ${{ steps.meta.outputs.labels }}
         push: true
-        tags: ghcr.io/basicimg/jdk:17-alpine-3-17,ghcr.io/basicimg/jdk:latest-alpine-3-17,ghcr.io/basicimg/jdk:lts-alpine-3-17,ghcr.io/basicimg/jdk:17-alpine,ghcr.io/basicimg/jdk:latest-alpine,ghcr.io/basicimg/jdk:lts-alpine
+        tags: ghcr.io/basicimg/jdk:17-alpine-3-17,ghcr.io/basicimg/jdk:latest-alpine-3-17,ghcr.io/basicimg/jdk:lts-alpine-3-17,ghcr.io/basicimg/jdk:alpine-3-17,ghcr.io/basicimg/jdk:17-alpine,ghcr.io/basicimg/jdk:latest-alpine,ghcr.io/basicimg/jdk:lts-alpine,ghcr.io/basicimg/jdk:alpine
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:17-alpine-3-17 basicimg-hello
   jdk_17_alpine-edge:
@@ -1253,7 +1253,7 @@ jobs:
         file: ./jdk/17/alpine-edge/Dockerfile
         labels: ${{ steps.meta.outputs.labels }}
         push: true
-        tags: ghcr.io/basicimg/jdk:17-alpine-edge,ghcr.io/basicimg/jdk:lts-alpine-edge
+        tags: ghcr.io/basicimg/jdk:17-alpine-edge,ghcr.io/basicimg/jdk:lts-alpine-edge,ghcr.io/basicimg/jdk:alpine-edge
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:17-alpine-edge basicimg-hello
   jdk_17_arch:
@@ -1291,7 +1291,7 @@ jobs:
         file: ./jdk/17/arch/Dockerfile
         labels: ${{ steps.meta.outputs.labels }}
         push: true
-        tags: ghcr.io/basicimg/jdk:17-arch,ghcr.io/basicimg/jdk:lts-arch
+        tags: ghcr.io/basicimg/jdk:17-arch,ghcr.io/basicimg/jdk:lts-arch,ghcr.io/basicimg/jdk:arch
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:17-arch basicimg-hello
   jdk_17_bookworm:
@@ -1329,7 +1329,7 @@ jobs:
         file: ./jdk/17/bookworm/Dockerfile
         labels: ${{ steps.meta.outputs.labels }}
         push: true
-        tags: ghcr.io/basicimg/jdk:17-bookworm,ghcr.io/basicimg/jdk:latest-bookworm,ghcr.io/basicimg/jdk:lts-bookworm,ghcr.io/basicimg/jdk:17-debian-testing,ghcr.io/basicimg/jdk:latest-debian-testing,ghcr.io/basicimg/jdk:lts-debian-testing
+        tags: ghcr.io/basicimg/jdk:17-bookworm,ghcr.io/basicimg/jdk:latest-bookworm,ghcr.io/basicimg/jdk:lts-bookworm,ghcr.io/basicimg/jdk:bookworm,ghcr.io/basicimg/jdk:17-debian-testing,ghcr.io/basicimg/jdk:latest-debian-testing,ghcr.io/basicimg/jdk:lts-debian-testing,ghcr.io/basicimg/jdk:debian-testing
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:17-bookworm basicimg-hello
   jdk_17_bullseye:
@@ -1367,7 +1367,7 @@ jobs:
         file: ./jdk/17/bullseye/Dockerfile
         labels: ${{ steps.meta.outputs.labels }}
         push: true
-        tags: ghcr.io/basicimg/jdk:17-bullseye,ghcr.io/basicimg/jdk:latest-bullseye,ghcr.io/basicimg/jdk:lts-bullseye,ghcr.io/basicimg/jdk:17-debian-stable,ghcr.io/basicimg/jdk:latest-debian-stable,ghcr.io/basicimg/jdk:lts-debian-stable,ghcr.io/basicimg/jdk:17-debian,ghcr.io/basicimg/jdk:latest-debian,ghcr.io/basicimg/jdk:lts-debian,ghcr.io/basicimg/jdk:17,ghcr.io/basicimg/jdk:latest,ghcr.io/basicimg/jdk:lts
+        tags: ghcr.io/basicimg/jdk:17-bullseye,ghcr.io/basicimg/jdk:latest-bullseye,ghcr.io/basicimg/jdk:lts-bullseye,ghcr.io/basicimg/jdk:bullseye,ghcr.io/basicimg/jdk:17-debian-stable,ghcr.io/basicimg/jdk:latest-debian-stable,ghcr.io/basicimg/jdk:lts-debian-stable,ghcr.io/basicimg/jdk:debian-stable,ghcr.io/basicimg/jdk:17-debian,ghcr.io/basicimg/jdk:latest-debian,ghcr.io/basicimg/jdk:lts-debian,ghcr.io/basicimg/jdk:debian,ghcr.io/basicimg/jdk:17,ghcr.io/basicimg/jdk:latest,ghcr.io/basicimg/jdk:lts
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:17-bullseye basicimg-hello
   jdk_17_jammy:
@@ -1405,7 +1405,7 @@ jobs:
         file: ./jdk/17/jammy/Dockerfile
         labels: ${{ steps.meta.outputs.labels }}
         push: true
-        tags: ghcr.io/basicimg/jdk:17-jammy,ghcr.io/basicimg/jdk:latest-jammy,ghcr.io/basicimg/jdk:lts-jammy,ghcr.io/basicimg/jdk:17-ubuntu-lts,ghcr.io/basicimg/jdk:latest-ubuntu-lts,ghcr.io/basicimg/jdk:lts-ubuntu-lts,ghcr.io/basicimg/jdk:17-ubuntu,ghcr.io/basicimg/jdk:latest-ubuntu,ghcr.io/basicimg/jdk:lts-ubuntu
+        tags: ghcr.io/basicimg/jdk:17-jammy,ghcr.io/basicimg/jdk:latest-jammy,ghcr.io/basicimg/jdk:lts-jammy,ghcr.io/basicimg/jdk:jammy,ghcr.io/basicimg/jdk:17-ubuntu-lts,ghcr.io/basicimg/jdk:latest-ubuntu-lts,ghcr.io/basicimg/jdk:lts-ubuntu-lts,ghcr.io/basicimg/jdk:ubuntu-lts,ghcr.io/basicimg/jdk:17-ubuntu,ghcr.io/basicimg/jdk:latest-ubuntu,ghcr.io/basicimg/jdk:lts-ubuntu,ghcr.io/basicimg/jdk:ubuntu
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:17-jammy basicimg-hello
   jdk_17_kinetic:
@@ -1443,7 +1443,7 @@ jobs:
         file: ./jdk/17/kinetic/Dockerfile
         labels: ${{ steps.meta.outputs.labels }}
         push: true
-        tags: ghcr.io/basicimg/jdk:17-kinetic,ghcr.io/basicimg/jdk:latest-kinetic,ghcr.io/basicimg/jdk:lts-kinetic,ghcr.io/basicimg/jdk:17-ubuntu-interim,ghcr.io/basicimg/jdk:latest-ubuntu-interim,ghcr.io/basicimg/jdk:lts-ubuntu-interim
+        tags: ghcr.io/basicimg/jdk:17-kinetic,ghcr.io/basicimg/jdk:latest-kinetic,ghcr.io/basicimg/jdk:lts-kinetic,ghcr.io/basicimg/jdk:kinetic,ghcr.io/basicimg/jdk:17-ubuntu-interim,ghcr.io/basicimg/jdk:latest-ubuntu-interim,ghcr.io/basicimg/jdk:lts-ubuntu-interim,ghcr.io/basicimg/jdk:ubuntu-interim
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:17-kinetic basicimg-hello
   jdk_17_lunar:
@@ -1481,7 +1481,7 @@ jobs:
         file: ./jdk/17/lunar/Dockerfile
         labels: ${{ steps.meta.outputs.labels }}
         push: true
-        tags: ghcr.io/basicimg/jdk:17-lunar,ghcr.io/basicimg/jdk:lts-lunar
+        tags: ghcr.io/basicimg/jdk:17-lunar,ghcr.io/basicimg/jdk:lts-lunar,ghcr.io/basicimg/jdk:lunar
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:17-lunar basicimg-hello
   jdk_17_sid:
@@ -1519,7 +1519,7 @@ jobs:
         file: ./jdk/17/sid/Dockerfile
         labels: ${{ steps.meta.outputs.labels }}
         push: true
-        tags: ghcr.io/basicimg/jdk:17-sid,ghcr.io/basicimg/jdk:lts-sid,ghcr.io/basicimg/jdk:17-debian-unstable,ghcr.io/basicimg/jdk:lts-debian-unstable
+        tags: ghcr.io/basicimg/jdk:17-sid,ghcr.io/basicimg/jdk:lts-sid,ghcr.io/basicimg/jdk:sid,ghcr.io/basicimg/jdk:17-debian-unstable,ghcr.io/basicimg/jdk:lts-debian-unstable,ghcr.io/basicimg/jdk:debian-unstable
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:17-sid basicimg-hello
   jdk_17_void-glibc:
@@ -1557,7 +1557,7 @@ jobs:
         file: ./jdk/17/void-glibc/Dockerfile
         labels: ${{ steps.meta.outputs.labels }}
         push: true
-        tags: ghcr.io/basicimg/jdk:17-void-glibc,ghcr.io/basicimg/jdk:latest-void-glibc,ghcr.io/basicimg/jdk:lts-void-glibc,ghcr.io/basicimg/jdk:17-void,ghcr.io/basicimg/jdk:latest-void,ghcr.io/basicimg/jdk:lts-void
+        tags: ghcr.io/basicimg/jdk:17-void-glibc,ghcr.io/basicimg/jdk:latest-void-glibc,ghcr.io/basicimg/jdk:lts-void-glibc,ghcr.io/basicimg/jdk:void-glibc,ghcr.io/basicimg/jdk:17-void,ghcr.io/basicimg/jdk:latest-void,ghcr.io/basicimg/jdk:lts-void,ghcr.io/basicimg/jdk:void
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:17-void-glibc basicimg-hello
   jdk_17_void-musl:
@@ -1595,7 +1595,7 @@ jobs:
         file: ./jdk/17/void-musl/Dockerfile
         labels: ${{ steps.meta.outputs.labels }}
         push: true
-        tags: ghcr.io/basicimg/jdk:17-void-musl,ghcr.io/basicimg/jdk:latest-void-musl,ghcr.io/basicimg/jdk:lts-void-musl
+        tags: ghcr.io/basicimg/jdk:17-void-musl,ghcr.io/basicimg/jdk:latest-void-musl,ghcr.io/basicimg/jdk:lts-void-musl,ghcr.io/basicimg/jdk:void-musl
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:17-void-musl basicimg-hello
   jdk_18_alpine-edge:
