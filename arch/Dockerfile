@@ -5,7 +5,7 @@ RUN mkdir -m 1777 -p /system/tmp
 RUN mkdir -m 0555 -p /system/sys /system/proc
 COPY arch/mirrorlist /system/etc/pacman.d/mirrorlist
 COPY arch/pacman.conf .
-RUN wget https://mirror.fcix.net/core/os/x86_64/archlinux-keyring-20230320-1-any.pkg.tar.zst
+RUN wget https://mirror.fcix.net/archlinux/core/os/x86_64/archlinux-keyring-20230320-1-any.pkg.tar.zst
 RUN pacman -U --noconfirm --assume-installed pacman archlinux-keyring-20230320-1-any.pkg.tar.zst
 RUN pacman-key --gpgdir /system/etc/pacman.d/gnupg --init
 RUN pacman-key --gpgdir /system/etc/pacman.d/gnupg --populate
