@@ -14,13 +14,3 @@ images:
   - ghcr.io/basicimg/python3:latest
   tags:
   - ghcr.io/basicimg/basicimg-actions-generator:latest
-- path: distroless
-  dependencies:
-  - ghcr.io/basicimg/debian:stable
-  tags:
-  - ghcr.io/basicimg/distroless:latest
-- path: distroless-static
-  dependencies:
-  - ghcr.io/basicimg/debian:stable
-  tags:
-  - ghcr.io/basicimg/distroless-static:latest
