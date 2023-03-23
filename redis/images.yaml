@@ -1,9 +1,9 @@
 images:
 - path: redis/alpine-3.17
   dependencies:
-  - ghcr.io/basicimg/alpine:3.17
+  - ghcr.io/basicimg/alpine:3-17
   tags:
-  - ghcr.io/basicimg/redis:alpine-3.17
+  - ghcr.io/basicimg/redis:alpine-3-17
   - ghcr.io/basicimg/redis:alpine
 - path: redis/alpine-edge
   dependencies:

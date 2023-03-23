@@ -1,9 +1,9 @@
 images:
 - path: python3/alpine-3.17
   dependencies:
-  - ghcr.io/basicimg/alpine:3.17
+  - ghcr.io/basicimg/alpine:3-17
   tags:
-  - ghcr.io/basicimg/python3:alpine-3.17
+  - ghcr.io/basicimg/python3:alpine-3-17
   - ghcr.io/basicimg/python3:alpine
 - path: python3/alpine-edge
   dependencies:

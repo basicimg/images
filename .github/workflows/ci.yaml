@@ -1,6 +1,6 @@
 jobs:
   alpine_3_17:
-    name: ghcr.io/basicimg/alpine:3.17
+    name: ghcr.io/basicimg/alpine:3-17
     needs:
     - bootstrap
     permissions:
@@ -26,7 +26,7 @@ jobs:
         file: ./alpine/3.17/Dockerfile
         labels: org.opencontainers.image.source=https://github.com/basicimg/images
         push: true
-        tags: ghcr.io/basicimg/alpine:3.17,ghcr.io/basicimg/alpine:3,ghcr.io/basicimg/alpine:stable,ghcr.io/basicimg/alpine:latest
+        tags: ghcr.io/basicimg/alpine:3-17,ghcr.io/basicimg/alpine:3,ghcr.io/basicimg/alpine:stable,ghcr.io/basicimg/alpine:latest
   alpine_edge:
     name: ghcr.io/basicimg/alpine:edge
     needs:
@@ -278,7 +278,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/distroless-static:latest
   python3_alpine-3_17:
-    name: ghcr.io/basicimg/python3:alpine-3.17
+    name: ghcr.io/basicimg/python3:alpine-3-17
     needs:
     - alpine_3_17
     permissions:
@@ -304,7 +304,7 @@ jobs:
         file: ./python3/alpine-3.17/Dockerfile
         labels: org.opencontainers.image.source=https://github.com/basicimg/images
         push: true
-        tags: ghcr.io/basicimg/python3:alpine-3.17,ghcr.io/basicimg/python3:alpine
+        tags: ghcr.io/basicimg/python3:alpine-3-17,ghcr.io/basicimg/python3:alpine
   python3_alpine-edge:
     name: ghcr.io/basicimg/python3:alpine-edge
     needs:
@@ -502,7 +502,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/python3:sid,ghcr.io/basicimg/python3:debian-unstable
   redis_alpine-3_17:
-    name: ghcr.io/basicimg/redis:alpine-3.17
+    name: ghcr.io/basicimg/redis:alpine-3-17
     needs:
     - alpine_3_17
     permissions:
@@ -528,7 +528,7 @@ jobs:
         file: ./redis/alpine-3.17/Dockerfile
         labels: org.opencontainers.image.source=https://github.com/basicimg/images
         push: true
-        tags: ghcr.io/basicimg/redis:alpine-3.17,ghcr.io/basicimg/redis:alpine
+        tags: ghcr.io/basicimg/redis:alpine-3-17,ghcr.io/basicimg/redis:alpine
   redis_alpine-edge:
     name: ghcr.io/basicimg/redis:alpine-edge
     needs:
@@ -752,7 +752,7 @@ jobs:
         file: ./ubuntu/jammy/Dockerfile
         labels: org.opencontainers.image.source=https://github.com/basicimg/images
         push: true
-        tags: ghcr.io/basicimg/ubuntu:jammy,ghcr.io/basicimg/ubuntu:22.04,ghcr.io/basicimg/ubuntu:lts,ghcr.io/basicimg/ubuntu:latest
+        tags: ghcr.io/basicimg/ubuntu:jammy,ghcr.io/basicimg/ubuntu:22-04,ghcr.io/basicimg/ubuntu:lts,ghcr.io/basicimg/ubuntu:latest
   ubuntu_kinetic:
     name: ghcr.io/basicimg/ubuntu:kinetic
     needs:
@@ -780,7 +780,7 @@ jobs:
         file: ./ubuntu/kinetic/Dockerfile
         labels: org.opencontainers.image.source=https://github.com/basicimg/images
         push: true
-        tags: ghcr.io/basicimg/ubuntu:kinetic,ghcr.io/basicimg/ubuntu:22.10,ghcr.io/basicimg/ubuntu:interim
+        tags: ghcr.io/basicimg/ubuntu:kinetic,ghcr.io/basicimg/ubuntu:22-10,ghcr.io/basicimg/ubuntu:interim
   void_glibc:
     name: ghcr.io/basicimg/void:glibc
     needs:
