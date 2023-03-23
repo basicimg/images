@@ -89,7 +89,7 @@ def image_to_job(image):
             dockerArgs = integration["dockerArgs"]
         steps.append({
             "name": "Run integration test",
-            "run": f"docker run -d {dockerArgs} -n main {tags[0]} && docker run --network host --rm {integrationImage} /bin/sh -c '{integrationTest}' && docker rm -f main"
+            "run": f"docker run -d {dockerArgs} --name main {tags[0]} && docker run --network host --rm {integrationImage} /bin/sh -c '{integrationTest}' && docker rm -f main"
         })
     job = {
         "name": path,
