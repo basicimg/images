@@ -4,7 +4,7 @@ RUN debootstrap --variant=minbase --components=main,contrib --include=build-esse
 RUN chroot /system apt-get clean
 RUN rm -rf /system/var/lib/apt/lists/*
 COPY debian/basicimg-install.sh /system/usr/local/bin/basicimg-install
-RUN basicimg-init-system "Debian Buster"
+RUN basicimg-init-system 'Debian 10 "Buster"'
 
 FROM scratch
 COPY --from=bootstrap /system/ /

@@ -5,7 +5,7 @@ RUN debootstrap --variant=minbase --components=main,universe --include=build-ess
 RUN chroot /system apt-get clean
 RUN rm -rf /system/var/lib/apt/lists/*
 COPY debian/basicimg-install.sh /system/usr/local/bin/basicimg-install
-RUN basicimg-init-system "Ubuntu Lunar"
+RUN basicimg-init-system 'Ubuntu 23.04 "Lunar Lobster"'
 
 FROM scratch
 COPY --from=bootstrap /system/ /

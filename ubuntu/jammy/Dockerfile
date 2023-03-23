@@ -4,7 +4,7 @@ RUN debootstrap --variant=minbase --components=main,universe --include=build-ess
 RUN chroot /system apt-get clean
 RUN rm -rf /system/var/lib/apt/lists/*
 COPY debian/basicimg-install.sh /system/usr/local/bin/basicimg-install
-RUN basicimg-init-system "Ubuntu Jammy"
+RUN basicimg-init-system 'Ubuntu 22.04 "Jammy Jellyfish"'
 
 FROM scratch
 COPY --from=bootstrap /system/ /
