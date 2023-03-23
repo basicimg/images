@@ -5,17 +5,20 @@ images:
   tags:
   - ghcr.io/basicimg/python3:alpine-3-17
   - ghcr.io/basicimg/python3:alpine
+  test: python -m venv /venv && . /venv/bin/activate && pip install pyyaml
 - path: python3/alpine-edge
   dependencies:
   - ghcr.io/basicimg/alpine:edge
   tags:
   - ghcr.io/basicimg/python3:alpine-edge
+  test: python -m venv /venv && . /venv/bin/activate && pip install pyyaml
 - path: python3/bookworm
   dependencies:
   - ghcr.io/basicimg/debian:bookworm
   tags:
   - ghcr.io/basicimg/python3:bookworm
   - ghcr.io/basicimg/python3:debian-testing
+  test: python -m venv /venv && . /venv/bin/activate && pip install pyyaml
 - path: python3/bullseye
   dependencies:
   - ghcr.io/basicimg/debian:bullseye
@@ -24,18 +27,21 @@ images:
   - ghcr.io/basicimg/python3:debian-stable
   - ghcr.io/basicimg/python3:debian
   - ghcr.io/basicimg/python3:latest
+  test: python -m venv /venv && . /venv/bin/activate && pip install pyyaml
 - path: python3/buster
   dependencies:
   - ghcr.io/basicimg/debian:buster
   tags:
   - ghcr.io/basicimg/python3:buster
   - ghcr.io/basicimg/python3:debian-oldstable
+  test: python -m venv /venv && . /venv/bin/activate && pip install pyyaml
 - path: python3/sid
   dependencies:
   - ghcr.io/basicimg/debian:sid
   tags:
   - ghcr.io/basicimg/python3:sid
   - ghcr.io/basicimg/python3:debian-unstable
+  test: python -m venv /venv && . /venv/bin/activate && pip install pyyaml
 - path: python3/jammy
   dependencies:
   - ghcr.io/basicimg/ubuntu:jammy
@@ -43,30 +49,36 @@ images:
   - ghcr.io/basicimg/python3:jammy
   - ghcr.io/basicimg/python3:ubuntu-lts
   - ghcr.io/basicimg/python3:ubuntu
+  test: python -m venv /venv && . /venv/bin/activate && pip install pyyaml
 - path: python3/kinetic
   dependencies:
   - ghcr.io/basicimg/ubuntu:kinetic
   tags:
   - ghcr.io/basicimg/python3:kinetic
   - ghcr.io/basicimg/python3:ubuntu-interim
+  test: python -m venv /venv && . /venv/bin/activate && pip install pyyaml
 - path: python3/lunar
   dependencies:
   - ghcr.io/basicimg/ubuntu:lunar
   tags:
   - ghcr.io/basicimg/python3:lunar
+  test: python -m venv /venv && . /venv/bin/activate && pip install pyyaml
 - path: python3/void-glibc
   dependencies:
   - ghcr.io/basicimg/void:glibc
   tags:
   - ghcr.io/basicimg/python3:void-glibc
   - ghcr.io/basicimg/python3:void
+  test: python -m venv /venv && . /venv/bin/activate && pip install pyyaml
 - path: python3/void-musl
   dependencies:
   - ghcr.io/basicimg/void:musl
   tags:
   - ghcr.io/basicimg/python3:void-musl
+  test: python -m venv /venv && . /venv/bin/activate && pip install pyyaml
 - path: python3/arch
   dependencies:
   - ghcr.io/basicimg/arch:latest
   tags:
   - ghcr.io/basicimg/python3:arch
+  test: python -m venv /venv && . /venv/bin/activate && pip install pyyaml

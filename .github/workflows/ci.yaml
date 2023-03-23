@@ -3280,6 +3280,9 @@ jobs:
         tags: ghcr.io/basicimg/python3:alpine-3-17,ghcr.io/basicimg/python3:alpine
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/python3:alpine-3-17 basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/python3:alpine-3-17 /bin/sh -euxc 'python
+        -m venv /venv && . /venv/bin/activate && pip install pyyaml'
   python3_alpine-edge:
     name: python3/alpine-edge
     needs:
@@ -3316,6 +3319,9 @@ jobs:
         tags: ghcr.io/basicimg/python3:alpine-edge
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/python3:alpine-edge basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/python3:alpine-edge /bin/sh -euxc 'python
+        -m venv /venv && . /venv/bin/activate && pip install pyyaml'
   python3_arch:
     name: python3/arch
     needs:
@@ -3352,6 +3358,9 @@ jobs:
         tags: ghcr.io/basicimg/python3:arch
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/python3:arch basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/python3:arch /bin/sh -euxc 'python -m
+        venv /venv && . /venv/bin/activate && pip install pyyaml'
   python3_bookworm:
     name: python3/bookworm
     needs:
@@ -3388,6 +3397,9 @@ jobs:
         tags: ghcr.io/basicimg/python3:bookworm,ghcr.io/basicimg/python3:debian-testing
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/python3:bookworm basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/python3:bookworm /bin/sh -euxc 'python
+        -m venv /venv && . /venv/bin/activate && pip install pyyaml'
   python3_bullseye:
     name: python3/bullseye
     needs:
@@ -3424,6 +3436,9 @@ jobs:
         tags: ghcr.io/basicimg/python3:bullseye,ghcr.io/basicimg/python3:debian-stable,ghcr.io/basicimg/python3:debian,ghcr.io/basicimg/python3:latest
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/python3:bullseye basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/python3:bullseye /bin/sh -euxc 'python
+        -m venv /venv && . /venv/bin/activate && pip install pyyaml'
   python3_buster:
     name: python3/buster
     needs:
@@ -3460,6 +3475,9 @@ jobs:
         tags: ghcr.io/basicimg/python3:buster,ghcr.io/basicimg/python3:debian-oldstable
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/python3:buster basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/python3:buster /bin/sh -euxc 'python -m
+        venv /venv && . /venv/bin/activate && pip install pyyaml'
   python3_jammy:
     name: python3/jammy
     needs:
@@ -3496,6 +3514,9 @@ jobs:
         tags: ghcr.io/basicimg/python3:jammy,ghcr.io/basicimg/python3:ubuntu-lts,ghcr.io/basicimg/python3:ubuntu
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/python3:jammy basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/python3:jammy /bin/sh -euxc 'python -m
+        venv /venv && . /venv/bin/activate && pip install pyyaml'
   python3_kinetic:
     name: python3/kinetic
     needs:
@@ -3532,6 +3553,9 @@ jobs:
         tags: ghcr.io/basicimg/python3:kinetic,ghcr.io/basicimg/python3:ubuntu-interim
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/python3:kinetic basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/python3:kinetic /bin/sh -euxc 'python
+        -m venv /venv && . /venv/bin/activate && pip install pyyaml'
   python3_lunar:
     name: python3/lunar
     needs:
@@ -3568,6 +3592,9 @@ jobs:
         tags: ghcr.io/basicimg/python3:lunar
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/python3:lunar basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/python3:lunar /bin/sh -euxc 'python -m
+        venv /venv && . /venv/bin/activate && pip install pyyaml'
   python3_sid:
     name: python3/sid
     needs:
@@ -3604,6 +3631,9 @@ jobs:
         tags: ghcr.io/basicimg/python3:sid,ghcr.io/basicimg/python3:debian-unstable
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/python3:sid basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/python3:sid /bin/sh -euxc 'python -m venv
+        /venv && . /venv/bin/activate && pip install pyyaml'
   python3_void-glibc:
     name: python3/void-glibc
     needs:
@@ -3640,6 +3670,9 @@ jobs:
         tags: ghcr.io/basicimg/python3:void-glibc,ghcr.io/basicimg/python3:void
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/python3:void-glibc basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/python3:void-glibc /bin/sh -euxc 'python
+        -m venv /venv && . /venv/bin/activate && pip install pyyaml'
   python3_void-musl:
     name: python3/void-musl
     needs:
@@ -3676,6 +3709,9 @@ jobs:
         tags: ghcr.io/basicimg/python3:void-musl
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/python3:void-musl basicimg-hello
+    - name: Run test
+      run: docker run --rm ghcr.io/basicimg/python3:void-musl /bin/sh -euxc 'python
+        -m venv /venv && . /venv/bin/activate && pip install pyyaml'
   redis_alpine-3_17:
     name: redis/alpine-3.17
     needs:
