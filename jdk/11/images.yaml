@@ -17,6 +17,7 @@ images:
   - ghcr.io/basicimg/jdk:11-bullseye
   - ghcr.io/basicimg/jdk:11-debian-stable
   - ghcr.io/basicimg/jdk:11-debian
+  - ghcr.io/basicimg/jdk:11
 - path: jdk/11/sid
   dependencies:
   - ghcr.io/basicimg/debian:sid

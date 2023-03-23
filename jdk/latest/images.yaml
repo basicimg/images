@@ -31,6 +31,7 @@ images:
   - ghcr.io/basicimg/jdk:17-bullseye
   - ghcr.io/basicimg/jdk:17-debian-stable
   - ghcr.io/basicimg/jdk:17-debian
+  - ghcr.io/basicimg/jdk:17
 - path: jdk/latest/buster
   dependencies:
   - ghcr.io/basicimg/debian:buster
@@ -47,6 +48,7 @@ images:
   - ghcr.io/basicimg/jdk:latest-debian-unstable
   - ghcr.io/basicimg/jdk:19-sid
   - ghcr.io/basicimg/jdk:19-debian-unstable
+  - ghcr.io/basicimg/jdk:19
 - path: jdk/latest/jammy
   dependencies:
   - ghcr.io/basicimg/ubuntu:jammy
@@ -54,17 +56,17 @@ images:
   - ghcr.io/basicimg/jdk:latest-jammy
   - ghcr.io/basicimg/jdk:latest-ubuntu-lts
   - ghcr.io/basicimg/jdk:latest-ubuntu
-  - ghcr.io/basicimg/jdk:19-jammy
-  - ghcr.io/basicimg/jdk:19-ubuntu-lts
-  - ghcr.io/basicimg/jdk:19-ubuntu
+  - ghcr.io/basicimg/jdk:17-jammy
+  - ghcr.io/basicimg/jdk:17-ubuntu-lts
+  - ghcr.io/basicimg/jdk:17-ubuntu
 - path: jdk/latest/kinetic
   dependencies:
   - ghcr.io/basicimg/ubuntu:kinetic
   tags:
   - ghcr.io/basicimg/jdk:latest-kinetic
   - ghcr.io/basicimg/jdk:latest-ubuntu-interim
-  - ghcr.io/basicimg/jdk:19-kinetic
-  - ghcr.io/basicimg/jdk:19-ubuntu-interim
+  - ghcr.io/basicimg/jdk:17-kinetic
+  - ghcr.io/basicimg/jdk:17-ubuntu-interim
 - path: jdk/latest/void-glibc
   dependencies:
   - ghcr.io/basicimg/void:glibc

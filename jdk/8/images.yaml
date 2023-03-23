@@ -23,6 +23,7 @@ images:
   - ghcr.io/basicimg/jdk:8-jammy
   - ghcr.io/basicimg/jdk:8-ubuntu-lts
   - ghcr.io/basicimg/jdk:8-ubuntu
+  - ghcr.io/basicimg/jdk:8
 - path: jdk/8/kinetic
   dependencies:
   - ghcr.io/basicimg/ubuntu:kinetic
