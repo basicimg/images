@@ -4,7 +4,7 @@ RUN apk \
     --repository https://mirror.fcix.net/alpine/edge/main/ \
     --allow-untrusted --root /system --initdb \
     add --no-cache alpine-base alpine-sdk
-COPY arch/basicimg-install.sh /system/usr/local/bin/basicimg-install
+COPY alpine/basicimg-install.sh /system/usr/local/bin/basicimg-install
 RUN basicimg-init-system "Alpine Edge"
 COPY alpine/repositories /system/etc/apk/repositories
 COPY alpine/edge/repositories .
