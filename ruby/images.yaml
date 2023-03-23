@@ -34,7 +34,7 @@ images:
   tags:
   - ghcr.io/basicimg/ruby:buster
   - ghcr.io/basicimg/ruby:debian-oldstable
-  test: gem install bundler
+  test: gem install bundler -v 2.3.26
 - path: ruby/sid
   dependencies:
   - ghcr.io/basicimg/debian:sid
