@@ -30,7 +30,7 @@ def image_to_job(image):
         description = image["description"]
         labels.append(f"org.opencontainers.image.description={description}")
     job = {
-        "name": tags[0],
+        "name": path,
         "runs-on": "ubuntu-22.04",
         "permissions": {
             "contents": "read",

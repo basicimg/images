@@ -2,7 +2,7 @@
 concurrency: build
 jobs:
   alpine_3_17:
-    name: ghcr.io/basicimg/alpine:3-17
+    name: alpine/3.17
     needs:
     - bootstrap
     permissions:
@@ -30,7 +30,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/alpine:3-17,ghcr.io/basicimg/alpine:3,ghcr.io/basicimg/alpine:stable,ghcr.io/basicimg/alpine:latest
   alpine_edge:
-    name: ghcr.io/basicimg/alpine:edge
+    name: alpine/edge
     needs:
     - bootstrap
     permissions:
@@ -58,7 +58,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/alpine:edge
   arch:
-    name: ghcr.io/basicimg/arch:latest
+    name: arch
     needs:
     - bootstrap
     permissions:
@@ -86,7 +86,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/arch:latest
   basicimg-actions-generator:
-    name: ghcr.io/basicimg/basicimg-actions-generator:latest
+    name: basicimg-actions-generator
     needs:
     - python3_bullseye
     permissions:
@@ -114,7 +114,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/basicimg-actions-generator:latest
   bootstrap:
-    name: ghcr.io/basicimg/bootstrap:latest
+    name: bootstrap
     permissions:
       contents: read
       packages: write
@@ -140,7 +140,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/bootstrap:latest
   debian_bookworm:
-    name: ghcr.io/basicimg/debian:bookworm
+    name: debian/bookworm
     needs:
     - bootstrap
     permissions:
@@ -168,7 +168,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/debian:bookworm,ghcr.io/basicimg/debian:12,ghcr.io/basicimg/debian:testing
   debian_bullseye:
-    name: ghcr.io/basicimg/debian:bullseye
+    name: debian/bullseye
     needs:
     - bootstrap
     permissions:
@@ -196,7 +196,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/debian:bullseye,ghcr.io/basicimg/debian:11,ghcr.io/basicimg/debian:stable,ghcr.io/basicimg/debian:latest
   debian_buster:
-    name: ghcr.io/basicimg/debian:buster
+    name: debian/buster
     needs:
     - bootstrap
     permissions:
@@ -224,7 +224,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/debian:buster,ghcr.io/basicimg/debian:10,ghcr.io/basicimg/debian:oldstable
   debian_sid:
-    name: ghcr.io/basicimg/debian:sid
+    name: debian/sid
     needs:
     - bootstrap
     permissions:
@@ -252,7 +252,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/debian:sid,ghcr.io/basicimg/debian:unstable
   jdk_11_alpine-3_17:
-    name: ghcr.io/basicimg/jdk:11-alpine-3-17
+    name: jdk/11/alpine-3.17
     needs:
     - alpine_3_17
     permissions:
@@ -280,7 +280,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/jdk:11-alpine-3-17,ghcr.io/basicimg/jdk:11-alpine
   jdk_11_alpine-edge:
-    name: ghcr.io/basicimg/jdk:11-alpine-edge
+    name: jdk/11/alpine-edge
     needs:
     - alpine_edge
     permissions:
@@ -308,7 +308,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/jdk:11-alpine-edge
   jdk_11_arch:
-    name: ghcr.io/basicimg/jdk:11-arch
+    name: jdk/11/arch
     needs:
     - arch
     permissions:
@@ -336,7 +336,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/jdk:11-arch
   jdk_11_bullseye:
-    name: ghcr.io/basicimg/jdk:11-bullseye
+    name: jdk/11/bullseye
     needs:
     - debian_bullseye
     permissions:
@@ -364,7 +364,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/jdk:11-bullseye,ghcr.io/basicimg/jdk:11-debian-stable,ghcr.io/basicimg/jdk:11-debian,ghcr.io/basicimg/jdk:11
   jdk_11_jammy:
-    name: ghcr.io/basicimg/jdk:11-jammy
+    name: jdk/11/jammy
     needs:
     - ubuntu_jammy
     permissions:
@@ -392,7 +392,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/jdk:11-jammy,ghcr.io/basicimg/jdk:11-ubuntu-lts,ghcr.io/basicimg/jdk:11-ubuntu
   jdk_11_kinetic:
-    name: ghcr.io/basicimg/jdk:11-kinetic
+    name: jdk/11/kinetic
     needs:
     - ubuntu_kinetic
     permissions:
@@ -420,7 +420,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/jdk:11-kinetic,ghcr.io/basicimg/jdk:11-ubuntu-interim
   jdk_11_lunar:
-    name: ghcr.io/basicimg/jdk:11-lunar
+    name: jdk/11/lunar
     needs:
     - ubuntu_lunar
     permissions:
@@ -448,7 +448,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/jdk:11-lunar
   jdk_11_sid:
-    name: ghcr.io/basicimg/jdk:11-sid
+    name: jdk/11/sid
     needs:
     - debian_sid
     permissions:
@@ -476,7 +476,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/jdk:11-sid,ghcr.io/basicimg/jdk:11-debian-unstable
   jdk_11_void-glibc:
-    name: ghcr.io/basicimg/jdk:11-void-glibc
+    name: jdk/11/void-glibc
     needs:
     - void_glibc
     permissions:
@@ -504,7 +504,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/jdk:11-void-glibc,ghcr.io/basicimg/jdk:11-void
   jdk_11_void-musl:
-    name: ghcr.io/basicimg/jdk:11-void-musl
+    name: jdk/11/void-musl
     needs:
     - void_musl
     permissions:
@@ -532,7 +532,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/jdk:11-void-musl
   jdk_17_arch:
-    name: ghcr.io/basicimg/jdk:17-arch
+    name: jdk/17/arch
     needs:
     - arch
     permissions:
@@ -560,7 +560,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/jdk:17-arch
   jdk_17_sid:
-    name: ghcr.io/basicimg/jdk:17-sid
+    name: jdk/17/sid
     needs:
     - debian_sid
     permissions:
@@ -588,7 +588,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/jdk:17-sid,ghcr.io/basicimg/jdk:17-debian-unstable
   jdk_8_alpine-3_17:
-    name: ghcr.io/basicimg/jdk:8-alpine-3-17
+    name: jdk/8/alpine-3.17
     needs:
     - alpine_3_17
     permissions:
@@ -616,7 +616,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/jdk:8-alpine-3-17,ghcr.io/basicimg/jdk:8-alpine
   jdk_8_alpine-edge:
-    name: ghcr.io/basicimg/jdk:8-alpine-edge
+    name: jdk/8/alpine-edge
     needs:
     - alpine_edge
     permissions:
@@ -644,7 +644,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/jdk:8-alpine-edge
   jdk_8_arch:
-    name: ghcr.io/basicimg/jdk:8-arch
+    name: jdk/8/arch
     needs:
     - arch
     permissions:
@@ -672,7 +672,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/jdk:8-arch
   jdk_8_jammy:
-    name: ghcr.io/basicimg/jdk:8-jammy
+    name: jdk/8/jammy
     needs:
     - ubuntu_jammy
     permissions:
@@ -700,7 +700,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/jdk:8-jammy,ghcr.io/basicimg/jdk:8-ubuntu-lts,ghcr.io/basicimg/jdk:8-ubuntu,ghcr.io/basicimg/jdk:8
   jdk_8_kinetic:
-    name: ghcr.io/basicimg/jdk:8-kinetic
+    name: jdk/8/kinetic
     needs:
     - ubuntu_kinetic
     permissions:
@@ -728,7 +728,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/jdk:8-kinetic,ghcr.io/basicimg/jdk:8-ubuntu-interim
   jdk_8_lunar:
-    name: ghcr.io/basicimg/jdk:8-lunar
+    name: jdk/8/lunar
     needs:
     - ubuntu_lunar
     permissions:
@@ -756,7 +756,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/jdk:8-lunar
   jdk_8_sid:
-    name: ghcr.io/basicimg/jdk:8-sid
+    name: jdk/8/sid
     needs:
     - debian_sid
     permissions:
@@ -784,7 +784,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/jdk:8-sid,ghcr.io/basicimg/jdk:8-debian-unstable
   jdk_8_void-glibc:
-    name: ghcr.io/basicimg/jdk:8-void-glibc
+    name: jdk/8/void-glibc
     needs:
     - void_glibc
     permissions:
@@ -812,7 +812,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/jdk:8-void-glibc,ghcr.io/basicimg/jdk:8-void
   jdk_8_void-musl:
-    name: ghcr.io/basicimg/jdk:8-void-musl
+    name: jdk/8/void-musl
     needs:
     - void_musl
     permissions:
@@ -840,7 +840,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/jdk:8-void-musl
   jdk_latest_alpine-3_17:
-    name: ghcr.io/basicimg/jdk:latest-alpine-3-17
+    name: jdk/latest/alpine-3.17
     needs:
     - alpine_3_17
     permissions:
@@ -868,7 +868,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/jdk:latest-alpine-3-17,ghcr.io/basicimg/jdk:latest-alpine,ghcr.io/basicimg/jdk:17-alpine-3-17,ghcr.io/basicimg/jdk:17-alpine
   jdk_latest_alpine-edge:
-    name: ghcr.io/basicimg/jdk:latest-alpine-edge
+    name: jdk/latest/alpine-edge
     needs:
     - alpine_edge
     permissions:
@@ -896,7 +896,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/jdk:latest-alpine-edge,ghcr.io/basicimg/jdk:17-alpine-edge
   jdk_latest_arch:
-    name: ghcr.io/basicimg/jdk:latest-arch
+    name: jdk/latest/arch
     needs:
     - arch
     permissions:
@@ -924,7 +924,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/jdk:latest-arch
   jdk_latest_bookworm:
-    name: ghcr.io/basicimg/jdk:latest-bookworm
+    name: jdk/latest/bookworm
     needs:
     - debian_bookworm
     permissions:
@@ -952,7 +952,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/jdk:latest-bookworm,ghcr.io/basicimg/jdk:latest-debian-testing,ghcr.io/basicimg/jdk:17-bookworm,ghcr.io/basicimg/jdk:17-debian-testing
   jdk_latest_bullseye:
-    name: ghcr.io/basicimg/jdk:latest-bullseye
+    name: jdk/latest/bullseye
     needs:
     - debian_bullseye
     permissions:
@@ -980,7 +980,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/jdk:latest-bullseye,ghcr.io/basicimg/jdk:latest-debian-stable,ghcr.io/basicimg/jdk:latest-debian,ghcr.io/basicimg/jdk:17-bullseye,ghcr.io/basicimg/jdk:17-debian-stable,ghcr.io/basicimg/jdk:17-debian,ghcr.io/basicimg/jdk:17
   jdk_latest_buster:
-    name: ghcr.io/basicimg/jdk:latest-buster
+    name: jdk/latest/buster
     needs:
     - debian_buster
     permissions:
@@ -1008,7 +1008,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/jdk:latest-buster,ghcr.io/basicimg/jdk:latest-debian-oldstable,ghcr.io/basicimg/jdk:11-buster,ghcr.io/basicimg/jdk:11-debian-oldstable
   jdk_latest_jammy:
-    name: ghcr.io/basicimg/jdk:latest-jammy
+    name: jdk/latest/jammy
     needs:
     - ubuntu_jammy
     permissions:
@@ -1036,7 +1036,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/jdk:latest-jammy,ghcr.io/basicimg/jdk:latest-ubuntu-lts,ghcr.io/basicimg/jdk:latest-ubuntu,ghcr.io/basicimg/jdk:17-jammy,ghcr.io/basicimg/jdk:17-ubuntu-lts,ghcr.io/basicimg/jdk:17-ubuntu
   jdk_latest_kinetic:
-    name: ghcr.io/basicimg/jdk:latest-kinetic
+    name: jdk/latest/kinetic
     needs:
     - ubuntu_kinetic
     permissions:
@@ -1064,7 +1064,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/jdk:latest-kinetic,ghcr.io/basicimg/jdk:latest-ubuntu-interim,ghcr.io/basicimg/jdk:17-kinetic,ghcr.io/basicimg/jdk:17-ubuntu-interim
   jdk_latest_lunar:
-    name: ghcr.io/basicimg/jdk:17-lunar
+    name: jdk/latest/lunar
     needs:
     - ubuntu_lunar
     permissions:
@@ -1092,7 +1092,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/jdk:17-lunar
   jdk_latest_sid:
-    name: ghcr.io/basicimg/jdk:latest-sid
+    name: jdk/latest/sid
     needs:
     - debian_sid
     permissions:
@@ -1120,7 +1120,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/jdk:latest-sid,ghcr.io/basicimg/jdk:latest-debian-unstable,ghcr.io/basicimg/jdk:19-sid,ghcr.io/basicimg/jdk:19-debian-unstable,ghcr.io/basicimg/jdk:19
   jdk_latest_void-glibc:
-    name: ghcr.io/basicimg/jdk:latest-void-glibc
+    name: jdk/latest/void-glibc
     needs:
     - void_glibc
     permissions:
@@ -1148,7 +1148,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/jdk:latest-void-glibc,ghcr.io/basicimg/jdk:latest-void,ghcr.io/basicimg/jdk:17-void-glibc,ghcr.io/basicimg/jdk:17-void
   jdk_latest_void-musl:
-    name: ghcr.io/basicimg/jdk:latest-void-musl
+    name: jdk/latest/void-musl
     needs:
     - void_musl
     permissions:
@@ -1176,7 +1176,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/jdk:latest-void-musl,ghcr.io/basicimg/jdk:17-void-musl
   nodejs_alpine-3_17:
-    name: ghcr.io/basicimg/nodejs:alpine-3-17
+    name: nodejs/alpine-3.17
     needs:
     - alpine_3_17
     permissions:
@@ -1204,7 +1204,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/nodejs:alpine-3-17,ghcr.io/basicimg/nodejs:alpine
   nodejs_alpine-edge:
-    name: ghcr.io/basicimg/nodejs:alpine-edge
+    name: nodejs/alpine-edge
     needs:
     - alpine_edge
     permissions:
@@ -1232,7 +1232,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/nodejs:alpine-edge
   nodejs_arch:
-    name: ghcr.io/basicimg/nodejs:arch
+    name: nodejs/arch
     needs:
     - arch
     permissions:
@@ -1260,7 +1260,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/nodejs:arch
   nodejs_bookworm:
-    name: ghcr.io/basicimg/nodejs:bookworm
+    name: nodejs/bookworm
     needs:
     - debian_bookworm
     permissions:
@@ -1288,7 +1288,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/nodejs:bookworm,ghcr.io/basicimg/nodejs:debian-testing
   nodejs_bullseye:
-    name: ghcr.io/basicimg/nodejs:bullseye
+    name: nodejs/bullseye
     needs:
     - debian_bullseye
     permissions:
@@ -1316,7 +1316,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/nodejs:bullseye,ghcr.io/basicimg/nodejs:debian-stable,ghcr.io/basicimg/nodejs:debian,ghcr.io/basicimg/nodejs:latest
   nodejs_buster:
-    name: ghcr.io/basicimg/nodejs:buster
+    name: nodejs/buster
     needs:
     - debian_buster
     permissions:
@@ -1344,7 +1344,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/nodejs:buster,ghcr.io/basicimg/nodejs:debian-oldstable
   nodejs_jammy:
-    name: ghcr.io/basicimg/nodejs:jammy
+    name: nodejs/jammy
     needs:
     - ubuntu_jammy
     permissions:
@@ -1372,7 +1372,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/nodejs:jammy,ghcr.io/basicimg/nodejs:ubuntu-lts,ghcr.io/basicimg/nodejs:ubuntu
   nodejs_kinetic:
-    name: ghcr.io/basicimg/nodejs:kinetic
+    name: nodejs/kinetic
     needs:
     - ubuntu_kinetic
     permissions:
@@ -1400,7 +1400,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/nodejs:kinetic,ghcr.io/basicimg/nodejs:ubuntu-interim
   nodejs_lunar:
-    name: ghcr.io/basicimg/nodejs:lunar
+    name: nodejs/lunar
     needs:
     - ubuntu_lunar
     permissions:
@@ -1428,7 +1428,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/nodejs:lunar
   nodejs_sid:
-    name: ghcr.io/basicimg/nodejs:sid
+    name: nodejs/sid
     needs:
     - debian_sid
     permissions:
@@ -1456,7 +1456,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/nodejs:sid,ghcr.io/basicimg/nodejs:debian-unstable
   nodejs_void-glibc:
-    name: ghcr.io/basicimg/nodejs:void-glibc
+    name: nodejs/void-glibc
     needs:
     - void_glibc
     permissions:
@@ -1484,7 +1484,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/nodejs:void-glibc,ghcr.io/basicimg/nodejs:void
   nodejs_void-musl:
-    name: ghcr.io/basicimg/nodejs:void-musl
+    name: nodejs/void-musl
     needs:
     - void_musl
     permissions:
@@ -1512,7 +1512,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/nodejs:void-musl
   python3_alpine-3_17:
-    name: ghcr.io/basicimg/python3:alpine-3-17
+    name: python3/alpine-3.17
     needs:
     - alpine_3_17
     permissions:
@@ -1540,7 +1540,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/python3:alpine-3-17,ghcr.io/basicimg/python3:alpine
   python3_alpine-edge:
-    name: ghcr.io/basicimg/python3:alpine-edge
+    name: python3/alpine-edge
     needs:
     - alpine_edge
     permissions:
@@ -1568,7 +1568,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/python3:alpine-edge
   python3_arch:
-    name: ghcr.io/basicimg/python3:arch
+    name: python3/arch
     needs:
     - arch
     permissions:
@@ -1596,7 +1596,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/python3:arch
   python3_bookworm:
-    name: ghcr.io/basicimg/python3:bookworm
+    name: python3/bookworm
     needs:
     - debian_bookworm
     permissions:
@@ -1624,7 +1624,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/python3:bookworm,ghcr.io/basicimg/python3:debian-testing
   python3_bullseye:
-    name: ghcr.io/basicimg/python3:bullseye
+    name: python3/bullseye
     needs:
     - debian_bullseye
     permissions:
@@ -1652,7 +1652,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/python3:bullseye,ghcr.io/basicimg/python3:debian-stable,ghcr.io/basicimg/python3:debian,ghcr.io/basicimg/python3:latest
   python3_buster:
-    name: ghcr.io/basicimg/python3:buster
+    name: python3/buster
     needs:
     - debian_buster
     permissions:
@@ -1680,7 +1680,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/python3:buster,ghcr.io/basicimg/python3:debian-oldstable
   python3_jammy:
-    name: ghcr.io/basicimg/python3:jammy
+    name: python3/jammy
     needs:
     - ubuntu_jammy
     permissions:
@@ -1708,7 +1708,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/python3:jammy,ghcr.io/basicimg/python3:ubuntu-lts,ghcr.io/basicimg/python3:ubuntu
   python3_kinetic:
-    name: ghcr.io/basicimg/python3:kinetic
+    name: python3/kinetic
     needs:
     - ubuntu_kinetic
     permissions:
@@ -1736,7 +1736,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/python3:kinetic,ghcr.io/basicimg/python3:ubuntu-interim
   python3_lunar:
-    name: ghcr.io/basicimg/python3:lunar
+    name: python3/lunar
     needs:
     - ubuntu_lunar
     permissions:
@@ -1764,7 +1764,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/python3:lunar
   python3_sid:
-    name: ghcr.io/basicimg/python3:sid
+    name: python3/sid
     needs:
     - debian_sid
     permissions:
@@ -1792,7 +1792,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/python3:sid,ghcr.io/basicimg/python3:debian-unstable
   python3_void-glibc:
-    name: ghcr.io/basicimg/python3:void-glibc
+    name: python3/void-glibc
     needs:
     - void_glibc
     permissions:
@@ -1820,7 +1820,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/python3:void-glibc,ghcr.io/basicimg/python3:void
   python3_void-musl:
-    name: ghcr.io/basicimg/python3:void-musl
+    name: python3/void-musl
     needs:
     - void_musl
     permissions:
@@ -1848,7 +1848,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/python3:void-musl
   redis_alpine-3_17:
-    name: ghcr.io/basicimg/redis:alpine-3-17
+    name: redis/alpine-3.17
     needs:
     - alpine_3_17
     permissions:
@@ -1876,7 +1876,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/redis:alpine-3-17,ghcr.io/basicimg/redis:alpine
   redis_alpine-edge:
-    name: ghcr.io/basicimg/redis:alpine-edge
+    name: redis/alpine-edge
     needs:
     - alpine_edge
     permissions:
@@ -1904,7 +1904,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/redis:alpine-edge
   redis_arch:
-    name: ghcr.io/basicimg/redis:arch
+    name: redis/arch
     needs:
     - arch
     permissions:
@@ -1932,7 +1932,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/redis:arch
   redis_bookworm:
-    name: ghcr.io/basicimg/redis:bookworm
+    name: redis/bookworm
     needs:
     - debian_bookworm
     permissions:
@@ -1960,7 +1960,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/redis:bookworm,ghcr.io/basicimg/redis:debian-testing
   redis_bullseye:
-    name: ghcr.io/basicimg/redis:bullseye
+    name: redis/bullseye
     needs:
     - debian_bullseye
     permissions:
@@ -1988,7 +1988,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/redis:bullseye,ghcr.io/basicimg/redis:debian-stable,ghcr.io/basicimg/redis:debian,ghcr.io/basicimg/redis:latest
   redis_buster:
-    name: ghcr.io/basicimg/redis:buster
+    name: redis/buster
     needs:
     - debian_buster
     permissions:
@@ -2016,7 +2016,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/redis:buster,ghcr.io/basicimg/redis:debian-oldstable
   redis_jammy:
-    name: ghcr.io/basicimg/redis:jammy
+    name: redis/jammy
     needs:
     - ubuntu_jammy
     permissions:
@@ -2044,7 +2044,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/redis:jammy,ghcr.io/basicimg/redis:ubuntu-lts,ghcr.io/basicimg/redis:ubuntu
   redis_kinetic:
-    name: ghcr.io/basicimg/redis:kinetic
+    name: redis/kinetic
     needs:
     - ubuntu_kinetic
     permissions:
@@ -2072,7 +2072,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/redis:kinetic,ghcr.io/basicimg/redis:ubuntu-interim
   redis_lunar:
-    name: ghcr.io/basicimg/redis:lunar
+    name: redis/lunar
     needs:
     - ubuntu_lunar
     permissions:
@@ -2100,7 +2100,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/redis:lunar
   redis_sid:
-    name: ghcr.io/basicimg/redis:sid
+    name: redis/sid
     needs:
     - debian_sid
     permissions:
@@ -2128,7 +2128,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/redis:sid,ghcr.io/basicimg/redis:debian-unstable
   redis_void-glibc:
-    name: ghcr.io/basicimg/redis:void-glibc
+    name: redis/void-glibc
     needs:
     - void_glibc
     permissions:
@@ -2156,7 +2156,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/redis:void-glibc,ghcr.io/basicimg/redis:void
   redis_void-musl:
-    name: ghcr.io/basicimg/redis:void-musl
+    name: redis/void-musl
     needs:
     - void_musl
     permissions:
@@ -2184,7 +2184,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/redis:void-musl
   ubuntu_jammy:
-    name: ghcr.io/basicimg/ubuntu:jammy
+    name: ubuntu/jammy
     needs:
     - bootstrap
     permissions:
@@ -2212,7 +2212,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/ubuntu:jammy,ghcr.io/basicimg/ubuntu:22-04,ghcr.io/basicimg/ubuntu:lts,ghcr.io/basicimg/ubuntu:latest
   ubuntu_kinetic:
-    name: ghcr.io/basicimg/ubuntu:kinetic
+    name: ubuntu/kinetic
     needs:
     - bootstrap
     permissions:
@@ -2240,7 +2240,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/ubuntu:kinetic,ghcr.io/basicimg/ubuntu:22-10,ghcr.io/basicimg/ubuntu:interim
   ubuntu_lunar:
-    name: ghcr.io/basicimg/ubuntu:lunar
+    name: ubuntu/lunar
     needs:
     - bootstrap
     permissions:
@@ -2268,7 +2268,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/ubuntu:lunar,ghcr.io/basicimg/ubuntu:23-04
   void_glibc:
-    name: ghcr.io/basicimg/void:glibc
+    name: void/glibc
     needs:
     - bootstrap
     permissions:
@@ -2296,7 +2296,7 @@ jobs:
         push: true
         tags: ghcr.io/basicimg/void:glibc,ghcr.io/basicimg/void:latest
   void_musl:
-    name: ghcr.io/basicimg/void:musl
+    name: void/musl
     needs:
     - bootstrap
     permissions:
