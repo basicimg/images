@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/opt/venv/bin/python3
 
 import sys
 import yaml
