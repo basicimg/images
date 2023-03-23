@@ -6,8 +6,9 @@ RUN --mount=type=cache,target=/system/var/cache,sharing=locked \
     --repository https://dl-cdn.alpinelinux.org/alpine/edge/community/ \
     --repository https://dl-cdn.alpinelinux.org/alpine/edge/testing/ \
     --allow-untrusted --root /system --initdb \
-    add alpine-base wget debootstrap binutils zstd
-RUN mkdir -p /system/system /system/tmp
+    add alpine-base wget debootstrap binutils zstd pacman arch-install-scripts
+RUN mkdir -p /system/system
+RUN mkdir -m 1777 -p /system/tmp
 COPY scripts/* /usr/local/bin/
 RUN chmod +x /usr/local/bin/basicimg-*
 RUN basicimg-init-system "bootstrap"

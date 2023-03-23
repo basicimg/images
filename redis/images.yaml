@@ -60,3 +60,8 @@ images:
   - ghcr.io/basicimg/void:musl
   tags:
   - ghcr.io/basicimg/redis:void-musl
+- path: redis/arch
+  dependencies:
+  - ghcr.io/basicimg/arch:latest
+  tags:
+  - ghcr.io/basicimg/redis:arch

@@ -8,4 +8,3 @@ echo "$1" > /system/basicimg/os
 if [ "$#" -eq 2 ]; then
     echo "$2" > /system/basicimg/app
 fi
-basicimg-hello

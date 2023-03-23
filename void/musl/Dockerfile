@@ -18,3 +18,4 @@ COPY --from=rootfs /system/ /
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 SHELL [ "/bin/sh", "-c" ]
 CMD [ "/bin/sh" ]
+RUN basicimg-hello

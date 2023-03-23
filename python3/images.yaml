@@ -60,3 +60,8 @@ images:
   - ghcr.io/basicimg/void:musl
   tags:
   - ghcr.io/basicimg/python3:void-musl
+- path: python3/arch
+  dependencies:
+  - ghcr.io/basicimg/arch:latest
+  tags:
+  - ghcr.io/basicimg/python3:arch

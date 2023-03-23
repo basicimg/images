@@ -9,6 +9,9 @@ images:
 - path: bootstrap
   tags:
   - ghcr.io/basicimg/bootstrap:latest
+- path: arch
+  tags:
+  - ghcr.io/basicimg/arch:latest
 - path: basicimg-actions-generator
   dependencies:
   - ghcr.io/basicimg/python3:latest
