@@ -14,3 +14,9 @@ images:
   - ghcr.io/basicimg/ubuntu:kinetic
   - ghcr.io/basicimg/ubuntu:22-10
   - ghcr.io/basicimg/ubuntu:interim
+- path: ubuntu/lunar
+  dependencies:
+  - ghcr.io/basicimg/bootstrap:latest
+  tags:
+  - ghcr.io/basicimg/ubuntu:lunar
+  - ghcr.io/basicimg/ubuntu:23-04

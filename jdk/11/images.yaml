@@ -37,6 +37,11 @@ images:
   tags:
   - ghcr.io/basicimg/jdk:11-kinetic
   - ghcr.io/basicimg/jdk:11-ubuntu-interim
+- path: jdk/11/lunar
+  dependencies:
+  - ghcr.io/basicimg/ubuntu:lunar
+  tags:
+  - ghcr.io/basicimg/jdk:11-lunar
 - path: jdk/11/void-glibc
   dependencies:
   - ghcr.io/basicimg/void:glibc

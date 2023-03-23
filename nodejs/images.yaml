@@ -49,6 +49,11 @@ images:
   tags:
   - ghcr.io/basicimg/nodejs:kinetic
   - ghcr.io/basicimg/nodejs:ubuntu-interim
+- path: nodejs/lunar
+  dependencies:
+  - ghcr.io/basicimg/ubuntu:lunar
+  tags:
+  - ghcr.io/basicimg/nodejs:lunar
 - path: nodejs/void-glibc
   dependencies:
   - ghcr.io/basicimg/void:glibc

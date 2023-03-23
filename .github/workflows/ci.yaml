@@ -362,7 +362,7 @@ jobs:
         file: ./jdk/11/bullseye/Dockerfile
         labels: org.opencontainers.image.source=https://github.com/basicimg/images
         push: true
-        tags: ghcr.io/basicimg/jdk:11-bullseye,ghcr.io/basicimg/jdk:11-debian-stable,ghcr.io/basicimg/jdk:11-debian
+        tags: ghcr.io/basicimg/jdk:11-bullseye,ghcr.io/basicimg/jdk:11-debian-stable,ghcr.io/basicimg/jdk:11-debian,ghcr.io/basicimg/jdk:11
   jdk_11_jammy:
     name: ghcr.io/basicimg/jdk:11-jammy
     needs:
@@ -419,6 +419,34 @@ jobs:
         labels: org.opencontainers.image.source=https://github.com/basicimg/images
         push: true
         tags: ghcr.io/basicimg/jdk:11-kinetic,ghcr.io/basicimg/jdk:11-ubuntu-interim
+  jdk_11_lunar:
+    name: ghcr.io/basicimg/jdk:11-lunar
+    needs:
+    - ubuntu_lunar
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./jdk/11/lunar/Dockerfile
+        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        push: true
+        tags: ghcr.io/basicimg/jdk:11-lunar
   jdk_11_sid:
     name: ghcr.io/basicimg/jdk:11-sid
     needs:
@@ -531,62 +559,6 @@ jobs:
         labels: org.opencontainers.image.source=https://github.com/basicimg/images
         push: true
         tags: ghcr.io/basicimg/jdk:17-arch
-  jdk_17_jammy:
-    name: ghcr.io/basicimg/jdk:17-jammy
-    needs:
-    - ubuntu_jammy
-    permissions:
-      contents: read
-      packages: write
-    runs-on: ubuntu-22.04
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-    - name: Setup Docker Buildx
-      uses: docker/setup-buildx-action@v2
-    - name: Login to container registry
-      uses: docker/login-action@v2
-      with:
-        password: ${{ secrets.GITHUB_TOKEN }}
-        registry: ghcr.io
-        username: ${{ github.actor }}
-    - name: Build and push image
-      uses: docker/build-push-action@v4
-      with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/17/jammy/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
-        push: true
-        tags: ghcr.io/basicimg/jdk:17-jammy,ghcr.io/basicimg/jdk:17-ubuntu-lts,ghcr.io/basicimg/jdk:17-ubuntu
-  jdk_17_kinetic:
-    name: ghcr.io/basicimg/jdk:17-kinetic
-    needs:
-    - ubuntu_kinetic
-    permissions:
-      contents: read
-      packages: write
-    runs-on: ubuntu-22.04
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-    - name: Setup Docker Buildx
-      uses: docker/setup-buildx-action@v2
-    - name: Login to container registry
-      uses: docker/login-action@v2
-      with:
-        password: ${{ secrets.GITHUB_TOKEN }}
-        registry: ghcr.io
-        username: ${{ github.actor }}
-    - name: Build and push image
-      uses: docker/build-push-action@v4
-      with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/17/kinetic/Dockerfile
-        labels: org.opencontainers.image.source=https://github.com/basicimg/images
-        push: true
-        tags: ghcr.io/basicimg/jdk:17-kinetic,ghcr.io/basicimg/jdk:17-ubuntu-interim
   jdk_17_sid:
     name: ghcr.io/basicimg/jdk:17-sid
     needs:
@@ -726,7 +698,7 @@ jobs:
         file: ./jdk/8/jammy/Dockerfile
         labels: org.opencontainers.image.source=https://github.com/basicimg/images
         push: true
-        tags: ghcr.io/basicimg/jdk:8-jammy,ghcr.io/basicimg/jdk:8-ubuntu-lts,ghcr.io/basicimg/jdk:8-ubuntu
+        tags: ghcr.io/basicimg/jdk:8-jammy,ghcr.io/basicimg/jdk:8-ubuntu-lts,ghcr.io/basicimg/jdk:8-ubuntu,ghcr.io/basicimg/jdk:8
   jdk_8_kinetic:
     name: ghcr.io/basicimg/jdk:8-kinetic
     needs:
@@ -755,6 +727,34 @@ jobs:
         labels: org.opencontainers.image.source=https://github.com/basicimg/images
         push: true
         tags: ghcr.io/basicimg/jdk:8-kinetic,ghcr.io/basicimg/jdk:8-ubuntu-interim
+  jdk_8_lunar:
+    name: ghcr.io/basicimg/jdk:8-lunar
+    needs:
+    - ubuntu_lunar
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./jdk/8/lunar/Dockerfile
+        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        push: true
+        tags: ghcr.io/basicimg/jdk:8-lunar
   jdk_8_sid:
     name: ghcr.io/basicimg/jdk:8-sid
     needs:
@@ -978,7 +978,7 @@ jobs:
         file: ./jdk/latest/bullseye/Dockerfile
         labels: org.opencontainers.image.source=https://github.com/basicimg/images
         push: true
-        tags: ghcr.io/basicimg/jdk:latest-bullseye,ghcr.io/basicimg/jdk:latest-debian-stable,ghcr.io/basicimg/jdk:latest-debian,ghcr.io/basicimg/jdk:17-bullseye,ghcr.io/basicimg/jdk:17-debian-stable,ghcr.io/basicimg/jdk:17-debian
+        tags: ghcr.io/basicimg/jdk:latest-bullseye,ghcr.io/basicimg/jdk:latest-debian-stable,ghcr.io/basicimg/jdk:latest-debian,ghcr.io/basicimg/jdk:17-bullseye,ghcr.io/basicimg/jdk:17-debian-stable,ghcr.io/basicimg/jdk:17-debian,ghcr.io/basicimg/jdk:17
   jdk_latest_buster:
     name: ghcr.io/basicimg/jdk:latest-buster
     needs:
@@ -1034,7 +1034,7 @@ jobs:
         file: ./jdk/latest/jammy/Dockerfile
         labels: org.opencontainers.image.source=https://github.com/basicimg/images
         push: true
-        tags: ghcr.io/basicimg/jdk:latest-jammy,ghcr.io/basicimg/jdk:latest-ubuntu-lts,ghcr.io/basicimg/jdk:latest-ubuntu,ghcr.io/basicimg/jdk:19-jammy,ghcr.io/basicimg/jdk:19-ubuntu-lts,ghcr.io/basicimg/jdk:19-ubuntu
+        tags: ghcr.io/basicimg/jdk:latest-jammy,ghcr.io/basicimg/jdk:latest-ubuntu-lts,ghcr.io/basicimg/jdk:latest-ubuntu,ghcr.io/basicimg/jdk:17-jammy,ghcr.io/basicimg/jdk:17-ubuntu-lts,ghcr.io/basicimg/jdk:17-ubuntu
   jdk_latest_kinetic:
     name: ghcr.io/basicimg/jdk:latest-kinetic
     needs:
@@ -1062,7 +1062,35 @@ jobs:
         file: ./jdk/latest/kinetic/Dockerfile
         labels: org.opencontainers.image.source=https://github.com/basicimg/images
         push: true
-        tags: ghcr.io/basicimg/jdk:latest-kinetic,ghcr.io/basicimg/jdk:latest-ubuntu-interim,ghcr.io/basicimg/jdk:19-kinetic,ghcr.io/basicimg/jdk:19-ubuntu-interim
+        tags: ghcr.io/basicimg/jdk:latest-kinetic,ghcr.io/basicimg/jdk:latest-ubuntu-interim,ghcr.io/basicimg/jdk:17-kinetic,ghcr.io/basicimg/jdk:17-ubuntu-interim
+  jdk_latest_lunar:
+    name: ghcr.io/basicimg/jdk:17-lunar
+    needs:
+    - ubuntu_lunar
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./jdk/latest/lunar/Dockerfile
+        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        push: true
+        tags: ghcr.io/basicimg/jdk:17-lunar
   jdk_latest_sid:
     name: ghcr.io/basicimg/jdk:latest-sid
     needs:
@@ -1090,7 +1118,7 @@ jobs:
         file: ./jdk/latest/sid/Dockerfile
         labels: org.opencontainers.image.source=https://github.com/basicimg/images
         push: true
-        tags: ghcr.io/basicimg/jdk:latest-sid,ghcr.io/basicimg/jdk:latest-debian-unstable,ghcr.io/basicimg/jdk:19-sid,ghcr.io/basicimg/jdk:19-debian-unstable
+        tags: ghcr.io/basicimg/jdk:latest-sid,ghcr.io/basicimg/jdk:latest-debian-unstable,ghcr.io/basicimg/jdk:19-sid,ghcr.io/basicimg/jdk:19-debian-unstable,ghcr.io/basicimg/jdk:19
   jdk_latest_void-glibc:
     name: ghcr.io/basicimg/jdk:latest-void-glibc
     needs:
@@ -1371,6 +1399,34 @@ jobs:
         labels: org.opencontainers.image.source=https://github.com/basicimg/images
         push: true
         tags: ghcr.io/basicimg/nodejs:kinetic,ghcr.io/basicimg/nodejs:ubuntu-interim
+  nodejs_lunar:
+    name: ghcr.io/basicimg/nodejs:lunar
+    needs:
+    - ubuntu_lunar
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./nodejs/lunar/Dockerfile
+        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        push: true
+        tags: ghcr.io/basicimg/nodejs:lunar
   nodejs_sid:
     name: ghcr.io/basicimg/nodejs:sid
     needs:
@@ -1679,6 +1735,34 @@ jobs:
         labels: org.opencontainers.image.source=https://github.com/basicimg/images
         push: true
         tags: ghcr.io/basicimg/python3:kinetic,ghcr.io/basicimg/python3:ubuntu-interim
+  python3_lunar:
+    name: ghcr.io/basicimg/python3:lunar
+    needs:
+    - ubuntu_lunar
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./python3/lunar/Dockerfile
+        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        push: true
+        tags: ghcr.io/basicimg/python3:lunar
   python3_sid:
     name: ghcr.io/basicimg/python3:sid
     needs:
@@ -1987,6 +2071,34 @@ jobs:
         labels: org.opencontainers.image.source=https://github.com/basicimg/images
         push: true
         tags: ghcr.io/basicimg/redis:kinetic,ghcr.io/basicimg/redis:ubuntu-interim
+  redis_lunar:
+    name: ghcr.io/basicimg/redis:lunar
+    needs:
+    - ubuntu_lunar
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./redis/lunar/Dockerfile
+        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        push: true
+        tags: ghcr.io/basicimg/redis:lunar
   redis_sid:
     name: ghcr.io/basicimg/redis:sid
     needs:
@@ -2127,6 +2239,34 @@ jobs:
         labels: org.opencontainers.image.source=https://github.com/basicimg/images
         push: true
         tags: ghcr.io/basicimg/ubuntu:kinetic,ghcr.io/basicimg/ubuntu:22-10,ghcr.io/basicimg/ubuntu:interim
+  ubuntu_lunar:
+    name: ghcr.io/basicimg/ubuntu:lunar
+    needs:
+    - bootstrap
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./ubuntu/lunar/Dockerfile
+        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        push: true
+        tags: ghcr.io/basicimg/ubuntu:lunar,ghcr.io/basicimg/ubuntu:23-04
   void_glibc:
     name: ghcr.io/basicimg/void:glibc
     needs:

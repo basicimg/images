@@ -67,6 +67,12 @@ images:
   - ghcr.io/basicimg/jdk:latest-ubuntu-interim
   - ghcr.io/basicimg/jdk:17-kinetic
   - ghcr.io/basicimg/jdk:17-ubuntu-interim
+- path: jdk/latest/lunar
+  dependencies:
+  - ghcr.io/basicimg/ubuntu:lunar
+  tags:
+  - ghcr.io/basicimg/jdk:latest-lunar
+  - ghcr.io/basicimg/jdk:19-lunar
 - path: jdk/latest/void-glibc
   dependencies:
   - ghcr.io/basicimg/void:glibc

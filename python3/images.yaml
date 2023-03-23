@@ -49,6 +49,11 @@ images:
   tags:
   - ghcr.io/basicimg/python3:kinetic
   - ghcr.io/basicimg/python3:ubuntu-interim
+- path: python3/lunar
+  dependencies:
+  - ghcr.io/basicimg/ubuntu:lunar
+  tags:
+  - ghcr.io/basicimg/python3:lunar
 - path: python3/void-glibc
   dependencies:
   - ghcr.io/basicimg/void:glibc

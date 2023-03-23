@@ -49,6 +49,11 @@ images:
   tags:
   - ghcr.io/basicimg/redis:kinetic
   - ghcr.io/basicimg/redis:ubuntu-interim
+- path: redis/lunar
+  dependencies:
+  - ghcr.io/basicimg/ubuntu:lunar
+  tags:
+  - ghcr.io/basicimg/redis:lunar
 - path: redis/void-glibc
   dependencies:
   - ghcr.io/basicimg/void:glibc

@@ -30,6 +30,11 @@ images:
   tags:
   - ghcr.io/basicimg/jdk:8-kinetic
   - ghcr.io/basicimg/jdk:8-ubuntu-interim
+- path: jdk/8/lunar
+  dependencies:
+  - ghcr.io/basicimg/ubuntu:lunar
+  tags:
+  - ghcr.io/basicimg/jdk:8-lunar
 - path: jdk/8/void-glibc
   dependencies:
   - ghcr.io/basicimg/void:glibc
