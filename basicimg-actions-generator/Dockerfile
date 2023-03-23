@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 FROM ghcr.io/basicimg/python3
-RUN basicimg-install python3-yaml
+RUN pip install pyyaml
 RUN mkdir /app
 WORKDIR /app
 COPY basicimg-actions-generator/ .
