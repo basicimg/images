@@ -4,7 +4,7 @@ RUN --mount=type=cache,target=/system/var/cache,sharing=locked \
     apk \
     --repository https://dl-cdn.alpinelinux.org/alpine/edge/main/ \
     --allow-untrusted --root /system --initdb \
-    add alpine-base
+    add alpine-base alpine-sdk
 RUN basicimg-init-system "Alpine Edge"
 COPY alpine/repositories /system/etc/apk/repositories
 COPY alpine/edge/repositories .

@@ -10,7 +10,7 @@ RUN pacman -U --noconfirm --assume-installed pacman archlinux-keyring-20230320-1
 RUN pacman-key --gpgdir /system/etc/pacman.d/gnupg --init
 RUN pacman-key --gpgdir /system/etc/pacman.d/gnupg --populate
 RUN --mount=type=cache,target=/system/var/cache,sharing=locked \
-    pacman --config=pacman.conf -r /system -Sy --noconfirm base
+    pacman --config=pacman.conf -r /system -Sy --noconfirm base base-devel
 RUN basicimg-init-system "Arch Linux"
 
 FROM scratch

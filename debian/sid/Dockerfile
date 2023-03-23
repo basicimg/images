@@ -2,7 +2,7 @@
 FROM ghcr.io/basicimg/bootstrap:latest AS bootstrap
 RUN --mount=type=cache,target=/system/var/cache,sharing=locked \
     --mount=type=cache,target=/system/var/lib/apt,sharing=locked \
-    debootstrap --variant=minbase --components=main,contrib sid /system https://deb.debian.org/debian/
+    debootstrap --variant=minbase --components=main,contrib --include=build-essential sid /system https://deb.debian.org/debian/
 RUN basicimg-init-system "Debian Sid"
 
 FROM scratch

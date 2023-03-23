@@ -4,7 +4,7 @@ RUN --mount=type=cache,target=/system/var/cache,sharing=locked \
     apk \
     --repository https://dl-cdn.alpinelinux.org/alpine/v3.17/main/ \
     --allow-untrusted --root /system --initdb \
-    add alpine-base
+    add alpine-base alpine-sdk
 RUN basicimg-init-system "Alpine 3.17"
 COPY alpine/repositories /system/etc/apk/repositories
 COPY alpine/3.17/repositories .
