@@ -59,6 +59,8 @@ jobs:
         tags: ghcr.io/basicimg/alpine:edge
   arch:
     name: ghcr.io/basicimg/arch:latest
+    needs:
+    - bootstrap
     permissions:
       contents: read
       packages: write

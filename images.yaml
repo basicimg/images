@@ -10,6 +10,8 @@ images:
   tags:
   - ghcr.io/basicimg/bootstrap:latest
 - path: arch
+  dependencies:
+  - ghcr.io/basicimg/bootstrap:latest
   tags:
   - ghcr.io/basicimg/arch:latest
 - path: basicimg-actions-generator
