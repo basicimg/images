@@ -5,17 +5,26 @@ images:
   tags:
   - ghcr.io/basicimg/redis:alpine-3-17
   - ghcr.io/basicimg/redis:alpine
+  integration:
+    dockerArgs: -p 6379:6379
+    test: redis-cli info
 - path: redis/alpine-edge
   dependencies:
   - ghcr.io/basicimg/alpine:edge
   tags:
   - ghcr.io/basicimg/redis:alpine-edge
+  integration:
+    dockerArgs: -p 6379:6379
+    test: redis-cli info
 - path: redis/bookworm
   dependencies:
   - ghcr.io/basicimg/debian:bookworm
   tags:
   - ghcr.io/basicimg/redis:bookworm
   - ghcr.io/basicimg/redis:debian-testing
+  integration:
+    dockerArgs: -p 6379:6379
+    test: redis-cli info
 - path: redis/bullseye
   dependencies:
   - ghcr.io/basicimg/debian:bullseye
@@ -24,18 +33,27 @@ images:
   - ghcr.io/basicimg/redis:debian-stable
   - ghcr.io/basicimg/redis:debian
   - ghcr.io/basicimg/redis:latest
+  integration:
+    dockerArgs: -p 6379:6379
+    test: redis-cli info
 - path: redis/buster
   dependencies:
   - ghcr.io/basicimg/debian:buster
   tags:
   - ghcr.io/basicimg/redis:buster
   - ghcr.io/basicimg/redis:debian-oldstable
+  integration:
+    dockerArgs: -p 6379:6379
+    test: redis-cli info
 - path: redis/sid
   dependencies:
   - ghcr.io/basicimg/debian:sid
   tags:
   - ghcr.io/basicimg/redis:sid
   - ghcr.io/basicimg/redis:debian-unstable
+  integration:
+    dockerArgs: -p 6379:6379
+    test: redis-cli info
 - path: redis/jammy
   dependencies:
   - ghcr.io/basicimg/ubuntu:jammy
@@ -43,30 +61,48 @@ images:
   - ghcr.io/basicimg/redis:jammy
   - ghcr.io/basicimg/redis:ubuntu-lts
   - ghcr.io/basicimg/redis:ubuntu
+  integration:
+    dockerArgs: -p 6379:6379
+    test: redis-cli info
 - path: redis/kinetic
   dependencies:
   - ghcr.io/basicimg/ubuntu:kinetic
   tags:
   - ghcr.io/basicimg/redis:kinetic
   - ghcr.io/basicimg/redis:ubuntu-interim
+  integration:
+    dockerArgs: -p 6379:6379
+    test: redis-cli info
 - path: redis/lunar
   dependencies:
   - ghcr.io/basicimg/ubuntu:lunar
   tags:
   - ghcr.io/basicimg/redis:lunar
+  integration:
+    dockerArgs: -p 6379:6379
+    test: redis-cli info
 - path: redis/void-glibc
   dependencies:
   - ghcr.io/basicimg/void:glibc
   tags:
   - ghcr.io/basicimg/redis:void-glibc
   - ghcr.io/basicimg/redis:void
+  integration:
+    dockerArgs: -p 6379:6379
+    test: redis-cli info
 - path: redis/void-musl
   dependencies:
   - ghcr.io/basicimg/void:musl
   tags:
   - ghcr.io/basicimg/redis:void-musl
+  integration:
+    dockerArgs: -p 6379:6379
+    test: redis-cli info
 - path: redis/arch
   dependencies:
   - ghcr.io/basicimg/arch:latest
   tags:
   - ghcr.io/basicimg/redis:arch
+  integration:
+    dockerArgs: -p 6379:6379
+    test: redis-cli info

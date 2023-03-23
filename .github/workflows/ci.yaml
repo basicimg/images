@@ -3706,6 +3706,10 @@ jobs:
         tags: ghcr.io/basicimg/redis:alpine-3-17,ghcr.io/basicimg/redis:alpine
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/redis:alpine-3-17 basicimg-hello
+    - name: Run integration test
+      run: docker run -d -p 6379:6379 -n main ghcr.io/basicimg/redis:alpine-3-17 &&
+        docker run --network host --rm ghcr.io/basicimg/redis:alpine-3-17 /bin/sh
+        -c 'redis-cli info' && docker rm -f main
   redis_alpine-edge:
     name: redis/alpine-edge
     needs:
@@ -3742,6 +3746,10 @@ jobs:
         tags: ghcr.io/basicimg/redis:alpine-edge
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/redis:alpine-edge basicimg-hello
+    - name: Run integration test
+      run: docker run -d -p 6379:6379 -n main ghcr.io/basicimg/redis:alpine-edge &&
+        docker run --network host --rm ghcr.io/basicimg/redis:alpine-edge /bin/sh
+        -c 'redis-cli info' && docker rm -f main
   redis_arch:
     name: redis/arch
     needs:
@@ -3778,6 +3786,10 @@ jobs:
         tags: ghcr.io/basicimg/redis:arch
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/redis:arch basicimg-hello
+    - name: Run integration test
+      run: docker run -d -p 6379:6379 -n main ghcr.io/basicimg/redis:arch && docker
+        run --network host --rm ghcr.io/basicimg/redis:arch /bin/sh -c 'redis-cli
+        info' && docker rm -f main
   redis_bookworm:
     name: redis/bookworm
     needs:
@@ -3814,6 +3826,10 @@ jobs:
         tags: ghcr.io/basicimg/redis:bookworm,ghcr.io/basicimg/redis:debian-testing
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/redis:bookworm basicimg-hello
+    - name: Run integration test
+      run: docker run -d -p 6379:6379 -n main ghcr.io/basicimg/redis:bookworm && docker
+        run --network host --rm ghcr.io/basicimg/redis:bookworm /bin/sh -c 'redis-cli
+        info' && docker rm -f main
   redis_bullseye:
     name: redis/bullseye
     needs:
@@ -3850,6 +3866,10 @@ jobs:
         tags: ghcr.io/basicimg/redis:bullseye,ghcr.io/basicimg/redis:debian-stable,ghcr.io/basicimg/redis:debian,ghcr.io/basicimg/redis:latest
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/redis:bullseye basicimg-hello
+    - name: Run integration test
+      run: docker run -d -p 6379:6379 -n main ghcr.io/basicimg/redis:bullseye && docker
+        run --network host --rm ghcr.io/basicimg/redis:bullseye /bin/sh -c 'redis-cli
+        info' && docker rm -f main
   redis_buster:
     name: redis/buster
     needs:
@@ -3886,6 +3906,10 @@ jobs:
         tags: ghcr.io/basicimg/redis:buster,ghcr.io/basicimg/redis:debian-oldstable
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/redis:buster basicimg-hello
+    - name: Run integration test
+      run: docker run -d -p 6379:6379 -n main ghcr.io/basicimg/redis:buster && docker
+        run --network host --rm ghcr.io/basicimg/redis:buster /bin/sh -c 'redis-cli
+        info' && docker rm -f main
   redis_jammy:
     name: redis/jammy
     needs:
@@ -3922,6 +3946,10 @@ jobs:
         tags: ghcr.io/basicimg/redis:jammy,ghcr.io/basicimg/redis:ubuntu-lts,ghcr.io/basicimg/redis:ubuntu
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/redis:jammy basicimg-hello
+    - name: Run integration test
+      run: docker run -d -p 6379:6379 -n main ghcr.io/basicimg/redis:jammy && docker
+        run --network host --rm ghcr.io/basicimg/redis:jammy /bin/sh -c 'redis-cli
+        info' && docker rm -f main
   redis_kinetic:
     name: redis/kinetic
     needs:
@@ -3958,6 +3986,10 @@ jobs:
         tags: ghcr.io/basicimg/redis:kinetic,ghcr.io/basicimg/redis:ubuntu-interim
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/redis:kinetic basicimg-hello
+    - name: Run integration test
+      run: docker run -d -p 6379:6379 -n main ghcr.io/basicimg/redis:kinetic && docker
+        run --network host --rm ghcr.io/basicimg/redis:kinetic /bin/sh -c 'redis-cli
+        info' && docker rm -f main
   redis_lunar:
     name: redis/lunar
     needs:
@@ -3994,6 +4026,10 @@ jobs:
         tags: ghcr.io/basicimg/redis:lunar
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/redis:lunar basicimg-hello
+    - name: Run integration test
+      run: docker run -d -p 6379:6379 -n main ghcr.io/basicimg/redis:lunar && docker
+        run --network host --rm ghcr.io/basicimg/redis:lunar /bin/sh -c 'redis-cli
+        info' && docker rm -f main
   redis_sid:
     name: redis/sid
     needs:
@@ -4030,6 +4066,10 @@ jobs:
         tags: ghcr.io/basicimg/redis:sid,ghcr.io/basicimg/redis:debian-unstable
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/redis:sid basicimg-hello
+    - name: Run integration test
+      run: docker run -d -p 6379:6379 -n main ghcr.io/basicimg/redis:sid && docker
+        run --network host --rm ghcr.io/basicimg/redis:sid /bin/sh -c 'redis-cli info'
+        && docker rm -f main
   redis_void-glibc:
     name: redis/void-glibc
     needs:
@@ -4066,6 +4106,10 @@ jobs:
         tags: ghcr.io/basicimg/redis:void-glibc,ghcr.io/basicimg/redis:void
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/redis:void-glibc basicimg-hello
+    - name: Run integration test
+      run: docker run -d -p 6379:6379 -n main ghcr.io/basicimg/redis:void-glibc &&
+        docker run --network host --rm ghcr.io/basicimg/redis:void-glibc /bin/sh -c
+        'redis-cli info' && docker rm -f main
   redis_void-musl:
     name: redis/void-musl
     needs:
@@ -4102,6 +4146,10 @@ jobs:
         tags: ghcr.io/basicimg/redis:void-musl
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/redis:void-musl basicimg-hello
+    - name: Run integration test
+      run: docker run -d -p 6379:6379 -n main ghcr.io/basicimg/redis:void-musl &&
+        docker run --network host --rm ghcr.io/basicimg/redis:void-musl /bin/sh -c
+        'redis-cli info' && docker rm -f main
   ruby_alpine-3_17:
     name: ruby/alpine-3.17
     needs:

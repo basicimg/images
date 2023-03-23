@@ -77,6 +77,20 @@ def image_to_job(image):
             "name": "Run test",
             "run": f"docker run --rm {tags[0]} /bin/sh -c '{test}'"
         })
+    integration = None
+    if "integration" in image:
+        integration = image["integration"]
+        integrationImage = tags[0]
+        if "image" in integration:
+            integrationImage = integration["image"]
+        integrationTest = integration["test"]
+        dockerArgs = ""
+        if "dockerArgs" in integration:
+            dockerArgs = integration["dockerArgs"]
+        steps.append({
+            "name": "Run integration test",
+            "run": f"docker run -d {dockerArgs} -n main {tags[0]} && docker run --network host --rm {integrationImage} /bin/sh -c '{integrationTest}' && docker rm -f main"
+        })
     job = {
         "name": path,
         "runs-on": "ubuntu-22.04",
@@ -86,8 +100,13 @@ def image_to_job(image):
         },
         "steps": steps
     }
+    needs = []
     if "dependencies" in image:
-        job["needs"] = [image_slug(imagesByTag[dep]) for dep in image["dependencies"]]
+        needs.extend([image_slug(imagesByTag[dep]) for dep in image["dependencies"]])
+    if integration != None and "image" in integration:
+        needs.append(integration["image"])
+    if len(needs) > 0:
+        job["needs"] = needs
     return job
 
 def generate_workflow(jobs):
