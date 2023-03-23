@@ -1,6 +1,7 @@
 include:
 - alpine/images.yaml
 - debian/images.yaml
+- nodejs/images.yaml
 - python3/images.yaml
 - redis/images.yaml
 - ubuntu/images.yaml
