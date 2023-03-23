@@ -3,3 +3,4 @@
 FROM ghcr.io/basicimg/alpine:edge
 RUN basicimg-install openjdk12-jdk@community
 RUN basicimg-setapp "$(java -version 2>&1 | head -n 1)"
+LABEL org.opencontainers.image.description="JDK 12 installed on alpine-edge"

@@ -60,6 +60,9 @@ def generate_dockerfile(image):
         copy = []
         if "copy" in image:
             copy = image["copy"]
+        description = None
+        if "description" in image:
+            description = image["description"]
         image["dependencies"] = [base]
         os.makedirs(path, exist_ok=True)
         with open(dockerfilePath, "w") as file:
@@ -96,6 +99,9 @@ def generate_dockerfile(image):
             if cmd != None:
                 cmdJson = json.dumps(cmd)
                 file.write(f"CMD {cmdJson}\n")
+            if description != None:
+                descriptionJson = json.dumps(description)
+                file.write(f"LABEL org.opencontainers.image.description={descriptionJson}\n")
 
 def image_slug(image):
     return image["path"].replace("/", "_").replace(".", "_")

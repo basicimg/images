@@ -3,3 +3,4 @@
 FROM ghcr.io/basicimg/alpine:3-17
 RUN basicimg-install openjdk13-jdk@community
 RUN basicimg-setapp "$(java -version 2>&1 | head -n 1)"
+LABEL org.opencontainers.image.description="JDK 13 installed on alpine-3-17"

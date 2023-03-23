@@ -3,3 +3,4 @@
 FROM ghcr.io/basicimg/void:musl
 RUN basicimg-install openjdk8
 RUN basicimg-setapp "$(java -version 2>&1 | head -n 1)"
+LABEL org.opencontainers.image.description="JDK 8 installed on void-musl"

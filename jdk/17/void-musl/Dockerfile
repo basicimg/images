@@ -3,3 +3,4 @@
 FROM ghcr.io/basicimg/void:musl
 RUN basicimg-install openjdk17
 RUN basicimg-setapp "$(java -version 2>&1 | head -n 1)"
+LABEL org.opencontainers.image.description="JDK 17 installed on void-musl"

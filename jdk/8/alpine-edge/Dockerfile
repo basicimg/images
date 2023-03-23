@@ -3,3 +3,4 @@
 FROM ghcr.io/basicimg/alpine:edge
 RUN basicimg-install openjdk8@community
 RUN basicimg-setapp "$(java -version 2>&1 | head -n 1)"
+LABEL org.opencontainers.image.description="JDK 8 installed on alpine-edge"

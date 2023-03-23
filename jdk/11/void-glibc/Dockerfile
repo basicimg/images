@@ -3,3 +3,4 @@
 FROM ghcr.io/basicimg/void:glibc
 RUN basicimg-install openjdk11
 RUN basicimg-setapp "$(java -version 2>&1 | head -n 1)"
+LABEL org.opencontainers.image.description="JDK 11 installed on void-glibc"

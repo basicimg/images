@@ -63,6 +63,7 @@ def generate_jdk_images():
                 "base": base,
                 "install": [distroJdks[jdk]],
                 "app": "$(java -version 2>&1 | head -n 1)",
-                "tags": fullTags
+                "tags": fullTags,
+                "description": f"JDK {jdk} installed on {name}"
             })
     return images

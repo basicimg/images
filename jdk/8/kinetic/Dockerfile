@@ -3,3 +3,4 @@
 FROM ghcr.io/basicimg/ubuntu:kinetic
 RUN basicimg-install openjdk-8-jdk
 RUN basicimg-setapp "$(java -version 2>&1 | head -n 1)"
+LABEL org.opencontainers.image.description="JDK 8 installed on kinetic"

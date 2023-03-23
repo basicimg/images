@@ -368,7 +368,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/10/alpine-3-17
+        labels: 'com.github.basicimg.path=jdk/10/alpine-3-17
+
+          org.opencontainers.image.description=JDK 10 installed on alpine-3-17'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -404,7 +406,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/10/alpine-edge
+        labels: 'com.github.basicimg.path=jdk/10/alpine-edge
+
+          org.opencontainers.image.description=JDK 10 installed on alpine-edge'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -440,7 +444,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/11/alpine-3-17
+        labels: 'com.github.basicimg.path=jdk/11/alpine-3-17
+
+          org.opencontainers.image.description=JDK 11 installed on alpine-3-17'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -476,7 +482,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/11/alpine-edge
+        labels: 'com.github.basicimg.path=jdk/11/alpine-edge
+
+          org.opencontainers.image.description=JDK 11 installed on alpine-edge'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -512,7 +520,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/11/arch
+        labels: 'com.github.basicimg.path=jdk/11/arch
+
+          org.opencontainers.image.description=JDK 11 installed on arch'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -548,7 +558,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/11/bullseye
+        labels: 'com.github.basicimg.path=jdk/11/bullseye
+
+          org.opencontainers.image.description=JDK 11 installed on bullseye'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -584,7 +596,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/11/jammy
+        labels: 'com.github.basicimg.path=jdk/11/jammy
+
+          org.opencontainers.image.description=JDK 11 installed on jammy'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -620,7 +634,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/11/kinetic
+        labels: 'com.github.basicimg.path=jdk/11/kinetic
+
+          org.opencontainers.image.description=JDK 11 installed on kinetic'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -656,7 +672,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/11/lunar
+        labels: 'com.github.basicimg.path=jdk/11/lunar
+
+          org.opencontainers.image.description=JDK 11 installed on lunar'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -692,7 +710,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/11/sid
+        labels: 'com.github.basicimg.path=jdk/11/sid
+
+          org.opencontainers.image.description=JDK 11 installed on sid'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -728,7 +748,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/11/void-glibc
+        labels: 'com.github.basicimg.path=jdk/11/void-glibc
+
+          org.opencontainers.image.description=JDK 11 installed on void-glibc'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -764,7 +786,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/11/void-musl
+        labels: 'com.github.basicimg.path=jdk/11/void-musl
+
+          org.opencontainers.image.description=JDK 11 installed on void-musl'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -800,7 +824,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/12/alpine-3-17
+        labels: 'com.github.basicimg.path=jdk/12/alpine-3-17
+
+          org.opencontainers.image.description=JDK 12 installed on alpine-3-17'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -836,7 +862,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/12/alpine-edge
+        labels: 'com.github.basicimg.path=jdk/12/alpine-edge
+
+          org.opencontainers.image.description=JDK 12 installed on alpine-edge'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -872,7 +900,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/13/alpine-3-17
+        labels: 'com.github.basicimg.path=jdk/13/alpine-3-17
+
+          org.opencontainers.image.description=JDK 13 installed on alpine-3-17'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -908,7 +938,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/13/alpine-edge
+        labels: 'com.github.basicimg.path=jdk/13/alpine-edge
+
+          org.opencontainers.image.description=JDK 13 installed on alpine-edge'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -944,7 +976,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/14/alpine-3-17
+        labels: 'com.github.basicimg.path=jdk/14/alpine-3-17
+
+          org.opencontainers.image.description=JDK 14 installed on alpine-3-17'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -980,7 +1014,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/14/alpine-edge
+        labels: 'com.github.basicimg.path=jdk/14/alpine-edge
+
+          org.opencontainers.image.description=JDK 14 installed on alpine-edge'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1016,7 +1052,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/15/alpine-3-17
+        labels: 'com.github.basicimg.path=jdk/15/alpine-3-17
+
+          org.opencontainers.image.description=JDK 15 installed on alpine-3-17'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1052,7 +1090,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/15/alpine-edge
+        labels: 'com.github.basicimg.path=jdk/15/alpine-edge
+
+          org.opencontainers.image.description=JDK 15 installed on alpine-edge'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1088,7 +1128,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/16/alpine-3-17
+        labels: 'com.github.basicimg.path=jdk/16/alpine-3-17
+
+          org.opencontainers.image.description=JDK 16 installed on alpine-3-17'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1124,7 +1166,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/16/alpine-edge
+        labels: 'com.github.basicimg.path=jdk/16/alpine-edge
+
+          org.opencontainers.image.description=JDK 16 installed on alpine-edge'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1160,7 +1204,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/17/alpine-3-17
+        labels: 'com.github.basicimg.path=jdk/17/alpine-3-17
+
+          org.opencontainers.image.description=JDK 17 installed on alpine-3-17'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1196,7 +1242,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/17/alpine-edge
+        labels: 'com.github.basicimg.path=jdk/17/alpine-edge
+
+          org.opencontainers.image.description=JDK 17 installed on alpine-edge'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1232,7 +1280,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/17/arch
+        labels: 'com.github.basicimg.path=jdk/17/arch
+
+          org.opencontainers.image.description=JDK 17 installed on arch'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1268,7 +1318,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/17/bookworm
+        labels: 'com.github.basicimg.path=jdk/17/bookworm
+
+          org.opencontainers.image.description=JDK 17 installed on bookworm'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1304,7 +1356,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/17/bullseye
+        labels: 'com.github.basicimg.path=jdk/17/bullseye
+
+          org.opencontainers.image.description=JDK 17 installed on bullseye'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1340,7 +1394,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/17/jammy
+        labels: 'com.github.basicimg.path=jdk/17/jammy
+
+          org.opencontainers.image.description=JDK 17 installed on jammy'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1376,7 +1432,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/17/kinetic
+        labels: 'com.github.basicimg.path=jdk/17/kinetic
+
+          org.opencontainers.image.description=JDK 17 installed on kinetic'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1412,7 +1470,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/17/lunar
+        labels: 'com.github.basicimg.path=jdk/17/lunar
+
+          org.opencontainers.image.description=JDK 17 installed on lunar'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1448,7 +1508,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/17/sid
+        labels: 'com.github.basicimg.path=jdk/17/sid
+
+          org.opencontainers.image.description=JDK 17 installed on sid'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1484,7 +1546,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/17/void-glibc
+        labels: 'com.github.basicimg.path=jdk/17/void-glibc
+
+          org.opencontainers.image.description=JDK 17 installed on void-glibc'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1520,7 +1584,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/17/void-musl
+        labels: 'com.github.basicimg.path=jdk/17/void-musl
+
+          org.opencontainers.image.description=JDK 17 installed on void-musl'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1556,7 +1622,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/18/alpine-edge
+        labels: 'com.github.basicimg.path=jdk/18/alpine-edge
+
+          org.opencontainers.image.description=JDK 18 installed on alpine-edge'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1592,7 +1660,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/18/sid
+        labels: 'com.github.basicimg.path=jdk/18/sid
+
+          org.opencontainers.image.description=JDK 18 installed on sid'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1628,7 +1698,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/19/alpine-edge
+        labels: 'com.github.basicimg.path=jdk/19/alpine-edge
+
+          org.opencontainers.image.description=JDK 19 installed on alpine-edge'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1664,7 +1736,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/19/arch
+        labels: 'com.github.basicimg.path=jdk/19/arch
+
+          org.opencontainers.image.description=JDK 19 installed on arch'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1700,7 +1774,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/19/lunar
+        labels: 'com.github.basicimg.path=jdk/19/lunar
+
+          org.opencontainers.image.description=JDK 19 installed on lunar'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1736,7 +1812,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/19/sid
+        labels: 'com.github.basicimg.path=jdk/19/sid
+
+          org.opencontainers.image.description=JDK 19 installed on sid'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1772,7 +1850,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/7/alpine-3-17
+        labels: 'com.github.basicimg.path=jdk/7/alpine-3-17
+
+          org.opencontainers.image.description=JDK 7 installed on alpine-3-17'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1808,7 +1888,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/7/alpine-edge
+        labels: 'com.github.basicimg.path=jdk/7/alpine-edge
+
+          org.opencontainers.image.description=JDK 7 installed on alpine-edge'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1844,7 +1926,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/8/alpine-3-17
+        labels: 'com.github.basicimg.path=jdk/8/alpine-3-17
+
+          org.opencontainers.image.description=JDK 8 installed on alpine-3-17'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1880,7 +1964,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/8/alpine-edge
+        labels: 'com.github.basicimg.path=jdk/8/alpine-edge
+
+          org.opencontainers.image.description=JDK 8 installed on alpine-edge'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1916,7 +2002,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/8/arch
+        labels: 'com.github.basicimg.path=jdk/8/arch
+
+          org.opencontainers.image.description=JDK 8 installed on arch'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1952,7 +2040,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/8/jammy
+        labels: 'com.github.basicimg.path=jdk/8/jammy
+
+          org.opencontainers.image.description=JDK 8 installed on jammy'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -1988,7 +2078,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/8/kinetic
+        labels: 'com.github.basicimg.path=jdk/8/kinetic
+
+          org.opencontainers.image.description=JDK 8 installed on kinetic'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -2024,7 +2116,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/8/lunar
+        labels: 'com.github.basicimg.path=jdk/8/lunar
+
+          org.opencontainers.image.description=JDK 8 installed on lunar'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -2060,7 +2154,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/8/sid
+        labels: 'com.github.basicimg.path=jdk/8/sid
+
+          org.opencontainers.image.description=JDK 8 installed on sid'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -2096,7 +2192,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/8/void-glibc
+        labels: 'com.github.basicimg.path=jdk/8/void-glibc
+
+          org.opencontainers.image.description=JDK 8 installed on void-glibc'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -2132,7 +2230,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/8/void-musl
+        labels: 'com.github.basicimg.path=jdk/8/void-musl
+
+          org.opencontainers.image.description=JDK 8 installed on void-musl'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -2168,7 +2268,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/9/alpine-3-17
+        labels: 'com.github.basicimg.path=jdk/9/alpine-3-17
+
+          org.opencontainers.image.description=JDK 9 installed on alpine-3-17'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -2204,7 +2306,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/9/alpine-edge
+        labels: 'com.github.basicimg.path=jdk/9/alpine-edge
+
+          org.opencontainers.image.description=JDK 9 installed on alpine-edge'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:
@@ -2240,7 +2344,9 @@ jobs:
       uses: docker/metadata-action@v4
       with:
         images: dummy
-        labels: com.github.basicimg.path=jdk/latest/arch
+        labels: 'com.github.basicimg.path=jdk/latest/arch
+
+          org.opencontainers.image.description=JDK latest installed on arch'
     - name: Build and push image
       uses: docker/build-push-action@v4
       with:

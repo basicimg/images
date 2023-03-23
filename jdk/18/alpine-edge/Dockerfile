@@ -3,3 +3,4 @@
 FROM ghcr.io/basicimg/alpine:edge
 RUN basicimg-install openjdk18-jdk@testing java-common@community java-cacerts@community
 RUN basicimg-setapp "$(java -version 2>&1 | head -n 1)"
+LABEL org.opencontainers.image.description="JDK 18 installed on alpine-edge"

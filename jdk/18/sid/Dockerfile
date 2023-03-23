@@ -3,3 +3,4 @@
 FROM ghcr.io/basicimg/debian:sid
 RUN basicimg-install openjdk-18-jdk
 RUN basicimg-setapp "$(java -version 2>&1 | head -n 1)"
+LABEL org.opencontainers.image.description="JDK 18 installed on sid"

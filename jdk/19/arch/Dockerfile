@@ -3,3 +3,4 @@
 FROM ghcr.io/basicimg/arch:latest
 RUN basicimg-install jdk19-openjdk
 RUN basicimg-setapp "$(java -version 2>&1 | head -n 1)"
+LABEL org.opencontainers.image.description="JDK 19 installed on arch"

@@ -3,3 +3,4 @@
 FROM ghcr.io/basicimg/debian:bookworm
 RUN basicimg-install openjdk-17-jdk
 RUN basicimg-setapp "$(java -version 2>&1 | head -n 1)"
+LABEL org.opencontainers.image.description="JDK 17 installed on bookworm"
