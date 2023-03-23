@@ -1175,6 +1175,342 @@ jobs:
         labels: org.opencontainers.image.source=https://github.com/basicimg/images
         push: true
         tags: ghcr.io/basicimg/jdk:latest-void-musl,ghcr.io/basicimg/jdk:17-void-musl
+  memcached_alpine-3_17:
+    name: memcached/alpine-3.17
+    needs:
+    - alpine_3_17
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./memcached/alpine-3.17/Dockerfile
+        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        push: true
+        tags: ghcr.io/basicimg/memcached:alpine-3-17,ghcr.io/basicimg/memcached:alpine
+  memcached_alpine-edge:
+    name: memcached/alpine-edge
+    needs:
+    - alpine_edge
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./memcached/alpine-edge/Dockerfile
+        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        push: true
+        tags: ghcr.io/basicimg/memcached:alpine-edge
+  memcached_arch:
+    name: memcached/arch
+    needs:
+    - arch
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./memcached/arch/Dockerfile
+        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        push: true
+        tags: ghcr.io/basicimg/memcached:arch
+  memcached_bookworm:
+    name: memcached/bookworm
+    needs:
+    - debian_bookworm
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./memcached/bookworm/Dockerfile
+        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        push: true
+        tags: ghcr.io/basicimg/memcached:bookworm,ghcr.io/basicimg/memcached:debian-testing
+  memcached_bullseye:
+    name: memcached/bullseye
+    needs:
+    - debian_bullseye
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./memcached/bullseye/Dockerfile
+        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        push: true
+        tags: ghcr.io/basicimg/memcached:bullseye,ghcr.io/basicimg/memcached:debian-stable,ghcr.io/basicimg/memcached:debian,ghcr.io/basicimg/memcached:latest
+  memcached_buster:
+    name: memcached/buster
+    needs:
+    - debian_buster
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./memcached/buster/Dockerfile
+        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        push: true
+        tags: ghcr.io/basicimg/memcached:buster,ghcr.io/basicimg/memcached:debian-oldstable
+  memcached_jammy:
+    name: memcached/jammy
+    needs:
+    - ubuntu_jammy
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./memcached/jammy/Dockerfile
+        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        push: true
+        tags: ghcr.io/basicimg/memcached:jammy,ghcr.io/basicimg/memcached:ubuntu-lts,ghcr.io/basicimg/memcached:ubuntu
+  memcached_kinetic:
+    name: memcached/kinetic
+    needs:
+    - ubuntu_kinetic
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./memcached/kinetic/Dockerfile
+        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        push: true
+        tags: ghcr.io/basicimg/memcached:kinetic,ghcr.io/basicimg/memcached:ubuntu-interim
+  memcached_lunar:
+    name: memcached/lunar
+    needs:
+    - ubuntu_lunar
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./memcached/lunar/Dockerfile
+        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        push: true
+        tags: ghcr.io/basicimg/memcached:lunar
+  memcached_sid:
+    name: memcached/sid
+    needs:
+    - debian_sid
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./memcached/sid/Dockerfile
+        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        push: true
+        tags: ghcr.io/basicimg/memcached:sid,ghcr.io/basicimg/memcached:debian-unstable
+  memcached_void-glibc:
+    name: memcached/void-glibc
+    needs:
+    - void_glibc
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./memcached/void-glibc/Dockerfile
+        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        push: true
+        tags: ghcr.io/basicimg/memcached:void-glibc,ghcr.io/basicimg/memcached:void
+  memcached_void-musl:
+    name: memcached/void-musl
+    needs:
+    - void_musl
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./memcached/void-musl/Dockerfile
+        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        push: true
+        tags: ghcr.io/basicimg/memcached:void-musl
   nginx_alpine-3_17:
     name: nginx/alpine-3.17
     needs:
