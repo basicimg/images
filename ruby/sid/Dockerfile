@@ -2,6 +2,6 @@
 FROM ghcr.io/basicimg/debian:sid
 RUN --mount=type=cache,target=/var/cache,sharing=locked \
     --mount=type=cache,target=/var/lib/apt,sharing=locked \
-    apt-get update && apt-get --no-install-recommends install -y python3-full python3-dev python-is-python3
-CMD [ "/usr/bin/python" ]
-RUN basicimg-setapp "$(python --version)"
+    apt-get update && apt-get --no-install-recommends install -y ruby
+CMD [ "/usr/bin/ruby" ]
+RUN basicimg-setapp "$(ruby -v 2>&1 | cut -d' ' -f-2) and gem $(gem -v)"

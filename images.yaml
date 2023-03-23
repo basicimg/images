@@ -7,6 +7,7 @@ include:
 - nodejs/images.yaml
 - python3/images.yaml
 - redis/images.yaml
+- ruby/images.yaml
 - ubuntu/images.yaml
 - void/images.yaml
 images:
