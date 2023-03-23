@@ -17,12 +17,12 @@ distros:
   jdks: &alpine-jdks
     17: openjdk17-jdk@community
     11: openjdk11-jdk@community
-    8: openjdk8-jdk@community
+    8: openjdk8@community
 - name: alpine-edge
   base: ghcr.io/basicimg/alpine:edge
   jdks:
     <<: *alpine-jdks
-    19: openjdk19-jdk@testing
+    19: openjdk19-jdk@testing java-common@community java-cacerts@community
 - name: arch
   base: ghcr.io/basicimg/arch:latest
   jdks:
