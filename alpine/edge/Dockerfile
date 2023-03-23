@@ -2,7 +2,7 @@
 FROM ghcr.io/basicimg/bootstrap:latest AS bootstrap
 RUN --mount=type=cache,target=/system/var/cache,sharing=locked \
     apk \
-    --repository https://dl-cdn.alpinelinux.org/alpine/edge/main/ \
+    --repository https://mirror.fcix.net/alpine/edge/main/ \
     --allow-untrusted --root /system --initdb \
     add alpine-base alpine-sdk
 RUN basicimg-init-system "Alpine Edge"

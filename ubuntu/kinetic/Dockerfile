@@ -2,7 +2,7 @@
 FROM ghcr.io/basicimg/bootstrap:latest AS bootstrap
 RUN --mount=type=cache,target=/system/var/cache,sharing=locked \
     --mount=type=cache,target=/system/var/lib/apt,sharing=locked \
-    debootstrap --variant=minbase --components=main,universe --include=build-essential kinetic /system http://archive.ubuntu.com/ubuntu/
+    debootstrap --variant=minbase --components=main,universe --include=build-essential kinetic /system https://mirror.fcix.net/ubuntu/
 RUN basicimg-init-system "Ubuntu Kinetic"
 
 FROM scratch

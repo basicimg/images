@@ -2,9 +2,9 @@
 FROM alpine:3.17.2@sha256:ff6bdca1701f3a8a67e328815ff2346b0e4067d32ec36b7992c1fdc001dc8517 AS bootstrap
 RUN --mount=type=cache,target=/system/var/cache,sharing=locked \
     apk \
-    --repository https://dl-cdn.alpinelinux.org/alpine/edge/main/ \
-    --repository https://dl-cdn.alpinelinux.org/alpine/edge/community/ \
-    --repository https://dl-cdn.alpinelinux.org/alpine/edge/testing/ \
+    --repository https://mirror.fcix.net/alpine/edge/main/ \
+    --repository https://mirror.fcix.net/alpine/edge/community/ \
+    --repository https://mirror.fcix.net/alpine/edge/testing/ \
     --allow-untrusted --root /system --initdb \
     add alpine-base wget debootstrap binutils zstd pacman arch-install-scripts
 RUN mkdir -p /system/system

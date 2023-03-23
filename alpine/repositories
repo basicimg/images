@@ -1,5 +1,5 @@
-@3.17 https://dl-cdn.alpinelinux.org/alpine/v3.17/main/
-@3.17-community https://dl-cdn.alpinelinux.org/alpine/v3.17/community/
-@edge https://dl-cdn.alpinelinux.org/alpine/edge/main/
-@edge-community https://dl-cdn.alpinelinux.org/alpine/edge/community/
-@edge-testing https://dl-cdn.alpinelinux.org/alpine/edge/testing/
+@3.17 https://mirror.fcix.net/alpine/v3.17/main/
+@3.17-community https://mirror.fcix.net/alpine/v3.17/community/
+@edge https://mirror.fcix.net/alpine/edge/main/
+@edge-community https://mirror.fcix.net/alpine/edge/community/
+@edge-testing https://mirror.fcix.net/alpine/edge/testing/
