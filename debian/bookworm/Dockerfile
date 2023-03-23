@@ -8,6 +8,6 @@ RUN basicimg-init-system "Debian Bookworm"
 FROM scratch
 COPY --from=bootstrap /system/ /
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-SHELL [ "/bin/bash", "-c" ]
+SHELL [ "/bin/bash", "-ec" ]
 CMD [ "/bin/bash" ]
 RUN basicimg-hello

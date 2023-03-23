@@ -16,6 +16,6 @@ RUN basicimg-init-system "Void Linux (glibc)"
 FROM scratch
 COPY --from=rootfs /system/ /
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-SHELL [ "/bin/sh", "-c" ]
+SHELL [ "/bin/sh", "-ec" ]
 CMD [ "/bin/sh" ]
 RUN basicimg-hello
