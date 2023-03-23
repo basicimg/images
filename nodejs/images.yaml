@@ -5,20 +5,20 @@ images:
   tags:
   - ghcr.io/basicimg/nodejs:alpine-3-17
   - ghcr.io/basicimg/nodejs:alpine
-  test: npm install express
+  test: mkdir app && cd app && npm install express
 - path: nodejs/alpine-edge
   dependencies:
   - ghcr.io/basicimg/alpine:edge
   tags:
   - ghcr.io/basicimg/nodejs:alpine-edge
-  test: npm install express
+  test: mkdir app && cd app && npm install express
 - path: nodejs/bookworm
   dependencies:
   - ghcr.io/basicimg/debian:bookworm
   tags:
   - ghcr.io/basicimg/nodejs:bookworm
   - ghcr.io/basicimg/nodejs:debian-testing
-  test: npm install express
+  test: mkdir app && cd app && npm install express
 - path: nodejs/bullseye
   dependencies:
   - ghcr.io/basicimg/debian:bullseye
@@ -27,21 +27,21 @@ images:
   - ghcr.io/basicimg/nodejs:debian-stable
   - ghcr.io/basicimg/nodejs:debian
   - ghcr.io/basicimg/nodejs:latest
-  test: npm install express
+  test: mkdir app && cd app && npm install express
 - path: nodejs/buster
   dependencies:
   - ghcr.io/basicimg/debian:buster
   tags:
   - ghcr.io/basicimg/nodejs:buster
   - ghcr.io/basicimg/nodejs:debian-oldstable
-  test: npm install express
+  test: mkdir app && cd app && npm install express
 - path: nodejs/sid
   dependencies:
   - ghcr.io/basicimg/debian:sid
   tags:
   - ghcr.io/basicimg/nodejs:sid
   - ghcr.io/basicimg/nodejs:debian-unstable
-  test: npm install express
+  test: mkdir app && cd app && npm install express
 - path: nodejs/jammy
   dependencies:
   - ghcr.io/basicimg/ubuntu:jammy
@@ -49,36 +49,36 @@ images:
   - ghcr.io/basicimg/nodejs:jammy
   - ghcr.io/basicimg/nodejs:ubuntu-lts
   - ghcr.io/basicimg/nodejs:ubuntu
-  test: npm install express
+  test: mkdir app && cd app && npm install express
 - path: nodejs/kinetic
   dependencies:
   - ghcr.io/basicimg/ubuntu:kinetic
   tags:
   - ghcr.io/basicimg/nodejs:kinetic
   - ghcr.io/basicimg/nodejs:ubuntu-interim
-  test: npm install express
+  test: mkdir app && cd app && npm install express
 - path: nodejs/lunar
   dependencies:
   - ghcr.io/basicimg/ubuntu:lunar
   tags:
   - ghcr.io/basicimg/nodejs:lunar
-  test: npm install express
+  test: mkdir app && cd app && npm install express
 - path: nodejs/void-glibc
   dependencies:
   - ghcr.io/basicimg/void:glibc
   tags:
   - ghcr.io/basicimg/nodejs:void-glibc
   - ghcr.io/basicimg/nodejs:void
-  test: npm install express
+  test: mkdir app && cd app && npm install express
 - path: nodejs/void-musl
   dependencies:
   - ghcr.io/basicimg/void:musl
   tags:
   - ghcr.io/basicimg/nodejs:void-musl
-  test: npm install express
+  test: mkdir app && cd app && npm install express
 - path: nodejs/arch
   dependencies:
   - ghcr.io/basicimg/arch:latest
   tags:
   - ghcr.io/basicimg/nodejs:arch
-  test: npm install express
+  test: mkdir app && cd app && npm install express
