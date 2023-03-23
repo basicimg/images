@@ -1,0 +1,92 @@
+jdks:
+  latest:
+    lts: false
+  19:
+    lts: false
+  17:
+    lts: true
+  11:
+    lts: true
+  8:
+    lts: true
+distros:
+- name: alpine-3-17
+  base: ghcr.io/basicimg/alpine:3-17
+  aliases:
+  - alpine
+  jdks: &alpine-jdks
+    17: openjdk17-jdk@community
+    11: openjdk11-jdk@community
+    8: openjdk8-jdk@community
+- name: alpine-edge
+  base: ghcr.io/basicimg/alpine:edge
+  jdks:
+    <<: *alpine-jdks
+    19: openjdk19-jdk@testing
+- name: arch
+  base: ghcr.io/basicimg/arch:latest
+  jdks:
+    latest: jdk-openjdk
+    19: jdk19-openjdk
+    17: jdk17-openjdk
+    11: jdk11-openjdk
+    8: jdk8-openjdk
+- name: bookworm
+  base: ghcr.io/basicimg/debian:bookworm
+  aliases:
+  - debian-testing
+  jdks:
+    17: openjdk-17-jdk
+- name: bullseye
+  base: ghcr.io/basicimg/debian:bullseye
+  default: true
+  aliases:
+  - debian-stable
+  - debian
+  jdks:
+    17: openjdk-17-jdk
+    11: openjdk-11-jdk
+- name: jammy
+  base: ghcr.io/basicimg/ubuntu:jammy
+  aliases:
+  - ubuntu-lts
+  - ubuntu
+  jdks:
+    17: openjdk-17-jdk
+    11: openjdk-11-jdk
+    8: openjdk-8-jdk
+- name: kinetic
+  base: ghcr.io/basicimg/ubuntu:kinetic
+  aliases:
+  - ubuntu-interim
+  jdks:
+    17: openjdk-17-jdk
+    11: openjdk-11-jdk
+    8: openjdk-8-jdk
+- name: lunar
+  base: ghcr.io/basicimg/ubuntu:lunar
+  jdks:
+    19: openjdk-19-jdk
+    17: openjdk-17-jdk
+    11: openjdk-11-jdk
+    8: openjdk-8-jdk
+- name: sid
+  base: ghcr.io/basicimg/debian:sid
+  aliases:
+  - debian-unstable
+  jdks:
+    19: openjdk-19-jdk
+    17: openjdk-17-jdk
+    11: openjdk-11-jdk
+    8: openjdk-8-jdk
+- name: void-glibc
+  base: ghcr.io/basicimg/void:glibc
+  aliases:
+  - void
+  jdks: &void-jdks
+    17: openjdk17
+    11: openjdk11
+    8: openjdk8
+- name: void-musl
+  base: ghcr.io/basicimg/void:musl
+  jdks: *void-jdks
