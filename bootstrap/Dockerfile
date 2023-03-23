@@ -6,7 +6,7 @@ RUN --mount=type=cache,target=/system/var/cache,sharing=locked \
     --repository https://dl-cdn.alpinelinux.org/alpine/edge/community/ \
     --repository https://dl-cdn.alpinelinux.org/alpine/edge/testing/ \
     --allow-untrusted --root /system --initdb \
-    add alpine-base wget debootstrap binutils zstd xbps
+    add alpine-base wget debootstrap binutils zstd
 RUN mkdir -p /system/system /system/tmp
 COPY scripts/* /usr/local/bin/
 RUN chmod +x /usr/local/bin/basicimg-*

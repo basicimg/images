@@ -49,3 +49,14 @@ images:
   tags:
   - ghcr.io/basicimg/redis:kinetic
   - ghcr.io/basicimg/redis:ubuntu-interim
+- path: redis/void-glibc
+  dependencies:
+  - ghcr.io/basicimg/void:glibc
+  tags:
+  - ghcr.io/basicimg/redis:void-glibc
+  - ghcr.io/basicimg/redis:void
+- path: redis/void-musl
+  dependencies:
+  - ghcr.io/basicimg/void:musl
+  tags:
+  - ghcr.io/basicimg/redis:void-musl

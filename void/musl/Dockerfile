@@ -3,6 +3,7 @@ FROM ghcr.io/basicimg/bootstrap:latest AS bootstrap
 RUN wget -O /tmp/void.tar.xz https://repo-default.voidlinux.org/live/current/void-x86_64-musl-ROOTFS-20221001.tar.xz
 WORKDIR /system
 RUN tar -xf /tmp/void.tar.xz
+RUN basicimg-init-system "Void Linux (bootstrap musl)"
 
 FROM scratch AS rootfs
 COPY --from=bootstrap /system/ /
