@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1
 FROM ghcr.io/basicimg/arch
 RUN basicimg-install jdk8-openjdk
 CMD [ "/usr/bin/java" ]

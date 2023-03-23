@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1
 FROM ghcr.io/basicimg/arch
 RUN basicimg-install ruby
 CMD [ "/usr/bin/ruby" ]
