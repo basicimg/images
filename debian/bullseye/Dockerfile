@@ -2,7 +2,7 @@
 FROM ghcr.io/basicimg/bootstrap:latest AS bootstrap
 RUN --mount=type=cache,target=/system/var/cache,sharing=locked \
     --mount=type=cache,target=/system/var/lib/apt,sharing=locked \
-    debootstrap --variant=minbase bullseye /system https://deb.debian.org/debian/
+    debootstrap --variant=minbase --components=main,contrib bullseye /system https://deb.debian.org/debian/
 RUN touch /system/basicimg
 
 FROM scratch
