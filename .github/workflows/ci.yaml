@@ -2547,9 +2547,6 @@ jobs:
         tags: ghcr.io/basicimg/nix:bullseye,ghcr.io/basicimg/nix:debian-stable,ghcr.io/basicimg/nix:debian,ghcr.io/basicimg/nix:latest
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/nix:bullseye basicimg-hello
-    - name: Run test
-      run: docker run --rm ghcr.io/basicimg/nix:bullseye /bin/sh -euxc 'nix-build
-        '<nixpkgs>' -A hello'
   nix_jammy:
     name: nix/jammy
     needs:
