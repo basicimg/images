@@ -21,7 +21,7 @@ images:
   - ghcr.io/basicimg/nix:debian-stable
   - ghcr.io/basicimg/nix:debian
   - ghcr.io/basicimg/nix:latest
-  test: nix run nixpkgs#hello
+  test: nix-build '<nixpkgs>' -A hello
 - path: nix/sid
   dependencies:
   - ghcr.io/basicimg/debian:sid

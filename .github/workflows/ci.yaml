@@ -2548,7 +2548,8 @@ jobs:
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/nix:bullseye basicimg-hello
     - name: Run test
-      run: docker run --rm ghcr.io/basicimg/nix:bullseye /bin/sh -euxc 'nix run nixpkgs#hello'
+      run: docker run --rm ghcr.io/basicimg/nix:bullseye /bin/sh -euxc 'nix-build
+        '<nixpkgs>' -A hello'
   nix_jammy:
     name: nix/jammy
     needs:
@@ -4390,7 +4391,7 @@ jobs:
       run: docker run --rm ghcr.io/basicimg/ruby:buster basicimg-hello
     - name: Run test
       run: docker run --rm ghcr.io/basicimg/ruby:buster /bin/sh -euxc 'gem install
-        bundler'
+        bundler -v 2.3.26'
   ruby_jammy:
     name: ruby/jammy
     needs:
