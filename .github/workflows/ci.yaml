@@ -1847,6 +1847,286 @@ jobs:
         labels: org.opencontainers.image.source=https://github.com/basicimg/images
         push: true
         tags: ghcr.io/basicimg/nginx:void-musl
+  nix_alpine-edge:
+    name: nix/alpine-edge
+    needs:
+    - alpine_edge
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./nix/alpine-edge/Dockerfile
+        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        push: true
+        tags: ghcr.io/basicimg/nix:alpine-edge,ghcr.io/basicimg/nix:alpine
+  nix_arch:
+    name: nix/arch
+    needs:
+    - arch
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./nix/arch/Dockerfile
+        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        push: true
+        tags: ghcr.io/basicimg/nix:arch
+  nix_bookworm:
+    name: nix/bookworm
+    needs:
+    - debian_bookworm
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./nix/bookworm/Dockerfile
+        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        push: true
+        tags: ghcr.io/basicimg/nix:bookworm,ghcr.io/basicimg/nix:debian-testing
+  nix_bullseye:
+    name: nix/bullseye
+    needs:
+    - debian_bullseye
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./nix/bullseye/Dockerfile
+        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        push: true
+        tags: ghcr.io/basicimg/nix:bullseye,ghcr.io/basicimg/nix:debian-stable,ghcr.io/basicimg/nix:debian,ghcr.io/basicimg/nix:latest
+  nix_jammy:
+    name: nix/jammy
+    needs:
+    - ubuntu_jammy
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./nix/jammy/Dockerfile
+        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        push: true
+        tags: ghcr.io/basicimg/nix:jammy,ghcr.io/basicimg/nix:ubuntu-lts,ghcr.io/basicimg/nix:ubuntu
+  nix_kinetic:
+    name: nix/kinetic
+    needs:
+    - ubuntu_kinetic
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./nix/kinetic/Dockerfile
+        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        push: true
+        tags: ghcr.io/basicimg/nix:kinetic,ghcr.io/basicimg/nix:ubuntu-interim
+  nix_lunar:
+    name: nix/lunar
+    needs:
+    - ubuntu_lunar
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./nix/lunar/Dockerfile
+        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        push: true
+        tags: ghcr.io/basicimg/nix:lunar
+  nix_sid:
+    name: nix/sid
+    needs:
+    - debian_sid
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./nix/sid/Dockerfile
+        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        push: true
+        tags: ghcr.io/basicimg/nix:sid,ghcr.io/basicimg/nix:debian-unstable
+  nix_void-glibc:
+    name: nix/void-glibc
+    needs:
+    - void_glibc
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./nix/void-glibc/Dockerfile
+        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        push: true
+        tags: ghcr.io/basicimg/nix:void-glibc,ghcr.io/basicimg/nix:void
+  nix_void-musl:
+    name: nix/void-musl
+    needs:
+    - void_musl
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./nix/void-musl/Dockerfile
+        labels: org.opencontainers.image.source=https://github.com/basicimg/images
+        push: true
+        tags: ghcr.io/basicimg/nix:void-musl
   nodejs_alpine-3_17:
     name: nodejs/alpine-3.17
     needs:

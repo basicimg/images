@@ -4,6 +4,7 @@ include:
 - jdk/images.yaml
 - memcached/images.yaml
 - nginx/images.yaml
+- nix/images.yaml
 - nodejs/images.yaml
 - python3/images.yaml
 - redis/images.yaml
