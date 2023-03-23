@@ -344,6 +344,78 @@ jobs:
     - name: Run test
       run: docker run --rm ghcr.io/basicimg/debian:sid /bin/sh -euxc 'basicimg-install
         rustc'
+  jdk_10_alpine-3-17:
+    name: jdk/10/alpine-3-17
+    needs:
+    - alpine_3_17
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: com.github.basicimg.path=jdk/10/alpine-3-17
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./jdk/10/alpine-3-17/Dockerfile
+        labels: ${{ steps.meta.outputs.labels }}
+        push: true
+        tags: ghcr.io/basicimg/jdk:10-alpine-3-17,ghcr.io/basicimg/jdk:10-alpine
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:10-alpine-3-17 basicimg-hello
+  jdk_10_alpine-edge:
+    name: jdk/10/alpine-edge
+    needs:
+    - alpine_edge
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: com.github.basicimg.path=jdk/10/alpine-edge
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./jdk/10/alpine-edge/Dockerfile
+        labels: ${{ steps.meta.outputs.labels }}
+        push: true
+        tags: ghcr.io/basicimg/jdk:10-alpine-edge
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:10-alpine-edge basicimg-hello
   jdk_11_alpine-3-17:
     name: jdk/11/alpine-3-17
     needs:
@@ -704,6 +776,366 @@ jobs:
         tags: ghcr.io/basicimg/jdk:11-void-musl
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:11-void-musl basicimg-hello
+  jdk_12_alpine-3-17:
+    name: jdk/12/alpine-3-17
+    needs:
+    - alpine_3_17
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: com.github.basicimg.path=jdk/12/alpine-3-17
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./jdk/12/alpine-3-17/Dockerfile
+        labels: ${{ steps.meta.outputs.labels }}
+        push: true
+        tags: ghcr.io/basicimg/jdk:12-alpine-3-17,ghcr.io/basicimg/jdk:12-alpine
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:12-alpine-3-17 basicimg-hello
+  jdk_12_alpine-edge:
+    name: jdk/12/alpine-edge
+    needs:
+    - alpine_edge
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: com.github.basicimg.path=jdk/12/alpine-edge
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./jdk/12/alpine-edge/Dockerfile
+        labels: ${{ steps.meta.outputs.labels }}
+        push: true
+        tags: ghcr.io/basicimg/jdk:12-alpine-edge
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:12-alpine-edge basicimg-hello
+  jdk_13_alpine-3-17:
+    name: jdk/13/alpine-3-17
+    needs:
+    - alpine_3_17
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: com.github.basicimg.path=jdk/13/alpine-3-17
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./jdk/13/alpine-3-17/Dockerfile
+        labels: ${{ steps.meta.outputs.labels }}
+        push: true
+        tags: ghcr.io/basicimg/jdk:13-alpine-3-17,ghcr.io/basicimg/jdk:13-alpine
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:13-alpine-3-17 basicimg-hello
+  jdk_13_alpine-edge:
+    name: jdk/13/alpine-edge
+    needs:
+    - alpine_edge
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: com.github.basicimg.path=jdk/13/alpine-edge
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./jdk/13/alpine-edge/Dockerfile
+        labels: ${{ steps.meta.outputs.labels }}
+        push: true
+        tags: ghcr.io/basicimg/jdk:13-alpine-edge
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:13-alpine-edge basicimg-hello
+  jdk_14_alpine-3-17:
+    name: jdk/14/alpine-3-17
+    needs:
+    - alpine_3_17
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: com.github.basicimg.path=jdk/14/alpine-3-17
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./jdk/14/alpine-3-17/Dockerfile
+        labels: ${{ steps.meta.outputs.labels }}
+        push: true
+        tags: ghcr.io/basicimg/jdk:14-alpine-3-17,ghcr.io/basicimg/jdk:14-alpine
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:14-alpine-3-17 basicimg-hello
+  jdk_14_alpine-edge:
+    name: jdk/14/alpine-edge
+    needs:
+    - alpine_edge
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: com.github.basicimg.path=jdk/14/alpine-edge
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./jdk/14/alpine-edge/Dockerfile
+        labels: ${{ steps.meta.outputs.labels }}
+        push: true
+        tags: ghcr.io/basicimg/jdk:14-alpine-edge
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:14-alpine-edge basicimg-hello
+  jdk_15_alpine-3-17:
+    name: jdk/15/alpine-3-17
+    needs:
+    - alpine_3_17
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: com.github.basicimg.path=jdk/15/alpine-3-17
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./jdk/15/alpine-3-17/Dockerfile
+        labels: ${{ steps.meta.outputs.labels }}
+        push: true
+        tags: ghcr.io/basicimg/jdk:15-alpine-3-17,ghcr.io/basicimg/jdk:15-alpine
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:15-alpine-3-17 basicimg-hello
+  jdk_15_alpine-edge:
+    name: jdk/15/alpine-edge
+    needs:
+    - alpine_edge
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: com.github.basicimg.path=jdk/15/alpine-edge
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./jdk/15/alpine-edge/Dockerfile
+        labels: ${{ steps.meta.outputs.labels }}
+        push: true
+        tags: ghcr.io/basicimg/jdk:15-alpine-edge
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:15-alpine-edge basicimg-hello
+  jdk_16_alpine-3-17:
+    name: jdk/16/alpine-3-17
+    needs:
+    - alpine_3_17
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: com.github.basicimg.path=jdk/16/alpine-3-17
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./jdk/16/alpine-3-17/Dockerfile
+        labels: ${{ steps.meta.outputs.labels }}
+        push: true
+        tags: ghcr.io/basicimg/jdk:16-alpine-3-17,ghcr.io/basicimg/jdk:16-alpine
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:16-alpine-3-17 basicimg-hello
+  jdk_16_alpine-edge:
+    name: jdk/16/alpine-edge
+    needs:
+    - alpine_edge
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: com.github.basicimg.path=jdk/16/alpine-edge
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./jdk/16/alpine-edge/Dockerfile
+        labels: ${{ steps.meta.outputs.labels }}
+        push: true
+        tags: ghcr.io/basicimg/jdk:16-alpine-edge
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:16-alpine-edge basicimg-hello
   jdk_17_alpine-3-17:
     name: jdk/17/alpine-3-17
     needs:
@@ -1100,6 +1532,78 @@ jobs:
         tags: ghcr.io/basicimg/jdk:17-void-musl,ghcr.io/basicimg/jdk:latest-void-musl,ghcr.io/basicimg/jdk:lts-void-musl
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:17-void-musl basicimg-hello
+  jdk_18_alpine-edge:
+    name: jdk/18/alpine-edge
+    needs:
+    - alpine_edge
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: com.github.basicimg.path=jdk/18/alpine-edge
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./jdk/18/alpine-edge/Dockerfile
+        labels: ${{ steps.meta.outputs.labels }}
+        push: true
+        tags: ghcr.io/basicimg/jdk:18-alpine-edge
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:18-alpine-edge basicimg-hello
+  jdk_18_sid:
+    name: jdk/18/sid
+    needs:
+    - debian_sid
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: com.github.basicimg.path=jdk/18/sid
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./jdk/18/sid/Dockerfile
+        labels: ${{ steps.meta.outputs.labels }}
+        push: true
+        tags: ghcr.io/basicimg/jdk:18-sid,ghcr.io/basicimg/jdk:18-debian-unstable
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:18-sid basicimg-hello
   jdk_19_alpine-edge:
     name: jdk/19/alpine-edge
     needs:
@@ -1244,6 +1748,78 @@ jobs:
         tags: ghcr.io/basicimg/jdk:19-sid,ghcr.io/basicimg/jdk:latest-sid,ghcr.io/basicimg/jdk:19-debian-unstable,ghcr.io/basicimg/jdk:latest-debian-unstable
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:19-sid basicimg-hello
+  jdk_7_alpine-3-17:
+    name: jdk/7/alpine-3-17
+    needs:
+    - alpine_3_17
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: com.github.basicimg.path=jdk/7/alpine-3-17
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./jdk/7/alpine-3-17/Dockerfile
+        labels: ${{ steps.meta.outputs.labels }}
+        push: true
+        tags: ghcr.io/basicimg/jdk:7-alpine-3-17,ghcr.io/basicimg/jdk:7-alpine
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:7-alpine-3-17 basicimg-hello
+  jdk_7_alpine-edge:
+    name: jdk/7/alpine-edge
+    needs:
+    - alpine_edge
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: com.github.basicimg.path=jdk/7/alpine-edge
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./jdk/7/alpine-edge/Dockerfile
+        labels: ${{ steps.meta.outputs.labels }}
+        push: true
+        tags: ghcr.io/basicimg/jdk:7-alpine-edge
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:7-alpine-edge basicimg-hello
   jdk_8_alpine-3-17:
     name: jdk/8/alpine-3-17
     needs:
@@ -1568,6 +2144,78 @@ jobs:
         tags: ghcr.io/basicimg/jdk:8-void-musl
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:8-void-musl basicimg-hello
+  jdk_9_alpine-3-17:
+    name: jdk/9/alpine-3-17
+    needs:
+    - alpine_3_17
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: com.github.basicimg.path=jdk/9/alpine-3-17
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./jdk/9/alpine-3-17/Dockerfile
+        labels: ${{ steps.meta.outputs.labels }}
+        push: true
+        tags: ghcr.io/basicimg/jdk:9-alpine-3-17,ghcr.io/basicimg/jdk:9-alpine
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:9-alpine-3-17 basicimg-hello
+  jdk_9_alpine-edge:
+    name: jdk/9/alpine-edge
+    needs:
+    - alpine_edge
+    permissions:
+      contents: read
+      packages: write
+    runs-on: ubuntu-22.04
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Login to container registry
+      uses: docker/login-action@v2
+      with:
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+        username: ${{ github.actor }}
+    - id: meta
+      name: Generate metadata
+      uses: docker/metadata-action@v4
+      with:
+        images: dummy
+        labels: com.github.basicimg.path=jdk/9/alpine-edge
+    - name: Build and push image
+      uses: docker/build-push-action@v4
+      with:
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        file: ./jdk/9/alpine-edge/Dockerfile
+        labels: ${{ steps.meta.outputs.labels }}
+        push: true
+        tags: ghcr.io/basicimg/jdk:9-alpine-edge
+    - name: Run `basicimg-hello`
+      run: docker run --rm ghcr.io/basicimg/jdk:9-alpine-edge basicimg-hello
   jdk_latest_arch:
     name: jdk/latest/arch
     needs:

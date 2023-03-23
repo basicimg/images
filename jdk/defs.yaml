@@ -3,12 +3,30 @@ jdks:
     lts: false
   19:
     lts: false
+  18:
+    lts: false
   17:
     lts: true
+  16:
+    lts: false
+  15:
+    lts: false
+  14:
+    lts: false
+  13:
+    lts: false
+  12:
+    lts: false
   11:
     lts: true
+  10:
+    lts: false
+  9:
+    lts: false
   8:
     lts: true
+  7:
+    lts: false
 distros:
 - name: alpine-3-17
   base: ghcr.io/basicimg/alpine:3-17
@@ -16,13 +34,22 @@ distros:
   - alpine
   jdks: &alpine-jdks
     17: openjdk17-jdk@community
+    16: openjdk16-jdk@community
+    15: openjdk15-jdk@community
+    14: openjdk14-jdk@community
+    13: openjdk13-jdk@community
+    12: openjdk12-jdk@community
     11: openjdk11-jdk@community
+    10: openjdk10-jdk@community
+    9: openjdk9-jdk@community
     8: openjdk8@community
+    7: openjdk7@community
 - name: alpine-edge
   base: ghcr.io/basicimg/alpine:edge
   jdks:
     <<: *alpine-jdks
     19: openjdk19-jdk@testing java-common@community java-cacerts@community
+    18: openjdk18-jdk@testing java-common@community java-cacerts@community
 - name: arch
   base: ghcr.io/basicimg/arch:latest
   jdks:
@@ -76,6 +103,7 @@ distros:
   - debian-unstable
   jdks:
     19: openjdk-19-jdk
+    18: openjdk-18-jdk
     17: openjdk-17-jdk
     11: openjdk-11-jdk
     8: openjdk-8-jdk
