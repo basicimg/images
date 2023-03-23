@@ -74,7 +74,8 @@ def image_to_job(image):
 
 def generate_workflow(jobs):
     return {
-        "name": "ci",
+        "name": "build",
+        "concurrency": "build",
         "on": {
             "push": {
                 "branches": [
