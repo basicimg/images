@@ -1,0 +1,16 @@
+images:
+- path: ubuntu/jammy
+  dependencies:
+  - ghcr.io/basicimg/bootstrap:latest
+  tags:
+  - ghcr.io/basicimg/ubuntu:jammy
+  - ghcr.io/basicimg/ubuntu:22.04
+  - ghcr.io/basicimg/ubuntu:lts
+  - ghcr.io/basicimg/ubuntu:latest
+- path: ubuntu/kinetic
+  dependencies:
+  - ghcr.io/basicimg/bootstrap:latest
+  tags:
+  - ghcr.io/basicimg/ubuntu:kinetic
+  - ghcr.io/basicimg/ubuntu:22.10
+  - ghcr.io/basicimg/ubuntu:interim

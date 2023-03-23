@@ -1,0 +1,20 @@
+# syntax=docker/dockerfile:1
+FROM alpine:3.17.2@sha256:ff6bdca1701f3a8a67e328815ff2346b0e4067d32ec36b7992c1fdc001dc8517 AS bootstrap
+RUN --mount=type=cache,target=/system/var/cache,sharing=locked \
+    apk \
+    --repository https://dl-cdn.alpinelinux.org/alpine/edge/main/ \
+    --repository https://dl-cdn.alpinelinux.org/alpine/edge/community/ \
+    --repository https://dl-cdn.alpinelinux.org/alpine/edge/testing/ \
+    --allow-untrusted --root /system --initdb \
+    add alpine-base wget debootstrap binutils zstd xbps
+RUN mkdir -p /system/system /system/tmp
+RUN touch /system/basicimg
+
+FROM scratch
+COPY --from=bootstrap /system/ /
+ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
+    PAGER=less
+SHELL [ "/bin/sh" ]
+CMD [ "/bin/sh" ]
+WORKDIR /tmp
+RUN echo "Hello, bootstrap!"

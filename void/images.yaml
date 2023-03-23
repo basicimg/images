@@ -1,0 +1,16 @@
+images:
+- path: void/glibc
+  dependencies:
+  - ghcr.io/basicimg/bootstrap:latest
+  tags:
+  - ghcr.io/basicimg/void:glibc
+  - ghcr.io/basicimg/void:latest
+  architectures:
+  - amd64
+- path: void/musl
+  dependencies:
+  - ghcr.io/basicimg/bootstrap:latest
+  tags:
+  - ghcr.io/basicimg/void:musl
+  architectures:
+  - amd64

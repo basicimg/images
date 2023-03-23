@@ -1,0 +1,2 @@
+# Don't normalize line endings. We use LF here.
+* -text

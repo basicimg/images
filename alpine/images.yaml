@@ -1,0 +1,14 @@
+images:
+- path: alpine/3.17
+  dependencies:
+  - ghcr.io/basicimg/bootstrap:latest
+  tags:
+  - ghcr.io/basicimg/alpine:3.17
+  - ghcr.io/basicimg/alpine:3
+  - ghcr.io/basicimg/alpine:stable
+  - ghcr.io/basicimg/alpine:latest
+- path: alpine/edge
+  dependencies:
+  - ghcr.io/basicimg/bootstrap:latest
+  tags:
+  - ghcr.io/basicimg/alpine:edge

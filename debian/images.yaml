@@ -1,0 +1,29 @@
+images:
+- path: debian/bullseye
+  dependencies:
+  - ghcr.io/basicimg/bootstrap:latest
+  tags:
+  - ghcr.io/basicimg/debian:bullseye
+  - ghcr.io/basicimg/debian:11
+  - ghcr.io/basicimg/debian:stable
+  - ghcr.io/basicimg/debian:latest
+- path: debian/bookworm
+  dependencies:
+  - ghcr.io/basicimg/bootstrap:latest
+  tags:
+  - ghcr.io/basicimg/debian:bookworm
+  - ghcr.io/basicimg/debian:12
+  - ghcr.io/basicimg/debian:testing
+- path: debian/buster
+  dependencies:
+  - ghcr.io/basicimg/bootstrap:latest
+  tags:
+  - ghcr.io/basicimg/debian:buster
+  - ghcr.io/basicimg/debian:10
+  - ghcr.io/basicimg/debian:oldstable
+- path: debian/sid
+  dependencies:
+  - ghcr.io/basicimg/bootstrap:latest
+  tags:
+  - ghcr.io/basicimg/debian:sid
+  - ghcr.io/basicimg/debian:unstable
