@@ -1,60 +1,105 @@
+template:
+  app: &app "$(java -version 2>&1 | head -n 1)"
 images:
 - path: jdk/11/alpine-3.17
-  dependencies:
-  - ghcr.io/basicimg/alpine:3-17
+  generate: true
+  base: ghcr.io/basicimg/alpine:3-17
+  install:
+  - openjdk11-jdk@community
+  app: *app
   tags:
   - ghcr.io/basicimg/jdk:11-alpine-3-17
   - ghcr.io/basicimg/jdk:11-alpine
 - path: jdk/11/alpine-edge
-  dependencies:
-  - ghcr.io/basicimg/alpine:edge
+  generate: true
+  base: ghcr.io/basicimg/alpine:edge
+  install:
+  - openjdk11-jdk@community
+  app: *app
   tags:
   - ghcr.io/basicimg/jdk:11-alpine-edge
+- path: jdk/11/arch
+  generate: true
+  base: ghcr.io/basicimg/arch:latest
+  install:
+  - jdk11-openjdk
+  app: *app
+  tags:
+  - ghcr.io/basicimg/jdk:11-arch
 - path: jdk/11/bullseye
-  dependencies:
-  - ghcr.io/basicimg/debian:bullseye
+  generate: true
+  base: ghcr.io/basicimg/debian:bullseye
+  install:
+  - jdk11-openjdk
+  app: *app
   tags:
   - ghcr.io/basicimg/jdk:11-bullseye
   - ghcr.io/basicimg/jdk:11-debian-stable
   - ghcr.io/basicimg/jdk:11-debian
   - ghcr.io/basicimg/jdk:11
+- path: jdk/11/buster
+  generate: true
+  base: ghcr.io/basicimg/debian:buster
+  install:
+  - openjdk-11-jdk
+  app: *app
+  tags:
+  - ghcr.io/basicimg/jdk:latest-buster
+  - ghcr.io/basicimg/jdk:latest-debian-oldstable
+  - ghcr.io/basicimg/jdk:11-buster
+  - ghcr.io/basicimg/jdk:11-debian-oldstable
+  - ghcr.io/basicimg/jdk:buster
+  - ghcr.io/basicimg/jdk:debian-oldstable
 - path: jdk/11/sid
-  dependencies:
-  - ghcr.io/basicimg/debian:sid
+  generate: true
+  base: ghcr.io/basicimg/debian:sid
+  install:
+  - openjdk-11-jdk
+  app: *app
   tags:
   - ghcr.io/basicimg/jdk:11-sid
   - ghcr.io/basicimg/jdk:11-debian-unstable
 - path: jdk/11/jammy
-  dependencies:
-  - ghcr.io/basicimg/ubuntu:jammy
+  generate: true
+  base: ghcr.io/basicimg/ubuntu:jammy
+  install:
+  - openjdk-11-jdk
+  app: *app
   tags:
   - ghcr.io/basicimg/jdk:11-jammy
   - ghcr.io/basicimg/jdk:11-ubuntu-lts
   - ghcr.io/basicimg/jdk:11-ubuntu
 - path: jdk/11/kinetic
-  dependencies:
-  - ghcr.io/basicimg/ubuntu:kinetic
+  generate: true
+  base: ghcr.io/basicimg/ubuntu:kinetic
+  install:
+  - openjdk-11-jdk
+  app: *app
   tags:
   - ghcr.io/basicimg/jdk:11-kinetic
   - ghcr.io/basicimg/jdk:11-ubuntu-interim
 - path: jdk/11/lunar
-  dependencies:
-  - ghcr.io/basicimg/ubuntu:lunar
+  generate: true
+  base: ghcr.io/basicimg/ubuntu:lunar
+  install:
+  - openjdk-11-jdk
+  app: *app
   tags:
   - ghcr.io/basicimg/jdk:11-lunar
 - path: jdk/11/void-glibc
-  dependencies:
-  - ghcr.io/basicimg/void:glibc
+  generate: true
+  base: ghcr.io/basicimg/void:glibc
+  install:
+  - openjdk-11
+  app: *app
   tags:
   - ghcr.io/basicimg/jdk:11-void-glibc
   - ghcr.io/basicimg/jdk:11-void
 - path: jdk/11/void-musl
-  dependencies:
-  - ghcr.io/basicimg/void:musl
+  generate: true
+  base: ghcr.io/basicimg/void:musl
+  install:
+  - openjdk-11
+  app: *app
   tags:
   - ghcr.io/basicimg/jdk:11-void-musl
-- path: jdk/11/arch
-  dependencies:
-  - ghcr.io/basicimg/arch:latest
-  tags:
-  - ghcr.io/basicimg/jdk:11-arch

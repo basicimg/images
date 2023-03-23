@@ -24,6 +24,7 @@ def process_file(path, images = []):
 def generate_dockerfile(image):
     if "generate" in image and image["generate"]:
         path = image["path"]
+        print(f"generating Dockerfile for {path}")
         dockerfilePath = f"./{path}/Dockerfile"
         base = image["base"]
         install = None
@@ -99,6 +100,9 @@ def image_slug(image):
 
 def image_to_job(image):
     path = image["path"]
+    print(f"generating job for path {path}")
+    if not os.path.isfile(f"./{path}/Dockerfile"):
+        panic(f"missing dockerfile for path {path}")
     tags = image["tags"]
     labels = [
         f"com.github.basicimg.path={path}"

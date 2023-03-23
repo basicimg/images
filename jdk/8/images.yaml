@@ -1,53 +1,82 @@
+template:
+  app: &app "$(java -version 2>&1 | head -n 1)"
 images:
 - path: jdk/8/alpine-3.17
-  dependencies:
-  - ghcr.io/basicimg/alpine:3-17
+  generate: true
+  base: ghcr.io/basicimg/alpine:3-17
+  install:
+  - openjdk8-jdk@community
+  app: *app
   tags:
   - ghcr.io/basicimg/jdk:8-alpine-3-17
   - ghcr.io/basicimg/jdk:8-alpine
 - path: jdk/8/alpine-edge
-  dependencies:
-  - ghcr.io/basicimg/alpine:edge
+  generate: true
+  base: ghcr.io/basicimg/alpine:edge
+  install:
+  - openjdk8-jdk@community
+  app: *app
   tags:
   - ghcr.io/basicimg/jdk:8-alpine-edge
+- path: jdk/8/arch
+  generate: true
+  base: ghcr.io/basicimg/arch:latest
+  install:
+  - openjdk8
+  app: *app
+  tags:
+  - ghcr.io/basicimg/jdk:8-arch
 - path: jdk/8/sid
-  dependencies:
-  - ghcr.io/basicimg/debian:sid
+  generate: true
+  base: ghcr.io/basicimg/debian:sid
+  install:
+  - openjdk-8-jdk
+  app: *app
   tags:
   - ghcr.io/basicimg/jdk:8-sid
   - ghcr.io/basicimg/jdk:8-debian-unstable
 - path: jdk/8/jammy
-  dependencies:
-  - ghcr.io/basicimg/ubuntu:jammy
+  generate: true
+  base: ghcr.io/basicimg/ubuntu:jammy
+  install:
+  - openjdk-8-jdk
+  app: *app
   tags:
   - ghcr.io/basicimg/jdk:8-jammy
   - ghcr.io/basicimg/jdk:8-ubuntu-lts
   - ghcr.io/basicimg/jdk:8-ubuntu
   - ghcr.io/basicimg/jdk:8
 - path: jdk/8/kinetic
-  dependencies:
-  - ghcr.io/basicimg/ubuntu:kinetic
+  generate: true
+  base: ghcr.io/basicimg/ubuntu:kinetic
+  install:
+  - openjdk-8-jdk
+  app: *app
   tags:
   - ghcr.io/basicimg/jdk:8-kinetic
   - ghcr.io/basicimg/jdk:8-ubuntu-interim
 - path: jdk/8/lunar
-  dependencies:
-  - ghcr.io/basicimg/ubuntu:lunar
+  generate: true
+  base: ghcr.io/basicimg/ubuntu:lunar
+  install:
+  - openjdk-8-jdk
+  app: *app
   tags:
   - ghcr.io/basicimg/jdk:8-lunar
 - path: jdk/8/void-glibc
-  dependencies:
-  - ghcr.io/basicimg/void:glibc
+  generate: true
+  base: ghcr.io/basicimg/void:glibc
+  install:
+  - openjdk8
+  app: *app
   tags:
   - ghcr.io/basicimg/jdk:8-void-glibc
   - ghcr.io/basicimg/jdk:8-void
 - path: jdk/8/void-musl
-  dependencies:
-  - ghcr.io/basicimg/void:musl
+  generate: true
+  base: ghcr.io/basicimg/void:musl
+  install:
+  - openjdk8
+  app: *app
   tags:
   - ghcr.io/basicimg/jdk:8-void-musl
-- path: jdk/8/arch
-  dependencies:
-  - ghcr.io/basicimg/arch:latest
-  tags:
-  - ghcr.io/basicimg/jdk:8-arch

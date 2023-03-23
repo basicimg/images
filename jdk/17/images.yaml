@@ -1,18 +1,158 @@
-
+template:
+  app: &app "$(java -version 2>&1 | head -n 1)"
 images:
+- path: jdk/17/alpine-3.17
+  generate: true
+  base: ghcr.io/basicimg/alpine:3-17
+  install:
+  - openjdk17-jdk@community
+  app: *app
+  tags:
+  - ghcr.io/basicimg/jdk:latest-alpine-3-17
+  - ghcr.io/basicimg/jdk:latest-alpine
+  - ghcr.io/basicimg/jdk:17-alpine-3-17
+  - ghcr.io/basicimg/jdk:17-alpine
+  - ghcr.io/basicimg/jdk:lts-alpine-3-17
+  - ghcr.io/basicimg/jdk:lts-alpine
+  - ghcr.io/basicimg/jdk:alpine-3-17
+  - ghcr.io/basicimg/jdk:alpine
+- path: jdk/17/alpine-edge
+  generate: true
+  base: ghcr.io/basicimg/alpine:edge
+  install:
+  - openjdk17-jdk@community
+  app: *app
+  tags:
+  - ghcr.io/basicimg/jdk:17-alpine-edge
+  - ghcr.io/basicimg/jdk:lts-alpine-edge
+  - ghcr.io/basicimg/jdk:alpine-edge
+- path: jdk/17/arch
+  generate: true
+  base: ghcr.io/basicimg/arch:latest
+  install:
+  - jdk17-openjdk
+  app: *app
+  tags:
+  - ghcr.io/basicimg/jdk:17-arch
+  - ghcr.io/basicimg/jdk:lts-arch
+  - ghcr.io/basicimg/jdk:arch
+- path: jdk/17/bookworm
+  generate: true
+  base: ghcr.io/basicimg/debian:bookworm
+  install:
+  - openjdk-17-jdk
+  app: *app
+  tags:
+  - ghcr.io/basicimg/jdk:17-bookworm
+  - ghcr.io/basicimg/jdk:17-debian-testing
+  - ghcr.io/basicimg/jdk:lts-bookworm
+  - ghcr.io/basicimg/jdk:lts-debian-testing
+  - ghcr.io/basicimg/jdk:latest-bookworm
+  - ghcr.io/basicimg/jdk:latest-debian-testing
+  - ghcr.io/basicimg/jdk:bookworm
+  - ghcr.io/basicimg/jdk:debian-testing
+- path: jdk/17/bullseye
+  generate: true
+  base: ghcr.io/basicimg/debian:bullseye
+  install:
+  - openjdk-17-jdk
+  app: *app
+  tags:
+  - ghcr.io/basicimg/jdk:17-bullseye
+  - ghcr.io/basicimg/jdk:17-debian-stable
+  - ghcr.io/basicimg/jdk:17-debian
+  - ghcr.io/basicimg/jdk:17
+  - ghcr.io/basicimg/jdk:lts-bullseye
+  - ghcr.io/basicimg/jdk:lts-debian-stable
+  - ghcr.io/basicimg/jdk:lts-debian
+  - ghcr.io/basicimg/jdk:lts
+  - ghcr.io/basicimg/jdk:latest-bullseye
+  - ghcr.io/basicimg/jdk:latest-debian-stable
+  - ghcr.io/basicimg/jdk:latest-debian
+  - ghcr.io/basicimg/jdk:latest
+  - ghcr.io/basicimg/jdk:bullseye
+  - ghcr.io/basicimg/jdk:debian-stable
+  - ghcr.io/basicimg/jdk:debian
+- path: jdk/17/jammy
+  generate: true
+  base: ghcr.io/basicimg/ubuntu:jammy
+  install:
+  - openjdk-17-jdk
+  app: *app
+  tags:
+  - ghcr.io/basicimg/jdk:17-jammy
+  - ghcr.io/basicimg/jdk:17-ubuntu-lts
+  - ghcr.io/basicimg/jdk:17-ubuntu
+  - ghcr.io/basicimg/jdk:lts-jammy
+  - ghcr.io/basicimg/jdk:lts-ubuntu-lts
+  - ghcr.io/basicimg/jdk:lts-ubuntu
+  - ghcr.io/basicimg/jdk:latest-jammy
+  - ghcr.io/basicimg/jdk:latest-ubuntu-lts
+  - ghcr.io/basicimg/jdk:latest-ubuntu
+  - ghcr.io/basicimg/jdk:jammy
+  - ghcr.io/basicimg/jdk:ubuntu-lts
+  - ghcr.io/basicimg/jdk:ubuntu
+- path: jdk/17/kinetic
+  generate: true
+  base: ghcr.io/basicimg/ubuntu:kinetic
+  install:
+  - openjdk-17-jdk
+  app: *app
+  tags:
+  - ghcr.io/basicimg/jdk:17-kinetic
+  - ghcr.io/basicimg/jdk:17-ubuntu-interim
+  - ghcr.io/basicimg/jdk:lts-kinetic
+  - ghcr.io/basicimg/jdk:lts-ubuntu-interim
+  - ghcr.io/basicimg/jdk:latest-kinetic
+  - ghcr.io/basicimg/jdk:latest-ubuntu-interim
+  - ghcr.io/basicimg/jdk:kinetic
+  - ghcr.io/basicimg/jdk:ubuntu-interim
+- path: jdk/17/lunar
+  generate: true
+  base: ghcr.io/basicimg/ubuntu:lunar
+  install:
+  - openjdk-17-jdk
+  app: *app
+  tags:
+  - ghcr.io/basicimg/jdk:17-lunar
+  - ghcr.io/basicimg/jdk:lts-lunar
+  - ghcr.io/basicimg/jdk:lunar
 - path: jdk/17/sid
-  dependencies:
-  - ghcr.io/basicimg/debian:sid
+  generate: true
+  base: ghcr.io/basicimg/debian:sid
+  install:
+  - openjdk-17-jdk
+  app: *app
   tags:
   - ghcr.io/basicimg/jdk:17-sid
   - ghcr.io/basicimg/jdk:17-debian-unstable
-- path: jdk/17/arch
-  dependencies:
-  - ghcr.io/basicimg/arch:latest
+  - ghcr.io/basicimg/jdk:lts-sid
+  - ghcr.io/basicimg/jdk:lts-debian-unstable
+  - ghcr.io/basicimg/jdk:sid
+  - ghcr.io/basicimg/jdk:debian-unstable
+- path: jdk/17/void-glibc
+  generate: true
+  base: ghcr.io/basicimg/void:glibc
+  install:
+  - openjdk17
+  app: *app
   tags:
-  - ghcr.io/basicimg/jdk:17-arch
-- path: jdk/latest/lunar
-  dependencies:
-  - ghcr.io/basicimg/ubuntu:lunar
+  - ghcr.io/basicimg/jdk:17-void-glibc
+  - ghcr.io/basicimg/jdk:17-void
+  - ghcr.io/basicimg/jdk:lts-void-glibc
+  - ghcr.io/basicimg/jdk:lts-void
+  - ghcr.io/basicimg/jdk:latest-void-glibc
+  - ghcr.io/basicimg/jdk:latest-void
+  - ghcr.io/basicimg/jdk:void-glibc
+  - ghcr.io/basicimg/jdk:void
+- path: jdk/17/void-musl
+  generate: true
+  base: ghcr.io/basicimg/void:musl
+  install:
+  - openjdk17
+  app: *app
   tags:
-  - ghcr.io/basicimg/jdk:17-lunar
+  - ghcr.io/basicimg/jdk:17-void-musl
+  - ghcr.io/basicimg/jdk:lts-void-musl
+  - ghcr.io/basicimg/jdk:latest-void-musl
+  - ghcr.io/basicimg/jdk:void-musl
