@@ -217,6 +217,8 @@ images = process_file("images.yaml")
 images.extend(jdk.generate_jdk_images())
 for image in images:
     generate_dockerfile(image)
+with open("allimages.yaml", "w") as stream:
+    yaml.dump(images, stream)
 imagesByTag = {}
 for image in images:
     for tag in image["tags"]:

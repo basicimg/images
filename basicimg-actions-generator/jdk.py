@@ -46,7 +46,7 @@ def generate_jdk_images():
             tags = []
             for alias in aliases:
                 tags.append(f"{jdk}-{alias}")
-                if isLatest:
+                if isLatest and jdk != "latest":
                     tags.append(f"latest-{alias}")
                 if isLts:
                     tags.append(f"lts-{alias}")
