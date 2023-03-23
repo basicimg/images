@@ -2,6 +2,6 @@
 FROM ghcr.io/basicimg/ubuntu:jammy
 RUN --mount=type=cache,target=/var/cache,sharing=locked \
     --mount=type=cache,target=/var/lib/apt,sharing=locked \
-    apt-get update && apt-get --no-install-recommends install -y python3-full python-is-python3
+    apt-get update && apt-get --no-install-recommends install -y python3-full python3-dev python-is-python3
 ENTRYPOINT [ "/usr/bin/python" ]
 RUN basicimg-setapp "$(python --version)"

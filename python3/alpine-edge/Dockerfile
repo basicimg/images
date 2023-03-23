@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 FROM ghcr.io/basicimg/alpine:edge
 RUN --mount=type=cache,target=/var/cache,sharing=locked \
-    apk add python3
+    apk add python3 python3-dev
 ENTRYPOINT [ "/usr/bin/python" ]
 RUN basicimg-setapp "$(python --version)"
