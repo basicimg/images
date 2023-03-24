@@ -144,24 +144,19 @@ def image_to_job(image):
             }
         },
         {
-            "name": "Generate metadata",
-            "id": "meta",
-            "uses": "docker/metadata-action@v4",
-            "with": {
-                "images": "dummy",
-                "labels": "\n".join(labels)
-            }
-        },
-        {
             "name": "Build and push image",
-            "uses": "docker/build-push-action@v4",
+            "uses": "Wandalen/wretry.action@master",
             "with": {
-                "push": True,
-                "cache-from": "type=gha",
-                "cache-to": "type=gha,mode=max",
-                "tags": ",".join(tags),
-                "labels": "${{ steps.meta.outputs.labels }}",
-                "file": f"./{path}/Dockerfile"
+                "action": "docker/build-push-action@v4",
+                "with": yaml.safe_dump({
+                    "push": True,
+                    "cache-from": "type=gha",
+                    "cache-to": "type=gha,mode=max",
+                    "tags": ",".join(tags),
+                    "file": f"./{path}/Dockerfile"
+                }),
+                "attempt_limit": 3,
+                "attempt_delay": 2000
             }
         },
         {
@@ -230,7 +225,7 @@ images = process_file("images.yaml")
 for image in images:
     generate_dockerfile(image)
 with open("allimages.yaml", "w") as stream:
-    yaml.dump(images, stream)
+    yaml.safe_dump(images, stream)
 imagesByTag = {}
 for image in images:
     for tag in image["tags"]:
@@ -242,6 +237,6 @@ workflow = generate_workflow(jobs)
 
 with open(".github/workflows/ci.yaml", "w") as stream:
     stream.write(GENERATED_HEADER)
-    yaml.dump(workflow, stream)
+    yaml.safe_dump(workflow, stream)
 
 print(f"Processed {len(images)} images.")

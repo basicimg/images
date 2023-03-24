@@ -20,21 +20,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=alpine/3.17
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./alpine/3.17/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/alpine:3-17,ghcr.io/basicimg/alpine:3,ghcr.io/basicimg/alpine:stable,ghcr.io/basicimg/alpine:latest
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./alpine/3.17/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/alpine:3-17,ghcr.io/basicimg/alpine:3,ghcr.io/basicimg/alpine:stable,ghcr.io/basicimg/alpine:latest
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/alpine:3-17 basicimg-hello
     - name: Run test
@@ -59,21 +61,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=alpine/edge
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./alpine/edge/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/alpine:edge
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./alpine/edge/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/alpine:edge
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/alpine:edge basicimg-hello
     - name: Run test
@@ -98,21 +102,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=arch
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./arch/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/arch:latest
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./arch/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/arch:latest
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/arch:latest basicimg-hello
     - name: Run test
@@ -137,21 +143,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=basicimg-actions-generator
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./basicimg-actions-generator/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/basicimg-actions-generator:latest
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./basicimg-actions-generator/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/basicimg-actions-generator:latest
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/basicimg-actions-generator:latest basicimg-hello
   bootstrap:
@@ -171,21 +179,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=bootstrap
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./bootstrap/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/bootstrap:latest
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./bootstrap/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/bootstrap:latest
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/bootstrap:latest basicimg-hello
   debian_bookworm:
@@ -207,21 +217,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=debian/bookworm
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./debian/bookworm/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/debian:bookworm,ghcr.io/basicimg/debian:12,ghcr.io/basicimg/debian:testing
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./debian/bookworm/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/debian:bookworm,ghcr.io/basicimg/debian:12,ghcr.io/basicimg/debian:testing
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/debian:bookworm basicimg-hello
     - name: Run test
@@ -246,21 +258,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=debian/bullseye
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./debian/bullseye/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/debian:bullseye,ghcr.io/basicimg/debian:11,ghcr.io/basicimg/debian:stable,ghcr.io/basicimg/debian:latest
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./debian/bullseye/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/debian:bullseye,ghcr.io/basicimg/debian:11,ghcr.io/basicimg/debian:stable,ghcr.io/basicimg/debian:latest
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/debian:bullseye basicimg-hello
     - name: Run test
@@ -285,21 +299,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=debian/buster
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./debian/buster/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/debian:buster,ghcr.io/basicimg/debian:10,ghcr.io/basicimg/debian:oldstable
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./debian/buster/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/debian:buster,ghcr.io/basicimg/debian:10,ghcr.io/basicimg/debian:oldstable
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/debian:buster basicimg-hello
     - name: Run test
@@ -324,21 +340,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=debian/sid
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./debian/sid/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/debian:sid,ghcr.io/basicimg/debian:unstable
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./debian/sid/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/debian:sid,ghcr.io/basicimg/debian:unstable
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/debian:sid basicimg-hello
     - name: Run test
@@ -363,23 +381,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/10/alpine-3-17
-
-          org.opencontainers.image.description=JDK 10 installed on alpine-3-17'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/10/alpine-3-17/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:10-alpine-3-17,ghcr.io/basicimg/jdk:10-alpine
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/10/alpine-3-17/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:10-alpine-3-17,ghcr.io/basicimg/jdk:10-alpine
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:10-alpine-3-17 basicimg-hello
   jdk_10_alpine-edge:
@@ -401,23 +419,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/10/alpine-edge
-
-          org.opencontainers.image.description=JDK 10 installed on alpine-edge'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/10/alpine-edge/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:10-alpine-edge
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/10/alpine-edge/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:10-alpine-edge
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:10-alpine-edge basicimg-hello
   jdk_11_alpine-3-17:
@@ -439,23 +457,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/11/alpine-3-17
-
-          org.opencontainers.image.description=JDK 11 installed on alpine-3-17'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/11/alpine-3-17/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:11-alpine-3-17,ghcr.io/basicimg/jdk:11-alpine
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/11/alpine-3-17/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:11-alpine-3-17,ghcr.io/basicimg/jdk:11-alpine
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:11-alpine-3-17 basicimg-hello
   jdk_11_alpine-edge:
@@ -477,23 +495,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/11/alpine-edge
-
-          org.opencontainers.image.description=JDK 11 installed on alpine-edge'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/11/alpine-edge/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:11-alpine-edge
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/11/alpine-edge/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:11-alpine-edge
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:11-alpine-edge basicimg-hello
   jdk_11_arch:
@@ -515,23 +533,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/11/arch
-
-          org.opencontainers.image.description=JDK 11 installed on arch'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/11/arch/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:11-arch
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/11/arch/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:11-arch
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:11-arch basicimg-hello
   jdk_11_bullseye:
@@ -553,23 +571,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/11/bullseye
-
-          org.opencontainers.image.description=JDK 11 installed on bullseye'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/11/bullseye/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:11-bullseye,ghcr.io/basicimg/jdk:11-debian-stable,ghcr.io/basicimg/jdk:11-debian,ghcr.io/basicimg/jdk:11
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/11/bullseye/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:11-bullseye,ghcr.io/basicimg/jdk:11-debian-stable,ghcr.io/basicimg/jdk:11-debian,ghcr.io/basicimg/jdk:11
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:11-bullseye basicimg-hello
   jdk_11_jammy:
@@ -591,23 +609,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/11/jammy
-
-          org.opencontainers.image.description=JDK 11 installed on jammy'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/11/jammy/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:11-jammy,ghcr.io/basicimg/jdk:11-ubuntu-lts,ghcr.io/basicimg/jdk:11-ubuntu
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/11/jammy/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:11-jammy,ghcr.io/basicimg/jdk:11-ubuntu-lts,ghcr.io/basicimg/jdk:11-ubuntu
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:11-jammy basicimg-hello
   jdk_11_kinetic:
@@ -629,23 +647,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/11/kinetic
-
-          org.opencontainers.image.description=JDK 11 installed on kinetic'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/11/kinetic/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:11-kinetic,ghcr.io/basicimg/jdk:11-ubuntu-interim
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/11/kinetic/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:11-kinetic,ghcr.io/basicimg/jdk:11-ubuntu-interim
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:11-kinetic basicimg-hello
   jdk_11_lunar:
@@ -667,23 +685,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/11/lunar
-
-          org.opencontainers.image.description=JDK 11 installed on lunar'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/11/lunar/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:11-lunar
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/11/lunar/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:11-lunar
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:11-lunar basicimg-hello
   jdk_11_sid:
@@ -705,23 +723,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/11/sid
-
-          org.opencontainers.image.description=JDK 11 installed on sid'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/11/sid/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:11-sid,ghcr.io/basicimg/jdk:11-debian-unstable
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/11/sid/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:11-sid,ghcr.io/basicimg/jdk:11-debian-unstable
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:11-sid basicimg-hello
   jdk_11_void-glibc:
@@ -743,23 +761,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/11/void-glibc
-
-          org.opencontainers.image.description=JDK 11 installed on void-glibc'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/11/void-glibc/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:11-void-glibc,ghcr.io/basicimg/jdk:11-void
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/11/void-glibc/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:11-void-glibc,ghcr.io/basicimg/jdk:11-void
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:11-void-glibc basicimg-hello
   jdk_11_void-musl:
@@ -781,23 +799,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/11/void-musl
-
-          org.opencontainers.image.description=JDK 11 installed on void-musl'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/11/void-musl/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:11-void-musl
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/11/void-musl/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:11-void-musl
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:11-void-musl basicimg-hello
   jdk_12_alpine-3-17:
@@ -819,23 +837,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/12/alpine-3-17
-
-          org.opencontainers.image.description=JDK 12 installed on alpine-3-17'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/12/alpine-3-17/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:12-alpine-3-17,ghcr.io/basicimg/jdk:12-alpine
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/12/alpine-3-17/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:12-alpine-3-17,ghcr.io/basicimg/jdk:12-alpine
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:12-alpine-3-17 basicimg-hello
   jdk_12_alpine-edge:
@@ -857,23 +875,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/12/alpine-edge
-
-          org.opencontainers.image.description=JDK 12 installed on alpine-edge'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/12/alpine-edge/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:12-alpine-edge
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/12/alpine-edge/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:12-alpine-edge
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:12-alpine-edge basicimg-hello
   jdk_13_alpine-3-17:
@@ -895,23 +913,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/13/alpine-3-17
-
-          org.opencontainers.image.description=JDK 13 installed on alpine-3-17'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/13/alpine-3-17/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:13-alpine-3-17,ghcr.io/basicimg/jdk:13-alpine
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/13/alpine-3-17/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:13-alpine-3-17,ghcr.io/basicimg/jdk:13-alpine
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:13-alpine-3-17 basicimg-hello
   jdk_13_alpine-edge:
@@ -933,23 +951,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/13/alpine-edge
-
-          org.opencontainers.image.description=JDK 13 installed on alpine-edge'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/13/alpine-edge/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:13-alpine-edge
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/13/alpine-edge/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:13-alpine-edge
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:13-alpine-edge basicimg-hello
   jdk_14_alpine-3-17:
@@ -971,23 +989,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/14/alpine-3-17
-
-          org.opencontainers.image.description=JDK 14 installed on alpine-3-17'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/14/alpine-3-17/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:14-alpine-3-17,ghcr.io/basicimg/jdk:14-alpine
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/14/alpine-3-17/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:14-alpine-3-17,ghcr.io/basicimg/jdk:14-alpine
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:14-alpine-3-17 basicimg-hello
   jdk_14_alpine-edge:
@@ -1009,23 +1027,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/14/alpine-edge
-
-          org.opencontainers.image.description=JDK 14 installed on alpine-edge'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/14/alpine-edge/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:14-alpine-edge
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/14/alpine-edge/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:14-alpine-edge
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:14-alpine-edge basicimg-hello
   jdk_15_alpine-3-17:
@@ -1047,23 +1065,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/15/alpine-3-17
-
-          org.opencontainers.image.description=JDK 15 installed on alpine-3-17'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/15/alpine-3-17/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:15-alpine-3-17,ghcr.io/basicimg/jdk:15-alpine
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/15/alpine-3-17/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:15-alpine-3-17,ghcr.io/basicimg/jdk:15-alpine
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:15-alpine-3-17 basicimg-hello
   jdk_15_alpine-edge:
@@ -1085,23 +1103,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/15/alpine-edge
-
-          org.opencontainers.image.description=JDK 15 installed on alpine-edge'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/15/alpine-edge/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:15-alpine-edge
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/15/alpine-edge/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:15-alpine-edge
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:15-alpine-edge basicimg-hello
   jdk_16_alpine-3-17:
@@ -1123,23 +1141,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/16/alpine-3-17
-
-          org.opencontainers.image.description=JDK 16 installed on alpine-3-17'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/16/alpine-3-17/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:16-alpine-3-17,ghcr.io/basicimg/jdk:16-alpine
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/16/alpine-3-17/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:16-alpine-3-17,ghcr.io/basicimg/jdk:16-alpine
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:16-alpine-3-17 basicimg-hello
   jdk_16_alpine-edge:
@@ -1161,23 +1179,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/16/alpine-edge
-
-          org.opencontainers.image.description=JDK 16 installed on alpine-edge'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/16/alpine-edge/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:16-alpine-edge
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/16/alpine-edge/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:16-alpine-edge
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:16-alpine-edge basicimg-hello
   jdk_17_alpine-3-17:
@@ -1199,23 +1217,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/17/alpine-3-17
-
-          org.opencontainers.image.description=JDK 17 installed on alpine-3-17'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/17/alpine-3-17/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:17-alpine-3-17,ghcr.io/basicimg/jdk:latest-alpine-3-17,ghcr.io/basicimg/jdk:lts-alpine-3-17,ghcr.io/basicimg/jdk:alpine-3-17,ghcr.io/basicimg/jdk:17-alpine,ghcr.io/basicimg/jdk:latest-alpine,ghcr.io/basicimg/jdk:lts-alpine,ghcr.io/basicimg/jdk:alpine
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/17/alpine-3-17/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:17-alpine-3-17,ghcr.io/basicimg/jdk:latest-alpine-3-17,ghcr.io/basicimg/jdk:lts-alpine-3-17,ghcr.io/basicimg/jdk:alpine-3-17,ghcr.io/basicimg/jdk:17-alpine,ghcr.io/basicimg/jdk:latest-alpine,ghcr.io/basicimg/jdk:lts-alpine,ghcr.io/basicimg/jdk:alpine
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:17-alpine-3-17 basicimg-hello
   jdk_17_alpine-edge:
@@ -1237,23 +1255,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/17/alpine-edge
-
-          org.opencontainers.image.description=JDK 17 installed on alpine-edge'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/17/alpine-edge/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:17-alpine-edge,ghcr.io/basicimg/jdk:lts-alpine-edge,ghcr.io/basicimg/jdk:alpine-edge
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/17/alpine-edge/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:17-alpine-edge,ghcr.io/basicimg/jdk:lts-alpine-edge,ghcr.io/basicimg/jdk:alpine-edge
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:17-alpine-edge basicimg-hello
   jdk_17_arch:
@@ -1275,23 +1293,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/17/arch
-
-          org.opencontainers.image.description=JDK 17 installed on arch'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/17/arch/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:17-arch,ghcr.io/basicimg/jdk:lts-arch,ghcr.io/basicimg/jdk:arch
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/17/arch/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:17-arch,ghcr.io/basicimg/jdk:lts-arch,ghcr.io/basicimg/jdk:arch
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:17-arch basicimg-hello
   jdk_17_bookworm:
@@ -1313,23 +1331,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/17/bookworm
-
-          org.opencontainers.image.description=JDK 17 installed on bookworm'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/17/bookworm/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:17-bookworm,ghcr.io/basicimg/jdk:latest-bookworm,ghcr.io/basicimg/jdk:lts-bookworm,ghcr.io/basicimg/jdk:bookworm,ghcr.io/basicimg/jdk:17-debian-testing,ghcr.io/basicimg/jdk:latest-debian-testing,ghcr.io/basicimg/jdk:lts-debian-testing,ghcr.io/basicimg/jdk:debian-testing
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/17/bookworm/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:17-bookworm,ghcr.io/basicimg/jdk:latest-bookworm,ghcr.io/basicimg/jdk:lts-bookworm,ghcr.io/basicimg/jdk:bookworm,ghcr.io/basicimg/jdk:17-debian-testing,ghcr.io/basicimg/jdk:latest-debian-testing,ghcr.io/basicimg/jdk:lts-debian-testing,ghcr.io/basicimg/jdk:debian-testing
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:17-bookworm basicimg-hello
   jdk_17_bullseye:
@@ -1351,23 +1369,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/17/bullseye
-
-          org.opencontainers.image.description=JDK 17 installed on bullseye'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/17/bullseye/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:17-bullseye,ghcr.io/basicimg/jdk:latest-bullseye,ghcr.io/basicimg/jdk:lts-bullseye,ghcr.io/basicimg/jdk:bullseye,ghcr.io/basicimg/jdk:17-debian-stable,ghcr.io/basicimg/jdk:latest-debian-stable,ghcr.io/basicimg/jdk:lts-debian-stable,ghcr.io/basicimg/jdk:debian-stable,ghcr.io/basicimg/jdk:17-debian,ghcr.io/basicimg/jdk:latest-debian,ghcr.io/basicimg/jdk:lts-debian,ghcr.io/basicimg/jdk:debian,ghcr.io/basicimg/jdk:17,ghcr.io/basicimg/jdk:latest,ghcr.io/basicimg/jdk:lts
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/17/bullseye/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:17-bullseye,ghcr.io/basicimg/jdk:latest-bullseye,ghcr.io/basicimg/jdk:lts-bullseye,ghcr.io/basicimg/jdk:bullseye,ghcr.io/basicimg/jdk:17-debian-stable,ghcr.io/basicimg/jdk:latest-debian-stable,ghcr.io/basicimg/jdk:lts-debian-stable,ghcr.io/basicimg/jdk:debian-stable,ghcr.io/basicimg/jdk:17-debian,ghcr.io/basicimg/jdk:latest-debian,ghcr.io/basicimg/jdk:lts-debian,ghcr.io/basicimg/jdk:debian,ghcr.io/basicimg/jdk:17,ghcr.io/basicimg/jdk:latest,ghcr.io/basicimg/jdk:lts
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:17-bullseye basicimg-hello
   jdk_17_jammy:
@@ -1389,23 +1407,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/17/jammy
-
-          org.opencontainers.image.description=JDK 17 installed on jammy'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/17/jammy/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:17-jammy,ghcr.io/basicimg/jdk:latest-jammy,ghcr.io/basicimg/jdk:lts-jammy,ghcr.io/basicimg/jdk:jammy,ghcr.io/basicimg/jdk:17-ubuntu-lts,ghcr.io/basicimg/jdk:latest-ubuntu-lts,ghcr.io/basicimg/jdk:lts-ubuntu-lts,ghcr.io/basicimg/jdk:ubuntu-lts,ghcr.io/basicimg/jdk:17-ubuntu,ghcr.io/basicimg/jdk:latest-ubuntu,ghcr.io/basicimg/jdk:lts-ubuntu,ghcr.io/basicimg/jdk:ubuntu
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/17/jammy/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:17-jammy,ghcr.io/basicimg/jdk:latest-jammy,ghcr.io/basicimg/jdk:lts-jammy,ghcr.io/basicimg/jdk:jammy,ghcr.io/basicimg/jdk:17-ubuntu-lts,ghcr.io/basicimg/jdk:latest-ubuntu-lts,ghcr.io/basicimg/jdk:lts-ubuntu-lts,ghcr.io/basicimg/jdk:ubuntu-lts,ghcr.io/basicimg/jdk:17-ubuntu,ghcr.io/basicimg/jdk:latest-ubuntu,ghcr.io/basicimg/jdk:lts-ubuntu,ghcr.io/basicimg/jdk:ubuntu
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:17-jammy basicimg-hello
   jdk_17_kinetic:
@@ -1427,23 +1445,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/17/kinetic
-
-          org.opencontainers.image.description=JDK 17 installed on kinetic'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/17/kinetic/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:17-kinetic,ghcr.io/basicimg/jdk:latest-kinetic,ghcr.io/basicimg/jdk:lts-kinetic,ghcr.io/basicimg/jdk:kinetic,ghcr.io/basicimg/jdk:17-ubuntu-interim,ghcr.io/basicimg/jdk:latest-ubuntu-interim,ghcr.io/basicimg/jdk:lts-ubuntu-interim,ghcr.io/basicimg/jdk:ubuntu-interim
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/17/kinetic/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:17-kinetic,ghcr.io/basicimg/jdk:latest-kinetic,ghcr.io/basicimg/jdk:lts-kinetic,ghcr.io/basicimg/jdk:kinetic,ghcr.io/basicimg/jdk:17-ubuntu-interim,ghcr.io/basicimg/jdk:latest-ubuntu-interim,ghcr.io/basicimg/jdk:lts-ubuntu-interim,ghcr.io/basicimg/jdk:ubuntu-interim
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:17-kinetic basicimg-hello
   jdk_17_lunar:
@@ -1465,23 +1483,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/17/lunar
-
-          org.opencontainers.image.description=JDK 17 installed on lunar'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/17/lunar/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:17-lunar,ghcr.io/basicimg/jdk:lts-lunar,ghcr.io/basicimg/jdk:lunar
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/17/lunar/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:17-lunar,ghcr.io/basicimg/jdk:lts-lunar,ghcr.io/basicimg/jdk:lunar
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:17-lunar basicimg-hello
   jdk_17_sid:
@@ -1503,23 +1521,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/17/sid
-
-          org.opencontainers.image.description=JDK 17 installed on sid'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/17/sid/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:17-sid,ghcr.io/basicimg/jdk:lts-sid,ghcr.io/basicimg/jdk:sid,ghcr.io/basicimg/jdk:17-debian-unstable,ghcr.io/basicimg/jdk:lts-debian-unstable,ghcr.io/basicimg/jdk:debian-unstable
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/17/sid/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:17-sid,ghcr.io/basicimg/jdk:lts-sid,ghcr.io/basicimg/jdk:sid,ghcr.io/basicimg/jdk:17-debian-unstable,ghcr.io/basicimg/jdk:lts-debian-unstable,ghcr.io/basicimg/jdk:debian-unstable
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:17-sid basicimg-hello
   jdk_17_void-glibc:
@@ -1541,23 +1559,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/17/void-glibc
-
-          org.opencontainers.image.description=JDK 17 installed on void-glibc'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/17/void-glibc/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:17-void-glibc,ghcr.io/basicimg/jdk:latest-void-glibc,ghcr.io/basicimg/jdk:lts-void-glibc,ghcr.io/basicimg/jdk:void-glibc,ghcr.io/basicimg/jdk:17-void,ghcr.io/basicimg/jdk:latest-void,ghcr.io/basicimg/jdk:lts-void,ghcr.io/basicimg/jdk:void
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/17/void-glibc/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:17-void-glibc,ghcr.io/basicimg/jdk:latest-void-glibc,ghcr.io/basicimg/jdk:lts-void-glibc,ghcr.io/basicimg/jdk:void-glibc,ghcr.io/basicimg/jdk:17-void,ghcr.io/basicimg/jdk:latest-void,ghcr.io/basicimg/jdk:lts-void,ghcr.io/basicimg/jdk:void
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:17-void-glibc basicimg-hello
   jdk_17_void-musl:
@@ -1579,23 +1597,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/17/void-musl
-
-          org.opencontainers.image.description=JDK 17 installed on void-musl'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/17/void-musl/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:17-void-musl,ghcr.io/basicimg/jdk:latest-void-musl,ghcr.io/basicimg/jdk:lts-void-musl,ghcr.io/basicimg/jdk:void-musl
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/17/void-musl/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:17-void-musl,ghcr.io/basicimg/jdk:latest-void-musl,ghcr.io/basicimg/jdk:lts-void-musl,ghcr.io/basicimg/jdk:void-musl
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:17-void-musl basicimg-hello
   jdk_18_alpine-edge:
@@ -1617,23 +1635,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/18/alpine-edge
-
-          org.opencontainers.image.description=JDK 18 installed on alpine-edge'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/18/alpine-edge/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:18-alpine-edge
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/18/alpine-edge/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:18-alpine-edge
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:18-alpine-edge basicimg-hello
   jdk_18_sid:
@@ -1655,23 +1673,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/18/sid
-
-          org.opencontainers.image.description=JDK 18 installed on sid'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/18/sid/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:18-sid,ghcr.io/basicimg/jdk:18-debian-unstable
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/18/sid/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:18-sid,ghcr.io/basicimg/jdk:18-debian-unstable
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:18-sid basicimg-hello
   jdk_19_alpine-edge:
@@ -1693,23 +1711,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/19/alpine-edge
-
-          org.opencontainers.image.description=JDK 19 installed on alpine-edge'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/19/alpine-edge/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:19-alpine-edge,ghcr.io/basicimg/jdk:latest-alpine-edge
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/19/alpine-edge/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:19-alpine-edge,ghcr.io/basicimg/jdk:latest-alpine-edge
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:19-alpine-edge basicimg-hello
   jdk_19_arch:
@@ -1731,23 +1749,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/19/arch
-
-          org.opencontainers.image.description=JDK 19 installed on arch'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/19/arch/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:19-arch
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/19/arch/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:19-arch
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:19-arch basicimg-hello
   jdk_19_lunar:
@@ -1769,23 +1787,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/19/lunar
-
-          org.opencontainers.image.description=JDK 19 installed on lunar'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/19/lunar/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:19-lunar,ghcr.io/basicimg/jdk:latest-lunar
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/19/lunar/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:19-lunar,ghcr.io/basicimg/jdk:latest-lunar
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:19-lunar basicimg-hello
   jdk_19_sid:
@@ -1807,23 +1825,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/19/sid
-
-          org.opencontainers.image.description=JDK 19 installed on sid'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/19/sid/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:19-sid,ghcr.io/basicimg/jdk:latest-sid,ghcr.io/basicimg/jdk:19-debian-unstable,ghcr.io/basicimg/jdk:latest-debian-unstable
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/19/sid/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:19-sid,ghcr.io/basicimg/jdk:latest-sid,ghcr.io/basicimg/jdk:19-debian-unstable,ghcr.io/basicimg/jdk:latest-debian-unstable
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:19-sid basicimg-hello
   jdk_7_alpine-3-17:
@@ -1845,23 +1863,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/7/alpine-3-17
-
-          org.opencontainers.image.description=JDK 7 installed on alpine-3-17'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/7/alpine-3-17/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:7-alpine-3-17,ghcr.io/basicimg/jdk:7-alpine
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/7/alpine-3-17/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:7-alpine-3-17,ghcr.io/basicimg/jdk:7-alpine
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:7-alpine-3-17 basicimg-hello
   jdk_7_alpine-edge:
@@ -1883,23 +1901,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/7/alpine-edge
-
-          org.opencontainers.image.description=JDK 7 installed on alpine-edge'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/7/alpine-edge/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:7-alpine-edge
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/7/alpine-edge/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:7-alpine-edge
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:7-alpine-edge basicimg-hello
   jdk_8_alpine-3-17:
@@ -1921,23 +1939,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/8/alpine-3-17
-
-          org.opencontainers.image.description=JDK 8 installed on alpine-3-17'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/8/alpine-3-17/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:8-alpine-3-17,ghcr.io/basicimg/jdk:8-alpine
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/8/alpine-3-17/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:8-alpine-3-17,ghcr.io/basicimg/jdk:8-alpine
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:8-alpine-3-17 basicimg-hello
   jdk_8_alpine-edge:
@@ -1959,23 +1977,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/8/alpine-edge
-
-          org.opencontainers.image.description=JDK 8 installed on alpine-edge'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/8/alpine-edge/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:8-alpine-edge
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/8/alpine-edge/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:8-alpine-edge
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:8-alpine-edge basicimg-hello
   jdk_8_arch:
@@ -1997,23 +2015,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/8/arch
-
-          org.opencontainers.image.description=JDK 8 installed on arch'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/8/arch/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:8-arch
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/8/arch/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:8-arch
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:8-arch basicimg-hello
   jdk_8_jammy:
@@ -2035,23 +2053,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/8/jammy
-
-          org.opencontainers.image.description=JDK 8 installed on jammy'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/8/jammy/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:8-jammy,ghcr.io/basicimg/jdk:8-ubuntu-lts,ghcr.io/basicimg/jdk:8-ubuntu
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/8/jammy/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:8-jammy,ghcr.io/basicimg/jdk:8-ubuntu-lts,ghcr.io/basicimg/jdk:8-ubuntu
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:8-jammy basicimg-hello
   jdk_8_kinetic:
@@ -2073,23 +2091,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/8/kinetic
-
-          org.opencontainers.image.description=JDK 8 installed on kinetic'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/8/kinetic/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:8-kinetic,ghcr.io/basicimg/jdk:8-ubuntu-interim
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/8/kinetic/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:8-kinetic,ghcr.io/basicimg/jdk:8-ubuntu-interim
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:8-kinetic basicimg-hello
   jdk_8_lunar:
@@ -2111,23 +2129,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/8/lunar
-
-          org.opencontainers.image.description=JDK 8 installed on lunar'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/8/lunar/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:8-lunar
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/8/lunar/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:8-lunar
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:8-lunar basicimg-hello
   jdk_8_sid:
@@ -2149,23 +2167,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/8/sid
-
-          org.opencontainers.image.description=JDK 8 installed on sid'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/8/sid/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:8-sid,ghcr.io/basicimg/jdk:8-debian-unstable
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/8/sid/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:8-sid,ghcr.io/basicimg/jdk:8-debian-unstable
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:8-sid basicimg-hello
   jdk_8_void-glibc:
@@ -2187,23 +2205,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/8/void-glibc
-
-          org.opencontainers.image.description=JDK 8 installed on void-glibc'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/8/void-glibc/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:8-void-glibc,ghcr.io/basicimg/jdk:8-void
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/8/void-glibc/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:8-void-glibc,ghcr.io/basicimg/jdk:8-void
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:8-void-glibc basicimg-hello
   jdk_8_void-musl:
@@ -2225,23 +2243,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/8/void-musl
-
-          org.opencontainers.image.description=JDK 8 installed on void-musl'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/8/void-musl/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:8-void-musl
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/8/void-musl/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:8-void-musl
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:8-void-musl basicimg-hello
   jdk_9_alpine-3-17:
@@ -2263,23 +2281,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/9/alpine-3-17
-
-          org.opencontainers.image.description=JDK 9 installed on alpine-3-17'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/9/alpine-3-17/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:9-alpine-3-17,ghcr.io/basicimg/jdk:9-alpine
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/9/alpine-3-17/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:9-alpine-3-17,ghcr.io/basicimg/jdk:9-alpine
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:9-alpine-3-17 basicimg-hello
   jdk_9_alpine-edge:
@@ -2301,23 +2319,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/9/alpine-edge
-
-          org.opencontainers.image.description=JDK 9 installed on alpine-edge'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/9/alpine-edge/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:9-alpine-edge
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/9/alpine-edge/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:9-alpine-edge
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:9-alpine-edge basicimg-hello
   jdk_latest_arch:
@@ -2339,23 +2357,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: 'com.github.basicimg.path=jdk/latest/arch
-
-          org.opencontainers.image.description=JDK latest installed on arch'
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./jdk/latest/arch/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/jdk:latest-arch
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./jdk/latest/arch/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/jdk:latest-arch
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/jdk:latest-arch basicimg-hello
   memcached_alpine-3_17:
@@ -2377,21 +2395,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=memcached/alpine-3.17
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./memcached/alpine-3.17/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/memcached:alpine-3-17,ghcr.io/basicimg/memcached:alpine
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./memcached/alpine-3.17/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/memcached:alpine-3-17,ghcr.io/basicimg/memcached:alpine
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/memcached:alpine-3-17 basicimg-hello
   memcached_alpine-edge:
@@ -2413,21 +2433,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=memcached/alpine-edge
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./memcached/alpine-edge/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/memcached:alpine-edge
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./memcached/alpine-edge/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/memcached:alpine-edge
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/memcached:alpine-edge basicimg-hello
   memcached_arch:
@@ -2449,21 +2471,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=memcached/arch
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./memcached/arch/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/memcached:arch
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./memcached/arch/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/memcached:arch
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/memcached:arch basicimg-hello
   memcached_bookworm:
@@ -2485,21 +2509,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=memcached/bookworm
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./memcached/bookworm/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/memcached:bookworm,ghcr.io/basicimg/memcached:debian-testing
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./memcached/bookworm/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/memcached:bookworm,ghcr.io/basicimg/memcached:debian-testing
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/memcached:bookworm basicimg-hello
   memcached_bullseye:
@@ -2521,21 +2547,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=memcached/bullseye
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./memcached/bullseye/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/memcached:bullseye,ghcr.io/basicimg/memcached:debian-stable,ghcr.io/basicimg/memcached:debian,ghcr.io/basicimg/memcached:latest
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./memcached/bullseye/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/memcached:bullseye,ghcr.io/basicimg/memcached:debian-stable,ghcr.io/basicimg/memcached:debian,ghcr.io/basicimg/memcached:latest
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/memcached:bullseye basicimg-hello
   memcached_buster:
@@ -2557,21 +2585,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=memcached/buster
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./memcached/buster/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/memcached:buster,ghcr.io/basicimg/memcached:debian-oldstable
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./memcached/buster/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/memcached:buster,ghcr.io/basicimg/memcached:debian-oldstable
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/memcached:buster basicimg-hello
   memcached_jammy:
@@ -2593,21 +2623,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=memcached/jammy
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./memcached/jammy/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/memcached:jammy,ghcr.io/basicimg/memcached:ubuntu-lts,ghcr.io/basicimg/memcached:ubuntu
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./memcached/jammy/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/memcached:jammy,ghcr.io/basicimg/memcached:ubuntu-lts,ghcr.io/basicimg/memcached:ubuntu
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/memcached:jammy basicimg-hello
   memcached_kinetic:
@@ -2629,21 +2661,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=memcached/kinetic
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./memcached/kinetic/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/memcached:kinetic,ghcr.io/basicimg/memcached:ubuntu-interim
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./memcached/kinetic/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/memcached:kinetic,ghcr.io/basicimg/memcached:ubuntu-interim
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/memcached:kinetic basicimg-hello
   memcached_lunar:
@@ -2665,21 +2699,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=memcached/lunar
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./memcached/lunar/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/memcached:lunar
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./memcached/lunar/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/memcached:lunar
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/memcached:lunar basicimg-hello
   memcached_sid:
@@ -2701,21 +2737,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=memcached/sid
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./memcached/sid/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/memcached:sid,ghcr.io/basicimg/memcached:debian-unstable
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./memcached/sid/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/memcached:sid,ghcr.io/basicimg/memcached:debian-unstable
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/memcached:sid basicimg-hello
   memcached_void-glibc:
@@ -2737,21 +2775,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=memcached/void-glibc
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./memcached/void-glibc/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/memcached:void-glibc,ghcr.io/basicimg/memcached:void
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./memcached/void-glibc/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/memcached:void-glibc,ghcr.io/basicimg/memcached:void
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/memcached:void-glibc basicimg-hello
   memcached_void-musl:
@@ -2773,21 +2813,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=memcached/void-musl
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./memcached/void-musl/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/memcached:void-musl
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./memcached/void-musl/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/memcached:void-musl
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/memcached:void-musl basicimg-hello
   nginx_alpine-3_17:
@@ -2809,21 +2851,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=nginx/alpine-3.17
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./nginx/alpine-3.17/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/nginx:alpine-3-17,ghcr.io/basicimg/nginx:alpine
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./nginx/alpine-3.17/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/nginx:alpine-3-17,ghcr.io/basicimg/nginx:alpine
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/nginx:alpine-3-17 basicimg-hello
   nginx_alpine-edge:
@@ -2845,21 +2889,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=nginx/alpine-edge
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./nginx/alpine-edge/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/nginx:alpine-edge
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./nginx/alpine-edge/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/nginx:alpine-edge
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/nginx:alpine-edge basicimg-hello
   nginx_arch:
@@ -2881,21 +2927,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=nginx/arch
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./nginx/arch/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/nginx:arch
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./nginx/arch/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/nginx:arch
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/nginx:arch basicimg-hello
   nginx_bookworm:
@@ -2917,21 +2965,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=nginx/bookworm
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./nginx/bookworm/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/nginx:bookworm,ghcr.io/basicimg/nginx:debian-testing
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./nginx/bookworm/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/nginx:bookworm,ghcr.io/basicimg/nginx:debian-testing
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/nginx:bookworm basicimg-hello
   nginx_bullseye:
@@ -2953,21 +3003,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=nginx/bullseye
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./nginx/bullseye/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/nginx:bullseye,ghcr.io/basicimg/nginx:debian-stable,ghcr.io/basicimg/nginx:debian,ghcr.io/basicimg/nginx:latest
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./nginx/bullseye/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/nginx:bullseye,ghcr.io/basicimg/nginx:debian-stable,ghcr.io/basicimg/nginx:debian,ghcr.io/basicimg/nginx:latest
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/nginx:bullseye basicimg-hello
   nginx_buster:
@@ -2989,21 +3041,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=nginx/buster
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./nginx/buster/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/nginx:buster,ghcr.io/basicimg/nginx:debian-oldstable
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./nginx/buster/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/nginx:buster,ghcr.io/basicimg/nginx:debian-oldstable
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/nginx:buster basicimg-hello
   nginx_jammy:
@@ -3025,21 +3079,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=nginx/jammy
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./nginx/jammy/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/nginx:jammy,ghcr.io/basicimg/nginx:ubuntu-lts,ghcr.io/basicimg/nginx:ubuntu
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./nginx/jammy/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/nginx:jammy,ghcr.io/basicimg/nginx:ubuntu-lts,ghcr.io/basicimg/nginx:ubuntu
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/nginx:jammy basicimg-hello
   nginx_kinetic:
@@ -3061,21 +3117,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=nginx/kinetic
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./nginx/kinetic/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/nginx:kinetic,ghcr.io/basicimg/nginx:ubuntu-interim
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./nginx/kinetic/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/nginx:kinetic,ghcr.io/basicimg/nginx:ubuntu-interim
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/nginx:kinetic basicimg-hello
   nginx_lunar:
@@ -3097,21 +3155,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=nginx/lunar
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./nginx/lunar/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/nginx:lunar
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./nginx/lunar/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/nginx:lunar
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/nginx:lunar basicimg-hello
   nginx_sid:
@@ -3133,21 +3193,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=nginx/sid
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./nginx/sid/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/nginx:sid,ghcr.io/basicimg/nginx:debian-unstable
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./nginx/sid/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/nginx:sid,ghcr.io/basicimg/nginx:debian-unstable
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/nginx:sid basicimg-hello
   nginx_void-glibc:
@@ -3169,21 +3231,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=nginx/void-glibc
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./nginx/void-glibc/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/nginx:void-glibc,ghcr.io/basicimg/nginx:void
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./nginx/void-glibc/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/nginx:void-glibc,ghcr.io/basicimg/nginx:void
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/nginx:void-glibc basicimg-hello
   nginx_void-musl:
@@ -3205,21 +3269,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=nginx/void-musl
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./nginx/void-musl/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/nginx:void-musl
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./nginx/void-musl/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/nginx:void-musl
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/nginx:void-musl basicimg-hello
   nix_alpine-edge:
@@ -3241,21 +3307,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=nix/alpine-edge
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./nix/alpine-edge/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/nix:alpine-edge,ghcr.io/basicimg/nix:alpine
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./nix/alpine-edge/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/nix:alpine-edge,ghcr.io/basicimg/nix:alpine
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/nix:alpine-edge basicimg-hello
     - name: Run test
@@ -3280,21 +3348,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=nix/arch
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./nix/arch/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/nix:arch
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./nix/arch/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/nix:arch
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/nix:arch basicimg-hello
     - name: Run test
@@ -3318,21 +3388,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=nix/bookworm
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./nix/bookworm/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/nix:bookworm,ghcr.io/basicimg/nix:debian-testing
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./nix/bookworm/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/nix:bookworm,ghcr.io/basicimg/nix:debian-testing
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/nix:bookworm basicimg-hello
     - name: Run test
@@ -3356,21 +3428,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=nix/bullseye
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./nix/bullseye/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/nix:bullseye,ghcr.io/basicimg/nix:debian-stable,ghcr.io/basicimg/nix:debian,ghcr.io/basicimg/nix:latest
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./nix/bullseye/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/nix:bullseye,ghcr.io/basicimg/nix:debian-stable,ghcr.io/basicimg/nix:debian,ghcr.io/basicimg/nix:latest
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/nix:bullseye basicimg-hello
   nix_jammy:
@@ -3392,21 +3466,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=nix/jammy
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./nix/jammy/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/nix:jammy,ghcr.io/basicimg/nix:ubuntu-lts,ghcr.io/basicimg/nix:ubuntu
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./nix/jammy/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/nix:jammy,ghcr.io/basicimg/nix:ubuntu-lts,ghcr.io/basicimg/nix:ubuntu
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/nix:jammy basicimg-hello
     - name: Run test
@@ -3430,21 +3506,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=nix/kinetic
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./nix/kinetic/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/nix:kinetic,ghcr.io/basicimg/nix:ubuntu-interim
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./nix/kinetic/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/nix:kinetic,ghcr.io/basicimg/nix:ubuntu-interim
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/nix:kinetic basicimg-hello
     - name: Run test
@@ -3468,21 +3546,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=nix/lunar
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./nix/lunar/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/nix:lunar
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./nix/lunar/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/nix:lunar
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/nix:lunar basicimg-hello
     - name: Run test
@@ -3506,21 +3586,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=nix/sid
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./nix/sid/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/nix:sid,ghcr.io/basicimg/nix:debian-unstable
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./nix/sid/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/nix:sid,ghcr.io/basicimg/nix:debian-unstable
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/nix:sid basicimg-hello
     - name: Run test
@@ -3544,21 +3626,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=nix/void-glibc
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./nix/void-glibc/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/nix:void-glibc,ghcr.io/basicimg/nix:void
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./nix/void-glibc/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/nix:void-glibc,ghcr.io/basicimg/nix:void
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/nix:void-glibc basicimg-hello
     - name: Run test
@@ -3583,21 +3667,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=nix/void-musl
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./nix/void-musl/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/nix:void-musl
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./nix/void-musl/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/nix:void-musl
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/nix:void-musl basicimg-hello
     - name: Run test
@@ -3621,21 +3707,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=nodejs/alpine-3.17
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./nodejs/alpine-3.17/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/nodejs:alpine-3-17,ghcr.io/basicimg/nodejs:alpine
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./nodejs/alpine-3.17/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/nodejs:alpine-3-17,ghcr.io/basicimg/nodejs:alpine
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/nodejs:alpine-3-17 basicimg-hello
     - name: Run test
@@ -3660,21 +3748,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=nodejs/alpine-edge
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./nodejs/alpine-edge/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/nodejs:alpine-edge
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./nodejs/alpine-edge/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/nodejs:alpine-edge
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/nodejs:alpine-edge basicimg-hello
     - name: Run test
@@ -3699,21 +3789,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=nodejs/arch
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./nodejs/arch/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/nodejs:arch
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./nodejs/arch/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/nodejs:arch
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/nodejs:arch basicimg-hello
     - name: Run test
@@ -3738,21 +3830,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=nodejs/bookworm
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./nodejs/bookworm/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/nodejs:bookworm,ghcr.io/basicimg/nodejs:debian-testing
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./nodejs/bookworm/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/nodejs:bookworm,ghcr.io/basicimg/nodejs:debian-testing
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/nodejs:bookworm basicimg-hello
     - name: Run test
@@ -3777,21 +3871,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=nodejs/bullseye
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./nodejs/bullseye/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/nodejs:bullseye,ghcr.io/basicimg/nodejs:debian-stable,ghcr.io/basicimg/nodejs:debian,ghcr.io/basicimg/nodejs:latest
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./nodejs/bullseye/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/nodejs:bullseye,ghcr.io/basicimg/nodejs:debian-stable,ghcr.io/basicimg/nodejs:debian,ghcr.io/basicimg/nodejs:latest
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/nodejs:bullseye basicimg-hello
     - name: Run test
@@ -3816,21 +3912,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=nodejs/buster
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./nodejs/buster/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/nodejs:buster,ghcr.io/basicimg/nodejs:debian-oldstable
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./nodejs/buster/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/nodejs:buster,ghcr.io/basicimg/nodejs:debian-oldstable
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/nodejs:buster basicimg-hello
     - name: Run test
@@ -3855,21 +3953,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=nodejs/jammy
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./nodejs/jammy/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/nodejs:jammy,ghcr.io/basicimg/nodejs:ubuntu-lts,ghcr.io/basicimg/nodejs:ubuntu
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./nodejs/jammy/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/nodejs:jammy,ghcr.io/basicimg/nodejs:ubuntu-lts,ghcr.io/basicimg/nodejs:ubuntu
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/nodejs:jammy basicimg-hello
     - name: Run test
@@ -3894,21 +3994,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=nodejs/kinetic
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./nodejs/kinetic/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/nodejs:kinetic,ghcr.io/basicimg/nodejs:ubuntu-interim
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./nodejs/kinetic/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/nodejs:kinetic,ghcr.io/basicimg/nodejs:ubuntu-interim
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/nodejs:kinetic basicimg-hello
     - name: Run test
@@ -3933,21 +4035,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=nodejs/lunar
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./nodejs/lunar/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/nodejs:lunar
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./nodejs/lunar/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/nodejs:lunar
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/nodejs:lunar basicimg-hello
     - name: Run test
@@ -3972,21 +4076,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=nodejs/sid
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./nodejs/sid/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/nodejs:sid,ghcr.io/basicimg/nodejs:debian-unstable
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./nodejs/sid/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/nodejs:sid,ghcr.io/basicimg/nodejs:debian-unstable
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/nodejs:sid basicimg-hello
     - name: Run test
@@ -4011,21 +4117,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=nodejs/void-glibc
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./nodejs/void-glibc/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/nodejs:void-glibc,ghcr.io/basicimg/nodejs:void
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./nodejs/void-glibc/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/nodejs:void-glibc,ghcr.io/basicimg/nodejs:void
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/nodejs:void-glibc basicimg-hello
     - name: Run test
@@ -4050,21 +4158,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=nodejs/void-musl
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./nodejs/void-musl/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/nodejs:void-musl
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./nodejs/void-musl/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/nodejs:void-musl
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/nodejs:void-musl basicimg-hello
     - name: Run test
@@ -4089,21 +4199,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=python3/alpine-3.17
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./python3/alpine-3.17/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/python3:alpine-3-17,ghcr.io/basicimg/python3:alpine
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./python3/alpine-3.17/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/python3:alpine-3-17,ghcr.io/basicimg/python3:alpine
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/python3:alpine-3-17 basicimg-hello
     - name: Run test
@@ -4128,21 +4240,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=python3/alpine-edge
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./python3/alpine-edge/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/python3:alpine-edge
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./python3/alpine-edge/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/python3:alpine-edge
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/python3:alpine-edge basicimg-hello
     - name: Run test
@@ -4167,21 +4281,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=python3/arch
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./python3/arch/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/python3:arch
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./python3/arch/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/python3:arch
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/python3:arch basicimg-hello
     - name: Run test
@@ -4206,21 +4322,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=python3/bookworm
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./python3/bookworm/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/python3:bookworm,ghcr.io/basicimg/python3:debian-testing
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./python3/bookworm/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/python3:bookworm,ghcr.io/basicimg/python3:debian-testing
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/python3:bookworm basicimg-hello
     - name: Run test
@@ -4245,21 +4363,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=python3/bullseye
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./python3/bullseye/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/python3:bullseye,ghcr.io/basicimg/python3:debian-stable,ghcr.io/basicimg/python3:debian,ghcr.io/basicimg/python3:latest
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./python3/bullseye/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/python3:bullseye,ghcr.io/basicimg/python3:debian-stable,ghcr.io/basicimg/python3:debian,ghcr.io/basicimg/python3:latest
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/python3:bullseye basicimg-hello
     - name: Run test
@@ -4284,21 +4404,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=python3/buster
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./python3/buster/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/python3:buster,ghcr.io/basicimg/python3:debian-oldstable
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./python3/buster/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/python3:buster,ghcr.io/basicimg/python3:debian-oldstable
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/python3:buster basicimg-hello
     - name: Run test
@@ -4323,21 +4445,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=python3/jammy
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./python3/jammy/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/python3:jammy,ghcr.io/basicimg/python3:ubuntu-lts,ghcr.io/basicimg/python3:ubuntu
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./python3/jammy/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/python3:jammy,ghcr.io/basicimg/python3:ubuntu-lts,ghcr.io/basicimg/python3:ubuntu
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/python3:jammy basicimg-hello
     - name: Run test
@@ -4362,21 +4486,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=python3/kinetic
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./python3/kinetic/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/python3:kinetic,ghcr.io/basicimg/python3:ubuntu-interim
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./python3/kinetic/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/python3:kinetic,ghcr.io/basicimg/python3:ubuntu-interim
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/python3:kinetic basicimg-hello
     - name: Run test
@@ -4401,21 +4527,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=python3/lunar
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./python3/lunar/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/python3:lunar
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./python3/lunar/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/python3:lunar
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/python3:lunar basicimg-hello
     - name: Run test
@@ -4440,21 +4568,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=python3/sid
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./python3/sid/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/python3:sid,ghcr.io/basicimg/python3:debian-unstable
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./python3/sid/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/python3:sid,ghcr.io/basicimg/python3:debian-unstable
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/python3:sid basicimg-hello
     - name: Run test
@@ -4479,21 +4609,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=python3/void-glibc
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./python3/void-glibc/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/python3:void-glibc,ghcr.io/basicimg/python3:void
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./python3/void-glibc/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/python3:void-glibc,ghcr.io/basicimg/python3:void
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/python3:void-glibc basicimg-hello
     - name: Run test
@@ -4518,21 +4650,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=python3/void-musl
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./python3/void-musl/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/python3:void-musl
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./python3/void-musl/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/python3:void-musl
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/python3:void-musl basicimg-hello
     - name: Run test
@@ -4557,21 +4691,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=redis/alpine-3.17
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./redis/alpine-3.17/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/redis:alpine-3-17,ghcr.io/basicimg/redis:alpine
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./redis/alpine-3.17/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/redis:alpine-3-17,ghcr.io/basicimg/redis:alpine
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/redis:alpine-3-17 basicimg-hello
     - name: Run integration test
@@ -4597,21 +4733,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=redis/alpine-edge
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./redis/alpine-edge/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/redis:alpine-edge
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./redis/alpine-edge/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/redis:alpine-edge
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/redis:alpine-edge basicimg-hello
     - name: Run integration test
@@ -4637,21 +4775,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=redis/arch
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./redis/arch/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/redis:arch
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./redis/arch/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/redis:arch
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/redis:arch basicimg-hello
     - name: Run integration test
@@ -4677,21 +4817,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=redis/bookworm
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./redis/bookworm/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/redis:bookworm,ghcr.io/basicimg/redis:debian-testing
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./redis/bookworm/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/redis:bookworm,ghcr.io/basicimg/redis:debian-testing
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/redis:bookworm basicimg-hello
     - name: Run integration test
@@ -4717,21 +4859,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=redis/bullseye
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./redis/bullseye/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/redis:bullseye,ghcr.io/basicimg/redis:debian-stable,ghcr.io/basicimg/redis:debian,ghcr.io/basicimg/redis:latest
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./redis/bullseye/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/redis:bullseye,ghcr.io/basicimg/redis:debian-stable,ghcr.io/basicimg/redis:debian,ghcr.io/basicimg/redis:latest
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/redis:bullseye basicimg-hello
     - name: Run integration test
@@ -4757,21 +4901,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=redis/buster
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./redis/buster/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/redis:buster,ghcr.io/basicimg/redis:debian-oldstable
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./redis/buster/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/redis:buster,ghcr.io/basicimg/redis:debian-oldstable
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/redis:buster basicimg-hello
     - name: Run integration test
@@ -4797,21 +4943,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=redis/jammy
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./redis/jammy/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/redis:jammy,ghcr.io/basicimg/redis:ubuntu-lts,ghcr.io/basicimg/redis:ubuntu
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./redis/jammy/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/redis:jammy,ghcr.io/basicimg/redis:ubuntu-lts,ghcr.io/basicimg/redis:ubuntu
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/redis:jammy basicimg-hello
     - name: Run integration test
@@ -4837,21 +4985,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=redis/kinetic
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./redis/kinetic/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/redis:kinetic,ghcr.io/basicimg/redis:ubuntu-interim
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./redis/kinetic/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/redis:kinetic,ghcr.io/basicimg/redis:ubuntu-interim
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/redis:kinetic basicimg-hello
     - name: Run integration test
@@ -4877,21 +5027,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=redis/lunar
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./redis/lunar/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/redis:lunar
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./redis/lunar/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/redis:lunar
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/redis:lunar basicimg-hello
     - name: Run integration test
@@ -4917,21 +5069,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=redis/sid
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./redis/sid/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/redis:sid,ghcr.io/basicimg/redis:debian-unstable
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./redis/sid/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/redis:sid,ghcr.io/basicimg/redis:debian-unstable
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/redis:sid basicimg-hello
     - name: Run integration test
@@ -4957,21 +5111,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=redis/void-glibc
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./redis/void-glibc/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/redis:void-glibc,ghcr.io/basicimg/redis:void
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./redis/void-glibc/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/redis:void-glibc,ghcr.io/basicimg/redis:void
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/redis:void-glibc basicimg-hello
     - name: Run integration test
@@ -4997,21 +5153,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=redis/void-musl
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./redis/void-musl/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/redis:void-musl
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./redis/void-musl/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/redis:void-musl
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/redis:void-musl basicimg-hello
     - name: Run integration test
@@ -5037,21 +5195,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=ruby/alpine-3.17
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./ruby/alpine-3.17/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/ruby:alpine-3-17,ghcr.io/basicimg/ruby:alpine
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./ruby/alpine-3.17/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/ruby:alpine-3-17,ghcr.io/basicimg/ruby:alpine
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/ruby:alpine-3-17 basicimg-hello
     - name: Run test
@@ -5076,21 +5236,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=ruby/alpine-edge
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./ruby/alpine-edge/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/ruby:alpine-edge
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./ruby/alpine-edge/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/ruby:alpine-edge
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/ruby:alpine-edge basicimg-hello
     - name: Run test
@@ -5115,21 +5277,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=ruby/arch
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./ruby/arch/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/ruby:arch
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./ruby/arch/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/ruby:arch
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/ruby:arch basicimg-hello
     - name: Run test
@@ -5153,21 +5317,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=ruby/bookworm
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./ruby/bookworm/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/ruby:bookworm,ghcr.io/basicimg/ruby:debian-testing
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./ruby/bookworm/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/ruby:bookworm,ghcr.io/basicimg/ruby:debian-testing
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/ruby:bookworm basicimg-hello
     - name: Run test
@@ -5192,21 +5358,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=ruby/bullseye
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./ruby/bullseye/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/ruby:bullseye,ghcr.io/basicimg/ruby:debian-stable,ghcr.io/basicimg/ruby:debian,ghcr.io/basicimg/ruby:latest
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./ruby/bullseye/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/ruby:bullseye,ghcr.io/basicimg/ruby:debian-stable,ghcr.io/basicimg/ruby:debian,ghcr.io/basicimg/ruby:latest
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/ruby:bullseye basicimg-hello
     - name: Run test
@@ -5231,21 +5399,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=ruby/buster
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./ruby/buster/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/ruby:buster,ghcr.io/basicimg/ruby:debian-oldstable
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./ruby/buster/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/ruby:buster,ghcr.io/basicimg/ruby:debian-oldstable
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/ruby:buster basicimg-hello
     - name: Run test
@@ -5270,21 +5440,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=ruby/jammy
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./ruby/jammy/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/ruby:jammy,ghcr.io/basicimg/ruby:ubuntu-lts,ghcr.io/basicimg/ruby:ubuntu
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./ruby/jammy/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/ruby:jammy,ghcr.io/basicimg/ruby:ubuntu-lts,ghcr.io/basicimg/ruby:ubuntu
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/ruby:jammy basicimg-hello
     - name: Run test
@@ -5309,21 +5481,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=ruby/kinetic
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./ruby/kinetic/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/ruby:kinetic,ghcr.io/basicimg/ruby:ubuntu-interim
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./ruby/kinetic/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/ruby:kinetic,ghcr.io/basicimg/ruby:ubuntu-interim
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/ruby:kinetic basicimg-hello
     - name: Run test
@@ -5348,21 +5522,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=ruby/lunar
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./ruby/lunar/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/ruby:lunar
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./ruby/lunar/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/ruby:lunar
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/ruby:lunar basicimg-hello
     - name: Run test
@@ -5387,21 +5563,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=ruby/sid
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./ruby/sid/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/ruby:sid,ghcr.io/basicimg/ruby:debian-unstable
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./ruby/sid/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/ruby:sid,ghcr.io/basicimg/ruby:debian-unstable
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/ruby:sid basicimg-hello
     - name: Run test
@@ -5425,21 +5603,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=ruby/void-glibc
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./ruby/void-glibc/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/ruby:void-glibc,ghcr.io/basicimg/ruby:void
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./ruby/void-glibc/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/ruby:void-glibc,ghcr.io/basicimg/ruby:void
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/ruby:void-glibc basicimg-hello
     - name: Run test
@@ -5464,21 +5644,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=ruby/void-musl
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./ruby/void-musl/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/ruby:void-musl
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./ruby/void-musl/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/ruby:void-musl
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/ruby:void-musl basicimg-hello
     - name: Run test
@@ -5503,21 +5685,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=ubuntu/jammy
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./ubuntu/jammy/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/ubuntu:jammy,ghcr.io/basicimg/ubuntu:22-04,ghcr.io/basicimg/ubuntu:lts,ghcr.io/basicimg/ubuntu:latest
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./ubuntu/jammy/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/ubuntu:jammy,ghcr.io/basicimg/ubuntu:22-04,ghcr.io/basicimg/ubuntu:lts,ghcr.io/basicimg/ubuntu:latest
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/ubuntu:jammy basicimg-hello
     - name: Run test
@@ -5542,21 +5726,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=ubuntu/kinetic
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./ubuntu/kinetic/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/ubuntu:kinetic,ghcr.io/basicimg/ubuntu:22-10,ghcr.io/basicimg/ubuntu:interim
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./ubuntu/kinetic/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/ubuntu:kinetic,ghcr.io/basicimg/ubuntu:22-10,ghcr.io/basicimg/ubuntu:interim
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/ubuntu:kinetic basicimg-hello
     - name: Run test
@@ -5581,21 +5767,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=ubuntu/lunar
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./ubuntu/lunar/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/ubuntu:lunar,ghcr.io/basicimg/ubuntu:23-04
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./ubuntu/lunar/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/ubuntu:lunar,ghcr.io/basicimg/ubuntu:23-04
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/ubuntu:lunar basicimg-hello
     - name: Run test
@@ -5620,21 +5808,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=void/glibc
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./void/glibc/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/void:glibc,ghcr.io/basicimg/void:latest
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./void/glibc/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/void:glibc,ghcr.io/basicimg/void:latest
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/void:glibc basicimg-hello
     - name: Run test
@@ -5659,21 +5849,23 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
         registry: ghcr.io
         username: ${{ github.actor }}
-    - id: meta
-      name: Generate metadata
-      uses: docker/metadata-action@v4
-      with:
-        images: dummy
-        labels: com.github.basicimg.path=void/musl
     - name: Build and push image
-      uses: docker/build-push-action@v4
+      uses: Wandalen/wretry.action@master
       with:
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        file: ./void/musl/Dockerfile
-        labels: ${{ steps.meta.outputs.labels }}
-        push: true
-        tags: ghcr.io/basicimg/void:musl
+        action: docker/build-push-action@v4
+        attempt_delay: 2000
+        attempt_limit: 3
+        with: 'cache-from: type=gha
+
+          cache-to: type=gha,mode=max
+
+          file: ./void/musl/Dockerfile
+
+          push: true
+
+          tags: ghcr.io/basicimg/void:musl
+
+          '
     - name: Run `basicimg-hello`
       run: docker run --rm ghcr.io/basicimg/void:musl basicimg-hello
     - name: Run test
