@@ -10,6 +10,9 @@ include:
 - ruby/images.yaml
 - ubuntu/images.yaml
 - void/images.yaml
+transformers:
+- name: jdk
+  file: jdk/defs.yaml
 images:
 - path: bootstrap
   tags:

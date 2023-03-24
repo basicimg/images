@@ -1,14 +1,9 @@
 import yaml
 
-with open("jdk/defs.yaml", "r") as stream:
-    defs = yaml.safe_load(stream)
-jdks = defs["jdks"]
-distros = defs["distros"]
-
-def get_latest_jdk(jdks):
+def get_latest_jdk(distroJdks):
     latest = None
     latestInt = 0
-    for jdk in jdks:
+    for jdk in distroJdks:
         if jdk == "latest":
             latest = jdk
             latestInt = 999
@@ -17,7 +12,7 @@ def get_latest_jdk(jdks):
             latestInt = int(jdk)
     return latest
 
-def get_lts_jdk(distroJdks):
+def get_lts_jdk(jdks, distroJdks):
     latest = None
     latestInt = 0
     for jdk in distroJdks:
@@ -26,7 +21,11 @@ def get_lts_jdk(distroJdks):
             latestInt = int(jdk)
     return latest
 
-def generate_jdk_images():
+def generate_jdk_images(path):
+    with open(path, "r") as stream:
+        defs = yaml.safe_load(stream)
+    jdks = defs["jdks"]
+    distros = defs["distros"]
     images = []
     for distro in distros:
         name = distro["name"]
@@ -39,7 +38,7 @@ def generate_jdk_images():
             aliases.extend(distro["aliases"])
         distroJdks = distro["jdks"]
         latest = get_latest_jdk(distroJdks)
-        lts = get_lts_jdk(distroJdks)
+        lts = get_lts_jdk(jdks, distroJdks)
         for jdk in distroJdks:
             isLatest = jdk == latest
             isLts = jdk == lts
